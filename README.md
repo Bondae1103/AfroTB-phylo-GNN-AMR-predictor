@@ -847,5 +847,3 @@ Dependencies added this phase, and why: `torch_geometric` (the GNN layers the
 README already assumed), `xgboost` (the baseline `train_xgboost.py` already
 imported), `openpyxl` (already used by the preprocessing scripts), `pytest`
 (the test suite). All were already referenced by existing code or docs.
-#   A f r o T B - p h y l o - G N N - A M R - p r e d i c t o r  
- 
