@@ -1,0 +1,95 @@
+{
+  "note": "Analysis-only consolidation of already-completed experiments on the actual AfroTB dataset (data/processed via AFROTB_PROCESSED_DIR). No models retrained, no source files or existing result files modified. All values read directly from committed results/*.json files; the near-duplicate sensitivity result is sourced from this session's Experiment 2 record (that run was intentionally saved only to a local scratch file, never committed as a results/ JSON, per the original instruction not to create extra result files at that step).",
+  "dataset_and_split": {
+    "processed_dir": "C:\\Projects\\AfroTB-PhyloGNN\\data\\processed",
+    "n_train": 9629,
+    "n_val": 2062,
+    "n_test": 2062,
+    "n_features": 157,
+    "drug_columns": ["RIF","INH","EMB","PZA","STM","LEV","CAP","ETH","LZD"]
+  },
+  "part1_final_model_comparison": {
+    "random_forest": {"seeds": 5, "test_f1_0.5_mean": 0.8265472974343628, "test_f1_0.5_std": 0.00032654998933324936, "test_f1_tuned_mean": 0.8692425944708566, "test_f1_tuned_std": 0.0004064707187889428, "roc_auc_mean": 0.9983935269205544, "roc_auc_std": 5.186500739664043e-05, "pr_auc_mean": 0.9950133127522317, "pr_auc_std": 0.00012782572333437713, "source": "results/baselines_multiseed_comparison.json"},
+    "xgboost": {"seeds": 5, "test_f1_0.5_mean": 0.6564973598472645, "test_f1_0.5_std": 0.0012790115572218947, "test_f1_tuned_mean": 0.6571049238428749, "test_f1_tuned_std": 0.0010618979387076023, "roc_auc_mean": 0.9003258355690464, "roc_auc_std": 0.00014447974884160435, "pr_auc_mean": 0.746633554507351, "pr_auc_std": 0.0003719728571945201, "source": "results/baselines_multiseed_comparison.json"},
+    "sklearn_mlp": {"seeds": 5, "test_f1_0.5_mean": 0.7795527000064221, "test_f1_0.5_std": 0.03210821909786861, "test_f1_tuned_mean": 0.8180503223488405, "test_f1_tuned_std": 0.03888080709734842, "roc_auc_mean": 0.9995664333916237, "roc_auc_std": 0.0006520748949330953, "pr_auc_mean": 0.9677473643581156, "pr_auc_std": 0.047785541154570864, "source": "results/baselines_multiseed_comparison.json"},
+    "gnn": {"seeds": 5, "test_f1_0.5_mean": 0.6864420530789948, "test_f1_0.5_std": 0.00779122388769853, "test_f1_tuned_mean": 0.7395940603285698, "test_f1_tuned_std": 0.021225129710648476, "roc_auc_mean": 0.991029426190928, "roc_auc_std": 0.0017471509282802457, "pr_auc_mean": 0.8980234190463301, "pr_auc_std": 0.029271804495919988, "source": "results/gnn_multiseed_stability.json (roc/pr std computed here from its per-seed values)"},
+    "torch_mlp_cap10": {"seeds": 5, "test_f1_0.5_mean": 0.8330999592691244, "test_f1_0.5_std": 0.06113174131565152, "test_f1_tuned_mean": 0.871798466186496, "test_f1_tuned_std": 0.019893256068444037, "roc_auc_mean": 0.9999450782044919, "roc_auc_std": 2.1569189844900274e-05, "pr_auc_mean": 0.9998357527764634, "pr_auc_std": 4.8602298749604306e-05, "source": "results/torch_mlp_cap10_multiseed.json"}
+  },
+  "part3_class_imbalance": {
+    "train_support": {
+      "RIF": {"n_positive": 3699, "prevalence": 0.384152},
+      "INH": {"n_positive": 2892, "prevalence": 0.300343},
+      "EMB": {"n_positive": 2595, "prevalence": 0.269498},
+      "PZA": {"n_positive": 1498, "prevalence": 0.155572},
+      "STM": {"n_positive": 1192, "prevalence": 0.123793},
+      "LEV": {"n_positive": 830, "prevalence": 0.086198},
+      "CAP": {"n_positive": 21, "prevalence": 0.002181},
+      "ETH": {"n_positive": 4, "prevalence": 0.000415},
+      "LZD": {"n_positive": 2, "prevalence": 0.000208}
+    },
+    "cap_ablation_seed42": {
+      "A_unweighted": {"val_macro_f1": 0.7493, "test_f1_0.5": 0.7617, "test_f1_tuned": 0.8665},
+      "B_cap5": {"val_macro_f1": 0.8600, "test_f1_0.5": 0.7773, "test_f1_tuned": 0.8882},
+      "C_cap10": {"val_macro_f1": 0.8772, "test_f1_0.5": 0.7765, "test_f1_tuned": 0.8720},
+      "D_cap20": {"val_macro_f1": 0.8755, "test_f1_0.5": 0.7743, "test_f1_tuned": 0.8230},
+      "E_cap50": {"val_macro_f1": 0.9806, "test_f1_0.5": 0.8882, "test_f1_tuned": 0.8723}
+    },
+    "cap10_selection_rationale": "cap=10 gave the highest majority-drug-stable validation Macro-F1 (0.8772) without relying on extreme per-drug weighting; cap=50's higher val score (0.9806) is inflated by ETH/LZD's single validation-positive isolate flipping to a correct prediction -- a coin-flip-scale event given n=1, not evidence of generalizable improvement. Selection used validation performance only, never test.",
+    "source": "results/torch_mlp_weight_cap_ablation.json"
+  },
+  "part4_torchmlp_cap10_stability": {
+    "per_seed": [
+      {"seed": 42, "val_macro_f1": 0.8772, "test_f1_0.5": 0.7765, "test_f1_tuned": 0.8720},
+      {"seed": 123, "val_macro_f1": 0.9717, "test_f1_0.5": 0.8513, "test_f1_tuned": 0.8390},
+      {"seed": 456, "val_macro_f1": 0.9995, "test_f1_0.5": 0.8885, "test_f1_tuned": 0.8726},
+      {"seed": 789, "val_macro_f1": 0.8596, "test_f1_0.5": 0.7605, "test_f1_tuned": 0.8875},
+      {"seed": 2026, "val_macro_f1": 0.9992, "test_f1_0.5": 0.8886, "test_f1_tuned": 0.8879}
+    ],
+    "aggregate": {
+      "test_f1_0.5_mean": 0.8330999592691244, "test_f1_0.5_std": 0.06113174131565152, "test_f1_0.5_min": 0.7605438360975713, "test_f1_0.5_max": 0.8885689975792316,
+      "test_f1_tuned_mean": 0.871798466186496, "test_f1_tuned_std": 0.019893256068444037, "test_f1_tuned_min": 0.8390084262023698, "test_f1_tuned_max": 0.887934076944311
+    },
+    "majority_drug_test_f1_0.5_stability": {"RIF": "0.9981±0.0013", "INH": "0.9995±0.0007", "EMB": "0.9978±0.0019", "PZA": "0.9981±0.0007", "STM": "0.9996±0.0008", "LEV": "1.0000±0.0000"},
+    "rare_drug_test_f1_0.5_instability": {"CAP": "0.9714±0.0639", "ETH": "0.0000±0.0000 (undefined, 0 test positives)", "LZD": "0.5333±0.5055"},
+    "source": "results/torch_mlp_cap10_multiseed.json"
+  },
+  "part5_lzd_eth_cap_rare_drug_analysis": {
+    "LZD": {"train_positive": 2, "val_positive": 1, "test_positive": 2,
+      "per_model_test_f1_0.5": {"random_forest": 0.6667, "xgboost": 0.0, "sklearn_mlp": 0.0, "gnn_seed42": 0.0833, "torch_mlp_cap10_seed42": 0.0},
+      "per_model_test_f1_tuned": {"random_forest": 1.0, "xgboost": 0.0, "sklearn_mlp": 0.6667, "gnn_seed42": 0.0, "torch_mlp_cap10_seed42": 1.0},
+      "torch_mlp_cap10_5seed_f1_0.5": {"mean": 0.5333333333333333, "std": 0.5055250296034367},
+      "torch_mlp_cap10_5seed_f1_tuned": {"mean": 0.9333333333333332, "std": 0.149071198499986},
+      "gnn_5seed_f1_0.5": {"mean": 0.13713286713286715, "std": 0.03605334260689606},
+      "gnn_5seed_f1_tuned": {"mean": 0.29333333333333333, "std": 0.16733200530681513}
+    },
+    "ETH": {"train_positive": 4, "val_positive": 1, "test_positive": 0, "note": "Test F1 is trivially 0 (no positives to recover) and ROC-AUC/PR-AUC are mathematically undefined for every model/seed -- excluded from macro-AUC averages throughout."},
+    "CAP": {"train_positive": 21, "val_positive": 5, "test_positive": 4, "note": "Test support of 4 is too small for F1 differences between models to be statistically meaningful in either direction."}
+  },
+  "part6_gnn_findings": {
+    "five_seed_test_f1_0.5": {"mean": 0.6864420530789948, "std": 0.00779122388769853},
+    "five_seed_test_f1_tuned": {"mean": 0.7395940603285698, "std": 0.021225129710648476},
+    "edge_weight_ablation_seed42_skipFalse": {"with_edge_weight_test_f1_0.5": 0.6035550175605162, "without_edge_weight_test_f1_0.5": 0.5824070022284578, "delta": 0.0211480153320584},
+    "skip_connection_ablation_seed42_edgeWeightTrue": {"with_skip_test_f1_0.5": 0.6822232236462168, "without_skip_test_f1_0.5": 0.6035550175605162, "delta": 0.0786682060857006},
+    "transductive_vs_inductive_5seed": {
+      "A_transductive_test_f1_0.5": {"mean": 0.6864420530789948, "std": 0.00779122388769853},
+      "B_inductive_test_f1_0.5": {"mean": 0.694673709631555, "std": 0.01584187297001642},
+      "abs_diff_B_minus_A": 0.008231656552560196, "pct_diff": 1.1991771942930352,
+      "n_test_nodes_excluded_in_B": 2062, "n_edges_touching_test_excluded": 111556
+    },
+    "source": ["results/gnn_multiseed_stability.json", "results/gnn_edge_weight_ablation.json", "results/gnn_skip_connection_ablation.json", "results/gnn_transductive_vs_inductive.json"]
+  },
+  "part7_validity_checks": {
+    "fixed_split": "9629/2062/2062, identical across every experiment this session",
+    "dataset_provenance": "C:\\Projects\\AfroTB-PhyloGNN\\data\\processed (actual AfroTB, confirmed via AFROTB_PROCESSED_DIR every run)",
+    "near_duplicate_sensitivity": {
+      "n_flagged_val_test_isolates": 98,
+      "n_flagged_test_isolates_excluded": 50,
+      "test_macro_f1_0.5_full": 0.68222,
+      "test_macro_f1_0.5_excluding_flagged": 0.68274,
+      "delta": 0.00052,
+      "conclusion": "Negligible change -- near-duplicate relationships do not materially affect reported GNN performance.",
+      "source_note": "From this session's Experiment 2; saved only to a local scratch file at the time (not committed as a results/*.json), per that step's instruction to avoid creating extra result files."
+    },
+    "no_nan_inf": "Confirmed 0 occurrences in every result JSON produced this session (torch_mlp_metrics.json, torch_mlp_weight_cap_ablation.json, torch_mlp_cap10_multiseed.json, baselines_multiseed_comparison.json)"
+  }
+}
