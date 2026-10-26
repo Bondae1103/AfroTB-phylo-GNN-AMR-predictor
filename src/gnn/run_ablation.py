@@ -12,6 +12,7 @@ from pathlib import Path
 import torch
 
 from ..baselines.metrics import evaluate_multilabel, tune_per_drug_thresholds
+from ..baselines.results_path import resolve as resolve_results_path
 from .data import load_gnn_data
 from .train import train_model
 from .run_train import DROPOUT, HIDDEN_DIM, LR, MAX_EPOCHS, PATIENCE, SEED, WEIGHT_DECAY
@@ -66,6 +67,8 @@ def run_variant(data, use_edge_weight):
 
 def main():
     data = load_gnn_data()
+    results_path = resolve_results_path(
+        data.get("processed_dir", "data/processed"), RESULTS_PATH)
 
     print("Training WITH edge_weight (Jaccard-derived)...")
     weighted = run_variant(data, use_edge_weight=True)
@@ -90,10 +93,10 @@ def main():
             f"[tuned] test macro-F1={tu['test']['macro_f1']:.3f}"
         )
 
-    RESULTS_PATH.parent.mkdir(parents=True, exist_ok=True)
-    with open(RESULTS_PATH, "w", encoding="utf-8") as f:
+    results_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(results_path, "w", encoding="utf-8") as f:
         json.dump(results, f, indent=2)
-    print(f"\nWrote {RESULTS_PATH}")
+    print(f"\nWrote {results_path}")
 
 
 if __name__ == "__main__":

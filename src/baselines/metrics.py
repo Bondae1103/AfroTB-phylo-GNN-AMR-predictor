@@ -49,6 +49,10 @@ def tune_per_drug_thresholds(y_val, val_prob, drug_columns, default=0.5):
             out=np.zeros_like(precision),
             where=(precision + recall) > 0,
         )[:-1]  # last precision/recall point has no corresponding threshold
+        best_f1 = np.max(f1s) if f1s.size else 0.0
+        if f1s.size == 0 or best_f1 <= 0.0:
+            thresholds[drug] = default
+            continue
         best_idx = int(np.argmax(f1s))
         thresholds[drug] = float(np.clip(cand_thresholds[best_idx], 0.01, 0.99))
     return thresholds

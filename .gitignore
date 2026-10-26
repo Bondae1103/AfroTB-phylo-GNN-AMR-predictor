@@ -40,8 +40,7 @@ env/
 # OS files
 .DS_Store
 Thumbs.db
+
 # Synthetic test fixture (regenerate with src/synthetic/afrotb_replica.py)
 data/synthetic/
-
-# Local virtualenv
-.venv/
+demo/

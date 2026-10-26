@@ -1,0 +1,6072 @@
+{
+  "processed_dir": "data/processed",
+  "n_isolates": 13753,
+  "drug_columns": [
+    "RIF",
+    "INH",
+    "EMB",
+    "PZA",
+    "STM",
+    "LEV",
+    "CAP",
+    "ETH",
+    "LZD"
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "split_reports": {
+    "original": {
+      "source": "splits.csv (fixed, unmodified)"
+    },
+    "phylo_clade": {
+      "n_isolates": 13753,
+      "n_clusters": 268,
+      "largest_cluster_size": 6326,
+      "n_singleton_clusters": 192,
+      "counts": {
+        "train": 10429,
+        "val": 1662,
+        "test": 1662
+      },
+      "fractions": {
+        "train": 0.7583,
+        "val": 0.1208,
+        "test": 0.1208
+      },
+      "positive_rate_by_split": {
+        "train": [
+          0.40071,
+          0.30732,
+          0.29006,
+          0.1679,
+          0.11995,
+          0.10039,
+          0.00153,
+          0.00048,
+          0.00048
+        ],
+        "val": [
+          0.32852,
+          0.28761,
+          0.20939,
+          0.17509,
+          0.11673,
+          0.05716,
+          0.00782,
+          0.0,
+          0.0
+        ],
+        "test": [
+          0.32431,
+          0.28039,
+          0.20457,
+          0.0716,
+          0.16005,
+          0.02768,
+          0.0006,
+          0.0,
+          0.0
+        ]
+      },
+      "cluster_threshold": 0.4,
+      "n_connected_clusters": 268,
+      "residual_near_duplicates_at_0.01": 0,
+      "residual_near_duplicates_at_threshold": 0
+    }
+  },
+  "protocol_info": {
+    "original|catalogue": {
+      "n_features": 157,
+      "note": "curated catalogue columns; y_amr is an exact OR of these"
+    },
+    "original|genomewide": {
+      "n_sites_total": 465257,
+      "n_sites_excluded_as_catalogue": 0,
+      "n_sites_passing_maf": 10072,
+      "n_sites_selected": 1500,
+      "min_minor_freq": 0.01,
+      "max_sites": 1500,
+      "strategy": "random",
+      "selection_seed": 0,
+      "selection_fitted_on": "train split only",
+      "catalogue_sites_excluded": false,
+      "WARNING": "catalogue_sites.json absent -- resistance-catalogue sites could NOT be excluded from the genome-wide features. Results under this protocol are not catalogue-free and must not be described as such."
+    },
+    "phylo_clade|catalogue": {
+      "n_features": 157,
+      "note": "curated catalogue columns; y_amr is an exact OR of these"
+    },
+    "phylo_clade|genomewide": {
+      "n_sites_total": 465257,
+      "n_sites_excluded_as_catalogue": 0,
+      "n_sites_passing_maf": 6424,
+      "n_sites_selected": 1500,
+      "min_minor_freq": 0.01,
+      "max_sites": 1500,
+      "strategy": "random",
+      "selection_seed": 0,
+      "selection_fitted_on": "train split only",
+      "catalogue_sites_excluded": false,
+      "WARNING": "catalogue_sites.json absent -- resistance-catalogue sites could NOT be excluded from the genome-wide features. Results under this protocol are not catalogue-free and must not be described as such."
+    }
+  },
+  "cells": {
+    "original|catalogue|mlp_only": {
+      "split": "original",
+      "protocol": "catalogue",
+      "architecture": "mlp_only",
+      "n_features": 157,
+      "seconds": 27.1,
+      "aggregate": {
+        "default_0.5": {
+          "val_macro_f1_all9": {
+            "mean": 0.8918,
+            "std": 0.0295,
+            "n_seeds": 3
+          },
+          "test_macro_f1_all9": {
+            "mean": 0.8433,
+            "std": 0.0462,
+            "n_seeds": 3
+          },
+          "val_macro_f1_core6": {
+            "mean": 0.9948,
+            "std": 0.002,
+            "n_seeds": 3
+          },
+          "test_macro_f1_core6": {
+            "mean": 0.9945,
+            "std": 0.0027,
+            "n_seeds": 3
+          },
+          "test_macro_roc_auc": {
+            "mean": 0.9995,
+            "std": 0.0003,
+            "n_seeds": 3
+          },
+          "test_macro_pr_auc": {
+            "mean": 0.962,
+            "std": 0.053,
+            "n_seeds": 3
+          }
+        },
+        "tuned": {
+          "val_macro_f1_all9": {
+            "mean": 0.9616,
+            "std": 0.0515,
+            "n_seeds": 3
+          },
+          "test_macro_f1_all9": {
+            "mean": 0.8506,
+            "std": 0.0494,
+            "n_seeds": 3
+          },
+          "val_macro_f1_core6": {
+            "mean": 0.996,
+            "std": 0.0016,
+            "n_seeds": 3
+          },
+          "test_macro_f1_core6": {
+            "mean": 0.9938,
+            "std": 0.0022,
+            "n_seeds": 3
+          },
+          "test_macro_roc_auc": {
+            "mean": 0.9995,
+            "std": 0.0003,
+            "n_seeds": 3
+          },
+          "test_macro_pr_auc": {
+            "mean": 0.962,
+            "std": 0.053,
+            "n_seeds": 3
+          }
+        }
+      },
+      "per_seed": [
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.8868716519412101,
+            "test_macro_f1_all9": 0.7791282604404869,
+            "val_macro_f1_core6": 0.9922793088977307,
+            "test_macro_f1_core6": 0.9907262889658152,
+            "test_macro_roc_auc": 0.9991769384791607,
+            "test_macro_pr_auc": 0.8869634618599184,
+            "test_per_drug_f1": {
+              "RIF": 0.9853968253968254,
+              "INH": 0.9960031974420464,
+              "EMB": 0.977538185085355,
+              "PZA": 0.9872611464968153,
+              "STM": 0.998158379373849,
+              "LEV": 1.0,
+              "CAP": 1.0,
+              "ETH": 0.0,
+              "LZD": 0.06779661016949153
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.8887270282507285,
+            "test_macro_f1_all9": 0.7807857410415329,
+            "val_macro_f1_core6": 0.9938048280903784,
+            "test_macro_f1_core6": 0.9914400494707961,
+            "test_macro_roc_auc": 0.9991769384791607,
+            "test_macro_pr_auc": 0.8869634618599184,
+            "test_per_drug_f1": {
+              "RIF": 0.9872611464968153,
+              "INH": 0.9960031974420464,
+              "EMB": 0.9828054298642533,
+              "PZA": 0.9872611464968153,
+              "STM": 0.998158379373849,
+              "LEV": 0.9971509971509972,
+              "CAP": 1.0,
+              "ETH": 0.0,
+              "LZD": 0.0784313725490196
+            }
+          }
+        },
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.9301521442481386,
+            "test_macro_f1_all9": 0.8863653502853889,
+            "val_macro_f1_core6": 0.9952282163722082,
+            "test_macro_f1_core6": 0.99621469209475,
+            "test_macro_roc_auc": 0.9994428833910874,
+            "test_macro_pr_auc": 0.9992477502756025,
+            "test_per_drug_f1": {
+              "RIF": 0.9942857142857143,
+              "INH": 0.9992019154030327,
+              "EMB": 0.9936421435059037,
+              "PZA": 0.992,
+              "STM": 0.998158379373849,
+              "LEV": 1.0,
+              "CAP": 1.0,
+              "ETH": 0.0,
+              "LZD": 1.0
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.9977456032570495,
+            "test_macro_f1_all9": 0.884408807834178,
+            "val_macro_f1_core6": 0.9966184048855745,
+            "test_macro_f1_core6": 0.9932798784179336,
+            "test_macro_roc_auc": 0.9994428833910874,
+            "test_macro_pr_auc": 0.9992477502756025,
+            "test_per_drug_f1": {
+              "RIF": 0.9942857142857143,
+              "INH": 0.9968,
+              "EMB": 0.9936536718041704,
+              "PZA": 0.992,
+              "STM": 0.9944341372912802,
+              "LEV": 0.9885057471264368,
+              "CAP": 1.0,
+              "ETH": 0.0,
+              "LZD": 1.0
+            }
+          }
+        },
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.8582787486047259,
+            "test_macro_f1_all9": 0.8643822124461765,
+            "val_macro_f1_core6": 0.9970140825030483,
+            "test_macro_f1_core6": 0.9965733186692646,
+            "test_macro_roc_auc": 0.9998665059980754,
+            "test_macro_pr_auc": 0.9996628185268791,
+            "test_per_drug_f1": {
+              "RIF": 0.9955385595920969,
+              "INH": 0.9992019154030327,
+              "EMB": 0.9945155393053017,
+              "PZA": 0.9920255183413078,
+              "STM": 0.998158379373849,
+              "LEV": 1.0,
+              "CAP": 0.8,
+              "ETH": 0.0,
+              "LZD": 1.0
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.9984062256324953,
+            "test_macro_f1_all9": 0.8866629873166822,
+            "val_macro_f1_core6": 0.9976093384487427,
+            "test_macro_f1_core6": 0.9966611476416899,
+            "test_macro_roc_auc": 0.9998665059980754,
+            "test_macro_pr_auc": 0.9996628185268791,
+            "test_per_drug_f1": {
+              "RIF": 0.9968091895341417,
+              "INH": 0.9968,
+              "EMB": 0.9945155393053017,
+              "PZA": 0.9983948635634029,
+              "STM": 0.9962962962962963,
+              "LEV": 0.9971509971509972,
+              "CAP": 1.0,
+              "ETH": 0.0,
+              "LZD": 1.0
+            }
+          }
+        }
+      ],
+      "run_info": [
+        {
+          "architecture": "mlp_only",
+          "best_epoch": 79,
+          "best_val_macro_f1_selection_metric": 0.9922793088977307,
+          "n_epochs_run": 139,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 135,
+              "train_loss": 0.05466553196310997,
+              "val_macro_f1": 0.9906824202790828
+            },
+            {
+              "epoch": 136,
+              "train_loss": 0.06160226836800575,
+              "val_macro_f1": 0.9900515283683545
+            },
+            {
+              "epoch": 137,
+              "train_loss": 0.056465692818164825,
+              "val_macro_f1": 0.9897728796366758
+            },
+            {
+              "epoch": 138,
+              "train_loss": 0.057152897119522095,
+              "val_macro_f1": 0.9887742021378668
+            },
+            {
+              "epoch": 139,
+              "train_loss": 0.05868150666356087,
+              "val_macro_f1": 0.9897036676437745
+            }
+          ]
+        },
+        {
+          "architecture": "mlp_only",
+          "best_epoch": 285,
+          "best_val_macro_f1_selection_metric": 0.9952282163722082,
+          "n_epochs_run": 300,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 296,
+              "train_loss": 0.03616767004132271,
+              "val_macro_f1": 0.9944999788805579
+            },
+            {
+              "epoch": 297,
+              "train_loss": 0.037080906331539154,
+              "val_macro_f1": 0.9941131240645787
+            },
+            {
+              "epoch": 298,
+              "train_loss": 0.03691340237855911,
+              "val_macro_f1": 0.9937945644561341
+            },
+            {
+              "epoch": 299,
+              "train_loss": 0.03874876722693443,
+              "val_macro_f1": 0.9941167745597315
+            },
+            {
+              "epoch": 300,
+              "train_loss": 0.0362132266163826,
+              "val_macro_f1": 0.9941167745597315
+            }
+          ]
+        },
+        {
+          "architecture": "mlp_only",
+          "best_epoch": 129,
+          "best_val_macro_f1_selection_metric": 0.9970140825030483,
+          "n_epochs_run": 189,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 185,
+              "train_loss": 0.1540214717388153,
+              "val_macro_f1": 0.9825552481983282
+            },
+            {
+              "epoch": 186,
+              "train_loss": 0.14649976789951324,
+              "val_macro_f1": 0.9866991732213625
+            },
+            {
+              "epoch": 187,
+              "train_loss": 0.1340915858745575,
+              "val_macro_f1": 0.98383294138374
+            },
+            {
+              "epoch": 188,
+              "train_loss": 0.11297877132892609,
+              "val_macro_f1": 0.980515615839013
+            },
+            {
+              "epoch": 189,
+              "train_loss": 0.10144911706447601,
+              "val_macro_f1": 0.988302424232713
+            }
+          ]
+        }
+      ]
+    },
+    "original|catalogue|gcn_skip": {
+      "split": "original",
+      "protocol": "catalogue",
+      "architecture": "gcn_skip",
+      "n_features": 157,
+      "seconds": 315.5,
+      "aggregate": {
+        "default_0.5": {
+          "val_macro_f1_all9": {
+            "mean": 0.7591,
+            "std": 0.0011,
+            "n_seeds": 3
+          },
+          "test_macro_f1_all9": {
+            "mean": 0.749,
+            "std": 0.001,
+            "n_seeds": 3
+          },
+          "val_macro_f1_core6": {
+            "mean": 0.938,
+            "std": 0.002,
+            "n_seeds": 3
+          },
+          "test_macro_f1_core6": {
+            "mean": 0.9309,
+            "std": 0.0014,
+            "n_seeds": 3
+          },
+          "test_macro_roc_auc": {
+            "mean": 0.9964,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "test_macro_pr_auc": {
+            "mean": 0.9711,
+            "std": 0.013,
+            "n_seeds": 3
+          }
+        },
+        "tuned": {
+          "val_macro_f1_all9": {
+            "mean": 0.8821,
+            "std": 0.0067,
+            "n_seeds": 3
+          },
+          "test_macro_f1_all9": {
+            "mean": 0.8141,
+            "std": 0.0255,
+            "n_seeds": 3
+          },
+          "val_macro_f1_core6": {
+            "mean": 0.9537,
+            "std": 0.0018,
+            "n_seeds": 3
+          },
+          "test_macro_f1_core6": {
+            "mean": 0.9394,
+            "std": 0.0029,
+            "n_seeds": 3
+          },
+          "test_macro_roc_auc": {
+            "mean": 0.9964,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "test_macro_pr_auc": {
+            "mean": 0.9711,
+            "std": 0.013,
+            "n_seeds": 3
+          }
+        }
+      },
+      "per_seed": [
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.7578155269563257,
+            "test_macro_f1_all9": 0.7502652038910438,
+            "val_macro_f1_core6": 0.9374387786499767,
+            "test_macro_f1_core6": 0.9328052132439731,
+            "test_macro_roc_auc": 0.9963762733806607,
+            "test_macro_pr_auc": 0.9568559310989477,
+            "test_per_drug_f1": {
+              "RIF": 0.9526895657809462,
+              "INH": 0.9854368932038835,
+              "EMB": 0.9230769230769231,
+              "PZA": 0.8734177215189873,
+              "STM": 0.9560439560439561,
+              "LEV": 0.9061662198391421,
+              "CAP": 0.8888888888888888,
+              "ETH": 0.0,
+              "LZD": 0.26666666666666666
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.8809882972499191,
+            "test_macro_f1_all9": 0.7981173617121978,
+            "val_macro_f1_core6": 0.9511120755045085,
+            "test_macro_f1_core6": 0.9352712806635348,
+            "test_macro_roc_auc": 0.9963762733806607,
+            "test_macro_pr_auc": 0.9568559310989477,
+            "test_per_drug_f1": {
+              "RIF": 0.954140127388535,
+              "INH": 0.9870967741935484,
+              "EMB": 0.943289224952741,
+              "PZA": 0.8683385579937304,
+              "STM": 0.9501915708812261,
+              "LEV": 0.9085714285714286,
+              "CAP": 1.0,
+              "ETH": 0.0,
+              "LZD": 0.5714285714285714
+            }
+          }
+        },
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.760430338316525,
+            "test_macro_f1_all9": 0.7479290401080083,
+            "val_macro_f1_core6": 0.9358524791523473,
+            "test_macro_f1_core6": 0.92930096756942,
+            "test_macro_roc_auc": 0.9964043961412816,
+            "test_macro_pr_auc": 0.9882899162350074,
+            "test_per_drug_f1": {
+              "RIF": 0.9546632124352331,
+              "INH": 0.9870759289176091,
+              "EMB": 0.9240506329113924,
+              "PZA": 0.8507462686567164,
+              "STM": 0.9560439560439561,
+              "LEV": 0.9032258064516129,
+              "CAP": 0.8888888888888888,
+              "ETH": 0.0,
+              "LZD": 0.26666666666666666
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.8908356351621308,
+            "test_macro_f1_all9": 0.8500849804659047,
+            "val_macro_f1_core6": 0.9547719712617148,
+            "test_macro_f1_core6": 0.9417941373655238,
+            "test_macro_roc_auc": 0.9964043961412816,
+            "test_macro_pr_auc": 0.9882899162350074,
+            "test_per_drug_f1": {
+              "RIF": 0.9548058561425843,
+              "INH": 0.9879129734085415,
+              "EMB": 0.9460737937559129,
+              "PZA": 0.8719611021069692,
+              "STM": 0.9547169811320755,
+              "LEV": 0.9352941176470588,
+              "CAP": 1.0,
+              "ETH": 0.0,
+              "LZD": 1.0
+            }
+          }
+        },
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.7591436997921844,
+            "test_macro_f1_all9": 0.748833419615766,
+            "val_macro_f1_core6": 0.9406565280998432,
+            "test_macro_f1_core6": 0.9306575368310566,
+            "test_macro_roc_auc": 0.9964589879890087,
+            "test_macro_pr_auc": 0.9681065913653368,
+            "test_per_drug_f1": {
+              "RIF": 0.9517063747585319,
+              "INH": 0.9862570735650767,
+              "EMB": 0.9356617647058824,
+              "PZA": 0.8554033485540334,
+              "STM": 0.9520295202952029,
+              "LEV": 0.9028871391076115,
+              "CAP": 0.8888888888888888,
+              "ETH": 0.0,
+              "LZD": 0.26666666666666666
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.8744186582613782,
+            "test_macro_f1_all9": 0.7940044673833904,
+            "val_macro_f1_core6": 0.9551465059105859,
+            "test_macro_f1_core6": 0.9410067010750854,
+            "test_macro_roc_auc": 0.9964589879890087,
+            "test_macro_pr_auc": 0.9681065913653368,
+            "test_per_drug_f1": {
+              "RIF": 0.9563014566181127,
+              "INH": 0.9870759289176091,
+              "EMB": 0.947069943289225,
+              "PZA": 0.8765822784810127,
+              "STM": 0.9483747609942639,
+              "LEV": 0.930635838150289,
+              "CAP": 1.0,
+              "ETH": 0.0,
+              "LZD": 0.5
+            }
+          }
+        }
+      ],
+      "run_info": [
+        {
+          "architecture": "gcn_skip",
+          "best_epoch": 179,
+          "best_val_macro_f1_selection_metric": 0.9374387786499767,
+          "n_epochs_run": 239,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 235,
+              "train_loss": 0.12141558527946472,
+              "val_macro_f1": 0.9252443521928342
+            },
+            {
+              "epoch": 236,
+              "train_loss": 0.12201686203479767,
+              "val_macro_f1": 0.9333658412781909
+            },
+            {
+              "epoch": 237,
+              "train_loss": 0.12147356569766998,
+              "val_macro_f1": 0.9317345422077326
+            },
+            {
+              "epoch": 238,
+              "train_loss": 0.12102878838777542,
+              "val_macro_f1": 0.9299801696793923
+            },
+            {
+              "epoch": 239,
+              "train_loss": 0.12019594758749008,
+              "val_macro_f1": 0.9238045674691809
+            }
+          ]
+        },
+        {
+          "architecture": "gcn_skip",
+          "best_epoch": 247,
+          "best_val_macro_f1_selection_metric": 0.9358524791523473,
+          "n_epochs_run": 300,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 296,
+              "train_loss": 0.1195046603679657,
+              "val_macro_f1": 0.9221790741146266
+            },
+            {
+              "epoch": 297,
+              "train_loss": 0.12164293229579926,
+              "val_macro_f1": 0.924323737762526
+            },
+            {
+              "epoch": 298,
+              "train_loss": 0.12090261280536652,
+              "val_macro_f1": 0.9261059898958953
+            },
+            {
+              "epoch": 299,
+              "train_loss": 0.12069451063871384,
+              "val_macro_f1": 0.9245007863944651
+            },
+            {
+              "epoch": 300,
+              "train_loss": 0.12201927602291107,
+              "val_macro_f1": 0.9219670273983348
+            }
+          ]
+        },
+        {
+          "architecture": "gcn_skip",
+          "best_epoch": 204,
+          "best_val_macro_f1_selection_metric": 0.9406565280998432,
+          "n_epochs_run": 264,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 260,
+              "train_loss": 0.12195433676242828,
+              "val_macro_f1": 0.9325709973051706
+            },
+            {
+              "epoch": 261,
+              "train_loss": 0.12055067718029022,
+              "val_macro_f1": 0.9237465773775471
+            },
+            {
+              "epoch": 262,
+              "train_loss": 0.12126101553440094,
+              "val_macro_f1": 0.9261403366305231
+            },
+            {
+              "epoch": 263,
+              "train_loss": 0.12292973697185516,
+              "val_macro_f1": 0.9226392106341358
+            },
+            {
+              "epoch": 264,
+              "train_loss": 0.12197255343198776,
+              "val_macro_f1": 0.9265835592719173
+            }
+          ]
+        }
+      ]
+    },
+    "original|catalogue|gatv2": {
+      "split": "original",
+      "protocol": "catalogue",
+      "architecture": "gatv2",
+      "n_features": 157,
+      "seconds": 926.9,
+      "aggregate": {
+        "default_0.5": {
+          "val_macro_f1_all9": {
+            "mean": 0.7582,
+            "std": 0.035,
+            "n_seeds": 3
+          },
+          "test_macro_f1_all9": {
+            "mean": 0.7788,
+            "std": 0.0328,
+            "n_seeds": 3
+          },
+          "val_macro_f1_core6": {
+            "mean": 0.9278,
+            "std": 0.0022,
+            "n_seeds": 3
+          },
+          "test_macro_f1_core6": {
+            "mean": 0.9237,
+            "std": 0.0035,
+            "n_seeds": 3
+          },
+          "test_macro_roc_auc": {
+            "mean": 0.9958,
+            "std": 0.0004,
+            "n_seeds": 3
+          },
+          "test_macro_pr_auc": {
+            "mean": 0.9571,
+            "std": 0.0247,
+            "n_seeds": 3
+          }
+        },
+        "tuned": {
+          "val_macro_f1_all9": {
+            "mean": 0.8986,
+            "std": 0.0411,
+            "n_seeds": 3
+          },
+          "test_macro_f1_all9": {
+            "mean": 0.7653,
+            "std": 0.0349,
+            "n_seeds": 3
+          },
+          "val_macro_f1_core6": {
+            "mean": 0.9464,
+            "std": 0.0065,
+            "n_seeds": 3
+          },
+          "test_macro_f1_core6": {
+            "mean": 0.9331,
+            "std": 0.0072,
+            "n_seeds": 3
+          },
+          "test_macro_roc_auc": {
+            "mean": 0.9958,
+            "std": 0.0004,
+            "n_seeds": 3
+          },
+          "test_macro_pr_auc": {
+            "mean": 0.9571,
+            "std": 0.0247,
+            "n_seeds": 3
+          }
+        }
+      },
+      "per_seed": [
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.7323645077799112,
+            "test_macro_f1_all9": 0.7564567277577375,
+            "val_macro_f1_core6": 0.9247575878806931,
+            "test_macro_f1_core6": 0.9198702768217913,
+            "test_macro_roc_auc": 0.9956449324624123,
+            "test_macro_pr_auc": 0.9546354672393622,
+            "test_per_drug_f1": {
+              "RIF": 0.9572976418100702,
+              "INH": 0.9799839871897518,
+              "EMB": 0.9207479964381122,
+              "PZA": 0.8643533123028391,
+              "STM": 0.9316987740805605,
+              "LEV": 0.8651399491094147,
+              "CAP": 0.8888888888888888,
+              "ETH": 0.0,
+              "LZD": 0.4
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.8769514340972918,
+            "test_macro_f1_all9": 0.7323241997351592,
+            "val_macro_f1_core6": 0.9487604844792709,
+            "test_macro_f1_core6": 0.931819632936072,
+            "test_macro_roc_auc": 0.9956449324624123,
+            "test_macro_pr_auc": 0.9546354672393622,
+            "test_per_drug_f1": {
+              "RIF": 0.9555273189326556,
+              "INH": 0.9786561264822135,
+              "EMB": 0.9360518999073216,
+              "PZA": 0.8651162790697674,
+              "STM": 0.9416195856873822,
+              "LEV": 0.913946587537092,
+              "CAP": 0.5,
+              "ETH": 0.0,
+              "LZD": 0.5
+            }
+          }
+        },
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.7347174512438052,
+            "test_macro_f1_all9": 0.7546622358639385,
+            "val_macro_f1_core6": 0.9301185049080357,
+            "test_macro_f1_core6": 0.9282896500922041,
+            "test_macro_roc_auc": 0.995410109709277,
+            "test_macro_pr_auc": 0.9282027864076853,
+            "test_per_drug_f1": {
+              "RIF": 0.9616135328562134,
+              "INH": 0.9856459330143541,
+              "EMB": 0.9432234432234432,
+              "PZA": 0.850609756097561,
+              "STM": 0.9440298507462687,
+              "LEV": 0.8846153846153846,
+              "CAP": 1.0,
+              "ETH": 0.0,
+              "LZD": 0.2222222222222222
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.8626794514960399,
+            "test_macro_f1_all9": 0.749985121610807,
+            "val_macro_f1_core6": 0.9375376957625784,
+            "test_macro_f1_core6": 0.9249776824162104,
+            "test_macro_roc_auc": 0.995410109709277,
+            "test_macro_pr_auc": 0.9282027864076853,
+            "test_per_drug_f1": {
+              "RIF": 0.9575680810639645,
+              "INH": 0.9856459330143541,
+              "EMB": 0.94062205466541,
+              "PZA": 0.8409448818897638,
+              "STM": 0.9389312977099237,
+              "LEV": 0.8861538461538462,
+              "CAP": 1.0,
+              "ETH": 0.0,
+              "LZD": 0.2
+            }
+          }
+        },
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.8076544924893152,
+            "test_macro_f1_all9": 0.8251324985403388,
+            "val_macro_f1_core6": 0.9284129556651896,
+            "test_macro_f1_core6": 0.9228839329956934,
+            "test_macro_roc_auc": 0.9964522198260246,
+            "test_macro_pr_auc": 0.9884735336701581,
+            "test_per_drug_f1": {
+              "RIF": 0.962532299741602,
+              "INH": 0.9887096774193549,
+              "EMB": 0.9342934293429342,
+              "PZA": 0.8728943338437979,
+              "STM": 0.9352014010507881,
+              "LEV": 0.8436724565756824,
+              "CAP": 0.8888888888888888,
+              "ETH": 0.0,
+              "LZD": 1.0
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.9561935619475805,
+            "test_macro_f1_all9": 0.813512314503025,
+            "val_macro_f1_core6": 0.9528088614398893,
+            "test_macro_f1_core6": 0.9424906939767594,
+            "test_macro_roc_auc": 0.9964522198260246,
+            "test_macro_pr_auc": 0.9884735336701581,
+            "test_per_drug_f1": {
+              "RIF": 0.9623003194888179,
+              "INH": 0.989558232931727,
+              "EMB": 0.9418386491557224,
+              "PZA": 0.8829113924050633,
+              "STM": 0.950381679389313,
+              "LEV": 0.9279538904899135,
+              "CAP": 1.0,
+              "ETH": 0.0,
+              "LZD": 0.6666666666666666
+            }
+          }
+        }
+      ],
+      "run_info": [
+        {
+          "architecture": "gatv2",
+          "best_epoch": 122,
+          "best_val_macro_f1_selection_metric": 0.9247575878806931,
+          "n_epochs_run": 182,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 178,
+              "train_loss": 0.10870193690061569,
+              "val_macro_f1": 0.9166389587382747
+            },
+            {
+              "epoch": 179,
+              "train_loss": 0.10777481645345688,
+              "val_macro_f1": 0.9062192593734886
+            },
+            {
+              "epoch": 180,
+              "train_loss": 0.10804309695959091,
+              "val_macro_f1": 0.9133579096438065
+            },
+            {
+              "epoch": 181,
+              "train_loss": 0.10715338587760925,
+              "val_macro_f1": 0.9191511165725318
+            },
+            {
+              "epoch": 182,
+              "train_loss": 0.10694407671689987,
+              "val_macro_f1": 0.9098433606383923
+            }
+          ]
+        },
+        {
+          "architecture": "gatv2",
+          "best_epoch": 157,
+          "best_val_macro_f1_selection_metric": 0.9301185049080357,
+          "n_epochs_run": 217,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 213,
+              "train_loss": 0.10993039608001709,
+              "val_macro_f1": 0.9186794065208561
+            },
+            {
+              "epoch": 214,
+              "train_loss": 0.10900770872831345,
+              "val_macro_f1": 0.921001552445455
+            },
+            {
+              "epoch": 215,
+              "train_loss": 0.10744962096214294,
+              "val_macro_f1": 0.9236753609026368
+            },
+            {
+              "epoch": 216,
+              "train_loss": 0.1090095117688179,
+              "val_macro_f1": 0.9168454390208686
+            },
+            {
+              "epoch": 217,
+              "train_loss": 0.10890115797519684,
+              "val_macro_f1": 0.916735187499445
+            }
+          ]
+        },
+        {
+          "architecture": "gatv2",
+          "best_epoch": 279,
+          "best_val_macro_f1_selection_metric": 0.9284129556651896,
+          "n_epochs_run": 300,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 296,
+              "train_loss": 0.10719045996665955,
+              "val_macro_f1": 0.9075763762886294
+            },
+            {
+              "epoch": 297,
+              "train_loss": 0.1049242913722992,
+              "val_macro_f1": 0.9065605925613981
+            },
+            {
+              "epoch": 298,
+              "train_loss": 0.10480032116174698,
+              "val_macro_f1": 0.9212696692243152
+            },
+            {
+              "epoch": 299,
+              "train_loss": 0.10673236101865768,
+              "val_macro_f1": 0.9095595671682398
+            },
+            {
+              "epoch": 300,
+              "train_loss": 0.10537657141685486,
+              "val_macro_f1": 0.9059825318520693
+            }
+          ]
+        }
+      ]
+    },
+    "original|catalogue|gated_hybrid": {
+      "split": "original",
+      "protocol": "catalogue",
+      "architecture": "gated_hybrid",
+      "n_features": 157,
+      "seconds": 247.1,
+      "aggregate": {
+        "default_0.5": {
+          "val_macro_f1_all9": {
+            "mean": 0.9732,
+            "std": 0.0179,
+            "n_seeds": 3
+          },
+          "test_macro_f1_all9": {
+            "mean": 0.8676,
+            "std": 0.0155,
+            "n_seeds": 3
+          },
+          "val_macro_f1_core6": {
+            "mean": 0.9968,
+            "std": 0.0006,
+            "n_seeds": 3
+          },
+          "test_macro_f1_core6": {
+            "mean": 0.9977,
+            "std": 0.0004,
+            "n_seeds": 3
+          },
+          "test_macro_roc_auc": {
+            "mean": 0.9998,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "test_macro_pr_auc": {
+            "mean": 0.9989,
+            "std": 0.0009,
+            "n_seeds": 3
+          }
+        },
+        "tuned": {
+          "val_macro_f1_all9": {
+            "mean": 0.9984,
+            "std": 0.0006,
+            "n_seeds": 3
+          },
+          "test_macro_f1_all9": {
+            "mean": 0.8745,
+            "std": 0.0176,
+            "n_seeds": 3
+          },
+          "val_macro_f1_core6": {
+            "mean": 0.9976,
+            "std": 0.0008,
+            "n_seeds": 3
+          },
+          "test_macro_f1_core6": {
+            "mean": 0.9969,
+            "std": 0.0002,
+            "n_seeds": 3
+          },
+          "test_macro_roc_auc": {
+            "mean": 0.9998,
+            "std": 0.0,
+            "n_seeds": 3
+          },
+          "test_macro_pr_auc": {
+            "mean": 0.9989,
+            "std": 0.0009,
+            "n_seeds": 3
+          }
+        }
+      },
+      "per_seed": [
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.9859474111602948,
+            "test_macro_f1_all9": 0.8652930463428828,
+            "val_macro_f1_core6": 0.9974396352589606,
+            "test_macro_f1_core6": 0.9979395695143243,
+            "test_macro_roc_auc": 0.9997973736745274,
+            "test_macro_pr_auc": 0.9994716704175421,
+            "test_per_drug_f1": {
+              "RIF": 0.9942784488239034,
+              "INH": 0.9984025559105432,
+              "EMB": 0.9981718464351006,
+              "PZA": 0.9967845659163987,
+              "STM": 1.0,
+              "LEV": 1.0,
+              "CAP": 1.0,
+              "ETH": 0.0,
+              "LZD": 0.8
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.9988156130949937,
+            "test_macro_f1_all9": 0.8868916412403769,
+            "val_macro_f1_core6": 0.9982234196424905,
+            "test_macro_f1_core6": 0.997004128527232,
+            "test_macro_roc_auc": 0.9997973736745274,
+            "test_macro_pr_auc": 0.9994716704175421,
+            "test_per_drug_f1": {
+              "RIF": 0.9929980903882877,
+              "INH": 0.9968,
+              "EMB": 0.9954421148587056,
+              "PZA": 0.9967845659163987,
+              "STM": 1.0,
+              "LEV": 1.0,
+              "CAP": 1.0,
+              "ETH": 0.0,
+              "LZD": 1.0
+            }
+          }
+        },
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.9856658882828054,
+            "test_macro_f1_all9": 0.887626210506946,
+            "val_macro_f1_core6": 0.9970173509427266,
+            "test_macro_f1_core6": 0.9981059824270856,
+            "test_macro_roc_auc": 0.9998747690004886,
+            "test_macro_pr_auc": 0.999680645283866,
+            "test_per_drug_f1": {
+              "RIF": 0.9961832061068703,
+              "INH": 0.9984025559105432,
+              "EMB": 0.9972552607502287,
+              "PZA": 0.9967948717948718,
+              "STM": 1.0,
+              "LEV": 1.0,
+              "CAP": 1.0,
+              "ETH": 0.0,
+              "LZD": 1.0
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.9987347583024321,
+            "test_macro_f1_all9": 0.8869360821290603,
+            "val_macro_f1_core6": 0.9981021374536482,
+            "test_macro_f1_core6": 0.997070789860257,
+            "test_macro_roc_auc": 0.9998747690004886,
+            "test_macro_pr_auc": 0.999680645283866,
+            "test_per_drug_f1": {
+              "RIF": 0.9961832061068703,
+              "INH": 0.9968,
+              "EMB": 0.9963503649635036,
+              "PZA": 0.9967948717948718,
+              "STM": 0.9962962962962963,
+              "LEV": 1.0,
+              "CAP": 1.0,
+              "ETH": 0.0,
+              "LZD": 1.0
+            }
+          }
+        },
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.9478920445191458,
+            "test_macro_f1_all9": 0.8499558076243567,
+            "val_macro_f1_core6": 0.9959121408527931,
+            "test_macro_f1_core6": 0.9971559336587572,
+            "test_macro_roc_auc": 0.9997549193899786,
+            "test_macro_pr_auc": 0.9975820237321061,
+            "test_per_drug_f1": {
+              "RIF": 0.9929980903882877,
+              "INH": 0.9984025559105432,
+              "EMB": 0.9963503649635036,
+              "PZA": 0.9951845906902087,
+              "STM": 1.0,
+              "LEV": 1.0,
+              "CAP": 1.0,
+              "ETH": 0.0,
+              "LZD": 0.6666666666666666
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.9976030213483712,
+            "test_macro_f1_all9": 0.8495950363632836,
+            "val_macro_f1_core6": 0.9964045320225567,
+            "test_macro_f1_core6": 0.9966147767671476,
+            "test_macro_roc_auc": 0.9997549193899786,
+            "test_macro_pr_auc": 0.9975820237321061,
+            "test_per_drug_f1": {
+              "RIF": 0.9929980903882877,
+              "INH": 0.9984051036682615,
+              "EMB": 0.9963369963369964,
+              "PZA": 0.9919484702093397,
+              "STM": 1.0,
+              "LEV": 1.0,
+              "CAP": 1.0,
+              "ETH": 0.0,
+              "LZD": 0.6666666666666666
+            }
+          }
+        }
+      ],
+      "run_info": [
+        {
+          "architecture": "gated_hybrid",
+          "best_epoch": 91,
+          "best_val_macro_f1_selection_metric": 0.9974396352589606,
+          "n_epochs_run": 151,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 147,
+              "train_loss": 0.06259527802467346,
+              "val_macro_f1": 0.9921901072786615
+            },
+            {
+              "epoch": 148,
+              "train_loss": 0.06131488084793091,
+              "val_macro_f1": 0.9865074341637748
+            },
+            {
+              "epoch": 149,
+              "train_loss": 0.07507910579442978,
+              "val_macro_f1": 0.9839967126800296
+            },
+            {
+              "epoch": 150,
+              "train_loss": 0.05825246870517731,
+              "val_macro_f1": 0.9884436543412528
+            },
+            {
+              "epoch": 151,
+              "train_loss": 0.05595945194363594,
+              "val_macro_f1": 0.9916183542941307
+            }
+          ],
+          "gate_stats": {
+            "gamma_mean": 0.7771637439727783,
+            "gamma_median": 0.7017636895179749,
+            "gamma_p05": 0.7017636895179749,
+            "gamma_p95": 0.9502184391021729,
+            "fraction_above_0.9": 0.18919508159160614,
+            "interpretation": "gamma is the weight on the graph-free MLP stream; near 1.0 means the model learned to ignore the graph"
+          }
+        },
+        {
+          "architecture": "gated_hybrid",
+          "best_epoch": 133,
+          "best_val_macro_f1_selection_metric": 0.9970173509427266,
+          "n_epochs_run": 193,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 189,
+              "train_loss": 0.05166592076420784,
+              "val_macro_f1": 0.9948809735200911
+            },
+            {
+              "epoch": 190,
+              "train_loss": 0.05196043476462364,
+              "val_macro_f1": 0.9955467420053065
+            },
+            {
+              "epoch": 191,
+              "train_loss": 0.04778275638818741,
+              "val_macro_f1": 0.9955282837258411
+            },
+            {
+              "epoch": 192,
+              "train_loss": 0.04495418444275856,
+              "val_macro_f1": 0.9958637967276083
+            },
+            {
+              "epoch": 193,
+              "train_loss": 0.043381866067647934,
+              "val_macro_f1": 0.9956334635557657
+            }
+          ],
+          "gate_stats": {
+            "gamma_mean": 0.848920464515686,
+            "gamma_median": 0.8090103268623352,
+            "gamma_p05": 0.8090103268623352,
+            "gamma_p95": 0.9645891189575195,
+            "fraction_above_0.9": 0.25579872727394104,
+            "interpretation": "gamma is the weight on the graph-free MLP stream; near 1.0 means the model learned to ignore the graph"
+          }
+        },
+        {
+          "architecture": "gated_hybrid",
+          "best_epoch": 270,
+          "best_val_macro_f1_selection_metric": 0.9959121408527931,
+          "n_epochs_run": 300,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 296,
+              "train_loss": 0.0471794568002224,
+              "val_macro_f1": 0.99308535818425
+            },
+            {
+              "epoch": 297,
+              "train_loss": 0.045789934694767,
+              "val_macro_f1": 0.9945894947081421
+            },
+            {
+              "epoch": 298,
+              "train_loss": 0.04486437514424324,
+              "val_macro_f1": 0.9941724896981805
+            },
+            {
+              "epoch": 299,
+              "train_loss": 0.045865315943956375,
+              "val_macro_f1": 0.9925384414971431
+            },
+            {
+              "epoch": 300,
+              "train_loss": 0.04339973255991936,
+              "val_macro_f1": 0.9936943623700388
+            }
+          ],
+          "gate_stats": {
+            "gamma_mean": 0.7507424354553223,
+            "gamma_median": 0.7011193037033081,
+            "gamma_p05": 0.7011193037033081,
+            "gamma_p95": 0.9389001131057739,
+            "fraction_above_0.9": 0.1485494077205658,
+            "interpretation": "gamma is the weight on the graph-free MLP stream; near 1.0 means the model learned to ignore the graph"
+          }
+        }
+      ]
+    },
+    "original|catalogue|random_forest": {
+      "split": "original",
+      "protocol": "catalogue",
+      "architecture": "random_forest",
+      "n_features": 157,
+      "seconds": 12.0,
+      "aggregate": {
+        "default_0.5": {
+          "val_macro_f1_all9": {
+            "mean": 0.8644,
+            "std": 0.0009,
+            "n_seeds": 3
+          },
+          "test_macro_f1_all9": {
+            "mean": 0.8267,
+            "std": 0.001,
+            "n_seeds": 3
+          },
+          "val_macro_f1_core6": {
+            "mean": 0.9632,
+            "std": 0.0013,
+            "n_seeds": 3
+          },
+          "test_macro_f1_core6": {
+            "mean": 0.9623,
+            "std": 0.0014,
+            "n_seeds": 3
+          },
+          "test_macro_roc_auc": {
+            "mean": 0.9982,
+            "std": 0.0002,
+            "n_seeds": 3
+          },
+          "test_macro_pr_auc": {
+            "mean": 0.9948,
+            "std": 0.0003,
+            "n_seeds": 3
+          }
+        },
+        "tuned": {
+          "val_macro_f1_all9": {
+            "mean": 0.9832,
+            "std": 0.0006,
+            "n_seeds": 3
+          },
+          "test_macro_f1_all9": {
+            "mean": 0.8695,
+            "std": 0.0004,
+            "n_seeds": 3
+          },
+          "val_macro_f1_core6": {
+            "mean": 0.9747,
+            "std": 0.0009,
+            "n_seeds": 3
+          },
+          "test_macro_f1_core6": {
+            "mean": 0.9709,
+            "std": 0.0006,
+            "n_seeds": 3
+          },
+          "test_macro_roc_auc": {
+            "mean": 0.9982,
+            "std": 0.0002,
+            "n_seeds": 3
+          },
+          "test_macro_pr_auc": {
+            "mean": 0.9948,
+            "std": 0.0003,
+            "n_seeds": 3
+          }
+        }
+      },
+      "per_seed": [
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.8630952796173837,
+            "test_macro_f1_all9": 0.8255266721053781,
+            "val_macro_f1_core6": 0.9613095860927423,
+            "test_macro_f1_core6": 0.9605122303802894,
+            "test_macro_roc_auc": 0.9979644118930089,
+            "test_macro_pr_auc": 0.9944188236763475,
+            "test_per_drug_f1": {
+              "RIF": 0.9530733641771315,
+              "INH": 0.9887096774193549,
+              "EMB": 0.9668508287292817,
+              "PZA": 0.909710391822828,
+              "STM": 0.967984934086629,
+              "LEV": 0.9767441860465116,
+              "CAP": 1.0,
+              "ETH": 0.0,
+              "LZD": 0.6666666666666666
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.982605259762229,
+            "test_macro_f1_all9": 0.868934328374761,
+            "val_macro_f1_core6": 0.9739078896433435,
+            "test_macro_f1_core6": 0.9700681592288083,
+            "test_macro_roc_auc": 0.9979644118930089,
+            "test_macro_pr_auc": 0.9944188236763475,
+            "test_per_drug_f1": {
+              "RIF": 0.9755784061696658,
+              "INH": 0.9864541832669322,
+              "EMB": 0.9683426443202979,
+              "PZA": 0.9273927392739274,
+              "STM": 0.985239852398524,
+              "LEV": 0.9774011299435028,
+              "CAP": 1.0,
+              "ETH": 0.0,
+              "LZD": 1.0
+            }
+          }
+        },
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.864919273587095,
+            "test_macro_f1_all9": 0.8278571143605603,
+            "val_macro_f1_core6": 0.964045577047309,
+            "test_macro_f1_core6": 0.9640078937630626,
+            "test_macro_roc_auc": 0.9983681357967227,
+            "test_macro_pr_auc": 0.9949269264438807,
+            "test_per_drug_f1": {
+              "RIF": 0.9523809523809523,
+              "INH": 0.9895245769540693,
+              "EMB": 0.9696969696969697,
+              "PZA": 0.9180887372013652,
+              "STM": 0.9776119402985075,
+              "LEV": 0.9767441860465116,
+              "CAP": 1.0,
+              "ETH": 0.0,
+              "LZD": 0.6666666666666666
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.9828425376231339,
+            "test_macro_f1_all9": 0.8695956609595357,
+            "val_macro_f1_core6": 0.9742638064347009,
+            "test_macro_f1_core6": 0.9710601581059701,
+            "test_macro_roc_auc": 0.9983681357967227,
+            "test_macro_pr_auc": 0.9949269264438807,
+            "test_per_drug_f1": {
+              "RIF": 0.97349709114415,
+              "INH": 0.9919614147909968,
+              "EMB": 0.9704797047970479,
+              "PZA": 0.9263502454991817,
+              "STM": 0.9870609981515711,
+              "LEV": 0.9770114942528736,
+              "CAP": 1.0,
+              "ETH": 0.0,
+              "LZD": 1.0
+            }
+          }
+        },
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.8650726257306721,
+            "test_macro_f1_all9": 0.8268104904341405,
+            "val_macro_f1_core6": 0.9642756052626749,
+            "test_macro_f1_core6": 0.9624379578734329,
+            "test_macro_roc_auc": 0.9983462891936911,
+            "test_macro_pr_auc": 0.9950031397174721,
+            "test_per_drug_f1": {
+              "RIF": 0.9516876240900066,
+              "INH": 0.9887096774193549,
+              "EMB": 0.969472710453284,
+              "PZA": 0.9180887372013652,
+              "STM": 0.9699248120300752,
+              "LEV": 0.9767441860465116,
+              "CAP": 1.0,
+              "ETH": 0.0,
+              "LZD": 0.6666666666666666
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.9840478467589917,
+            "test_macro_f1_all9": 0.8699694808196301,
+            "val_macro_f1_core6": 0.9760717701384877,
+            "test_macro_f1_core6": 0.9716208878961116,
+            "test_macro_roc_auc": 0.9983462891936911,
+            "test_macro_pr_auc": 0.9950031397174721,
+            "test_per_drug_f1": {
+              "RIF": 0.9754838709677419,
+              "INH": 0.9872408293460925,
+              "EMB": 0.9703703703703703,
+              "PZA": 0.9269102990033222,
+              "STM": 0.9870609981515711,
+              "LEV": 0.9826589595375722,
+              "CAP": 1.0,
+              "ETH": 0.0,
+              "LZD": 1.0
+            }
+          }
+        }
+      ],
+      "run_info": [
+        {
+          "architecture": "random_forest"
+        },
+        {
+          "architecture": "random_forest"
+        },
+        {
+          "architecture": "random_forest"
+        }
+      ]
+    },
+    "original|genomewide|mlp_only": {
+      "split": "original",
+      "protocol": "genomewide",
+      "architecture": "mlp_only",
+      "n_features": 1500,
+      "seconds": 39.2,
+      "aggregate": {
+        "default_0.5": {
+          "val_macro_f1_all9": {
+            "mean": 0.5297,
+            "std": 0.0267,
+            "n_seeds": 3
+          },
+          "test_macro_f1_all9": {
+            "mean": 0.5278,
+            "std": 0.0191,
+            "n_seeds": 3
+          },
+          "val_macro_f1_core6": {
+            "mean": 0.6924,
+            "std": 0.0013,
+            "n_seeds": 3
+          },
+          "test_macro_f1_core6": {
+            "mean": 0.68,
+            "std": 0.002,
+            "n_seeds": 3
+          },
+          "test_macro_roc_auc": {
+            "mean": 0.9408,
+            "std": 0.0035,
+            "n_seeds": 3
+          },
+          "test_macro_pr_auc": {
+            "mean": 0.7572,
+            "std": 0.005,
+            "n_seeds": 3
+          }
+        },
+        "tuned": {
+          "val_macro_f1_all9": {
+            "mean": 0.5914,
+            "std": 0.0236,
+            "n_seeds": 3
+          },
+          "test_macro_f1_all9": {
+            "mean": 0.5857,
+            "std": 0.0089,
+            "n_seeds": 3
+          },
+          "val_macro_f1_core6": {
+            "mean": 0.7158,
+            "std": 0.0081,
+            "n_seeds": 3
+          },
+          "test_macro_f1_core6": {
+            "mean": 0.6986,
+            "std": 0.0047,
+            "n_seeds": 3
+          },
+          "test_macro_roc_auc": {
+            "mean": 0.9408,
+            "std": 0.0035,
+            "n_seeds": 3
+          },
+          "test_macro_pr_auc": {
+            "mean": 0.7572,
+            "std": 0.005,
+            "n_seeds": 3
+          }
+        }
+      },
+      "per_seed": [
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.5674687787444685,
+            "test_macro_f1_all9": 0.5538337053854702,
+            "val_macro_f1_core6": 0.6905550199685546,
+            "test_macro_f1_core6": 0.677182355729515,
+            "test_macro_roc_auc": 0.9361000623309814,
+            "test_macro_pr_auc": 0.7514300812560444,
+            "test_per_drug_f1": {
+              "RIF": 0.8262339418526031,
+              "INH": 0.7452006980802792,
+              "EMB": 0.7661777394305436,
+              "PZA": 0.6009732360097324,
+              "STM": 0.5530799475753604,
+              "LEV": 0.5714285714285714,
+              "CAP": 0.8888888888888888,
+              "ETH": 0.0,
+              "LZD": 0.032520325203252036
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.6107928829608715,
+            "test_macro_f1_all9": 0.5971789635339008,
+            "val_macro_f1_core6": 0.7044048126567956,
+            "test_macro_f1_core6": 0.6920647415971476,
+            "test_macro_roc_auc": 0.9361000623309814,
+            "test_macro_pr_auc": 0.7514300812560444,
+            "test_per_drug_f1": {
+              "RIF": 0.8293010752688172,
+              "INH": 0.77217125382263,
+              "EMB": 0.7643312101910829,
+              "PZA": 0.6191117092866757,
+              "STM": 0.5701881331403763,
+              "LEV": 0.5972850678733032,
+              "CAP": 0.8888888888888888,
+              "ETH": 0.0,
+              "LZD": 0.3333333333333333
+            }
+          }
+        },
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.5129797558297406,
+            "test_macro_f1_all9": 0.5211103748316764,
+            "val_macro_f1_core6": 0.6935455578205351,
+            "test_macro_f1_core6": 0.6819531940787705,
+            "test_macro_roc_auc": 0.9446133835096014,
+            "test_macro_pr_auc": 0.7636603981399643,
+            "test_per_drug_f1": {
+              "RIF": 0.8513238289205702,
+              "INH": 0.7447306791569087,
+              "EMB": 0.7937033968516984,
+              "PZA": 0.6293859649122807,
+              "STM": 0.5820689655172414,
+              "LEV": 0.49050632911392406,
+              "CAP": 0.5714285714285714,
+              "ETH": 0.0,
+              "LZD": 0.026845637583892617
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.6051828434993911,
+            "test_macro_f1_all9": 0.5845074705795059,
+            "val_macro_f1_core6": 0.7214997554451653,
+            "test_macro_f1_core6": 0.7008352799433327,
+            "test_macro_roc_auc": 0.9446133835096014,
+            "test_macro_pr_auc": 0.7636603981399643,
+            "test_per_drug_f1": {
+              "RIF": 0.8508655126498003,
+              "INH": 0.7673397717295873,
+              "EMB": 0.7936507936507936,
+              "PZA": 0.6380510440835266,
+              "STM": 0.584873949579832,
+              "LEV": 0.570230607966457,
+              "CAP": 0.8888888888888888,
+              "ETH": 0.0,
+              "LZD": 0.16666666666666666
+            }
+          }
+        },
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.5087164652526796,
+            "test_macro_f1_all9": 0.508457266133459,
+            "val_macro_f1_core6": 0.6929929985326141,
+            "test_macro_f1_core6": 0.6808598871416183,
+            "test_macro_roc_auc": 0.9417883590652503,
+            "test_macro_pr_auc": 0.7565336040135865,
+            "test_per_drug_f1": {
+              "RIF": 0.8611859838274932,
+              "INH": 0.7532270311313591,
+              "EMB": 0.7956448911222781,
+              "PZA": 0.6280623608017817,
+              "STM": 0.5681233933161953,
+              "LEV": 0.4789156626506024,
+              "CAP": 0.4444444444444444,
+              "ETH": 0.0,
+              "LZD": 0.046511627906976744
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.5581622957080644,
+            "test_macro_f1_all9": 0.5755221145717712,
+            "val_macro_f1_core6": 0.7215868779055309,
+            "test_macro_f1_core6": 0.7027893446971628,
+            "test_macro_roc_auc": 0.9417883590652503,
+            "test_macro_pr_auc": 0.7565336040135865,
+            "test_per_drug_f1": {
+              "RIF": 0.8666666666666667,
+              "INH": 0.7522658610271903,
+              "EMB": 0.797979797979798,
+              "PZA": 0.6304909560723514,
+              "STM": 0.5797101449275363,
+              "LEV": 0.589622641509434,
+              "CAP": 0.8888888888888888,
+              "ETH": 0.0,
+              "LZD": 0.07407407407407407
+            }
+          }
+        }
+      ],
+      "run_info": [
+        {
+          "architecture": "mlp_only",
+          "best_epoch": 35,
+          "best_val_macro_f1_selection_metric": 0.6905550199685546,
+          "n_epochs_run": 95,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 91,
+              "train_loss": 0.5447052121162415,
+              "val_macro_f1": 0.6309108739495194
+            },
+            {
+              "epoch": 92,
+              "train_loss": 0.662692666053772,
+              "val_macro_f1": 0.6329921817004885
+            },
+            {
+              "epoch": 93,
+              "train_loss": 0.5331724882125854,
+              "val_macro_f1": 0.6425237704141954
+            },
+            {
+              "epoch": 94,
+              "train_loss": 0.5526416897773743,
+              "val_macro_f1": 0.6544384346509757
+            },
+            {
+              "epoch": 95,
+              "train_loss": 0.573602557182312,
+              "val_macro_f1": 0.6704460197136543
+            }
+          ]
+        },
+        {
+          "architecture": "mlp_only",
+          "best_epoch": 101,
+          "best_val_macro_f1_selection_metric": 0.6935455578205351,
+          "n_epochs_run": 161,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 157,
+              "train_loss": 0.5488268733024597,
+              "val_macro_f1": 0.646315800639789
+            },
+            {
+              "epoch": 158,
+              "train_loss": 0.5185733437538147,
+              "val_macro_f1": 0.6602235090193749
+            },
+            {
+              "epoch": 159,
+              "train_loss": 0.5078464150428772,
+              "val_macro_f1": 0.6672348697899335
+            },
+            {
+              "epoch": 160,
+              "train_loss": 0.5049259662628174,
+              "val_macro_f1": 0.6693592035793873
+            },
+            {
+              "epoch": 161,
+              "train_loss": 0.5609152317047119,
+              "val_macro_f1": 0.6587641184251539
+            }
+          ]
+        },
+        {
+          "architecture": "mlp_only",
+          "best_epoch": 103,
+          "best_val_macro_f1_selection_metric": 0.6929929985326141,
+          "n_epochs_run": 163,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 159,
+              "train_loss": 0.586395263671875,
+              "val_macro_f1": 0.6299639789955588
+            },
+            {
+              "epoch": 160,
+              "train_loss": 0.511921763420105,
+              "val_macro_f1": 0.6361510398775462
+            },
+            {
+              "epoch": 161,
+              "train_loss": 0.6383526921272278,
+              "val_macro_f1": 0.5687890828062462
+            },
+            {
+              "epoch": 162,
+              "train_loss": 0.5845947861671448,
+              "val_macro_f1": 0.5800439842273745
+            },
+            {
+              "epoch": 163,
+              "train_loss": 0.7086944580078125,
+              "val_macro_f1": 0.5771055523909651
+            }
+          ]
+        }
+      ]
+    },
+    "original|genomewide|gcn_skip": {
+      "split": "original",
+      "protocol": "genomewide",
+      "architecture": "gcn_skip",
+      "n_features": 1500,
+      "seconds": 286.4,
+      "aggregate": {
+        "default_0.5": {
+          "val_macro_f1_all9": {
+            "mean": 0.6257,
+            "std": 0.0042,
+            "n_seeds": 3
+          },
+          "test_macro_f1_all9": {
+            "mean": 0.6041,
+            "std": 0.003,
+            "n_seeds": 3
+          },
+          "val_macro_f1_core6": {
+            "mean": 0.7506,
+            "std": 0.0029,
+            "n_seeds": 3
+          },
+          "test_macro_f1_core6": {
+            "mean": 0.7331,
+            "std": 0.0024,
+            "n_seeds": 3
+          },
+          "test_macro_roc_auc": {
+            "mean": 0.9577,
+            "std": 0.0001,
+            "n_seeds": 3
+          },
+          "test_macro_pr_auc": {
+            "mean": 0.8134,
+            "std": 0.0011,
+            "n_seeds": 3
+          }
+        },
+        "tuned": {
+          "val_macro_f1_all9": {
+            "mean": 0.7296,
+            "std": 0.0255,
+            "n_seeds": 3
+          },
+          "test_macro_f1_all9": {
+            "mean": 0.6733,
+            "std": 0.0021,
+            "n_seeds": 3
+          },
+          "val_macro_f1_core6": {
+            "mean": 0.775,
+            "std": 0.0011,
+            "n_seeds": 3
+          },
+          "test_macro_f1_core6": {
+            "mean": 0.7507,
+            "std": 0.0031,
+            "n_seeds": 3
+          },
+          "test_macro_roc_auc": {
+            "mean": 0.9577,
+            "std": 0.0001,
+            "n_seeds": 3
+          },
+          "test_macro_pr_auc": {
+            "mean": 0.8134,
+            "std": 0.0011,
+            "n_seeds": 3
+          }
+        }
+      },
+      "per_seed": [
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.6198931280315185,
+            "test_macro_f1_all9": 0.6074379377679976,
+            "val_macro_f1_core6": 0.7513885135960994,
+            "test_macro_f1_core6": 0.7352309807260705,
+            "test_macro_roc_auc": 0.957798208971985,
+            "test_macro_pr_auc": 0.8121309226643888,
+            "test_per_drug_f1": {
+              "RIF": 0.8974700399467377,
+              "INH": 0.8163934426229508,
+              "EMB": 0.8237347294938918,
+              "PZA": 0.6799501867995019,
+              "STM": 0.6240928882438317,
+              "LEV": 0.5697445972495089,
+              "CAP": 0.8888888888888888,
+              "ETH": 0.0,
+              "LZD": 0.16666666666666666
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.7657290526851672,
+            "test_macro_f1_all9": 0.675823008923194,
+            "val_macro_f1_core6": 0.7735935790277507,
+            "test_macro_f1_core6": 0.7544752541255318,
+            "test_macro_roc_auc": 0.957798208971985,
+            "test_macro_pr_auc": 0.8121309226643888,
+            "test_per_drug_f1": {
+              "RIF": 0.8950863213811421,
+              "INH": 0.8183306055646481,
+              "EMB": 0.8181818181818182,
+              "PZA": 0.6978998384491115,
+              "STM": 0.6323529411764706,
+              "LEV": 0.665,
+              "CAP": 0.8888888888888888,
+              "ETH": 0.0,
+              "LZD": 0.6666666666666666
+            }
+          }
+        },
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.6295225743205521,
+            "test_macro_f1_all9": 0.6046936558855434,
+            "val_macro_f1_core6": 0.7536937498380851,
+            "test_macro_f1_core6": 0.7342009776554755,
+            "test_macro_roc_auc": 0.9575604041627055,
+            "test_macro_pr_auc": 0.8130879460586021,
+            "test_per_drug_f1": {
+              "RIF": 0.8908474576271187,
+              "INH": 0.8122415219189413,
+              "EMB": 0.8194690265486726,
+              "PZA": 0.6802547770700637,
+              "STM": 0.6105563480741797,
+              "LEV": 0.5918367346938775,
+              "CAP": 0.8888888888888888,
+              "ETH": 0.0,
+              "LZD": 0.14814814814814814
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.7118753838642229,
+            "test_macro_f1_all9": 0.6707908678180936,
+            "val_macro_f1_core6": 0.7761464091296677,
+            "test_macro_f1_core6": 0.7469270424678811,
+            "test_macro_roc_auc": 0.9575604041627055,
+            "test_macro_pr_auc": 0.8130879460586021,
+            "test_per_drug_f1": {
+              "RIF": 0.8902439024390244,
+              "INH": 0.8154859967051071,
+              "EMB": 0.8209219858156028,
+              "PZA": 0.7027027027027027,
+              "STM": 0.6160520607375272,
+              "LEV": 0.6361556064073226,
+              "CAP": 0.8888888888888888,
+              "ETH": 0.0,
+              "LZD": 0.6666666666666666
+            }
+          }
+        },
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.6276162415567372,
+            "test_macro_f1_all9": 0.6000736538659357,
+            "val_macro_f1_core6": 0.7467856676964114,
+            "test_macro_f1_core6": 0.7297401104285332,
+            "test_macro_roc_auc": 0.9577787281239878,
+            "test_macro_pr_auc": 0.814872661470319,
+            "test_per_drug_f1": {
+              "RIF": 0.896414342629482,
+              "INH": 0.8187599364069952,
+              "EMB": 0.819047619047619,
+              "PZA": 0.6806411837237978,
+              "STM": 0.6050870147255689,
+              "LEV": 0.5584905660377358,
+              "CAP": 0.8,
+              "ETH": 0.0,
+              "LZD": 0.2222222222222222
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.7112750231362417,
+            "test_macro_f1_all9": 0.6733446445383867,
+            "val_macro_f1_core6": 0.7752458680376959,
+            "test_macro_f1_core6": 0.7507577075483206,
+            "test_macro_roc_auc": 0.9577787281239878,
+            "test_macro_pr_auc": 0.814872661470319,
+            "test_per_drug_f1": {
+              "RIF": 0.8933333333333333,
+              "INH": 0.8168067226890756,
+              "EMB": 0.8201948627103631,
+              "PZA": 0.7006369426751592,
+              "STM": 0.6313725490196078,
+              "LEV": 0.6422018348623854,
+              "CAP": 0.8888888888888888,
+              "ETH": 0.0,
+              "LZD": 0.6666666666666666
+            }
+          }
+        }
+      ],
+      "run_info": [
+        {
+          "architecture": "gcn_skip",
+          "best_epoch": 211,
+          "best_val_macro_f1_selection_metric": 0.7513885135960994,
+          "n_epochs_run": 271,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 267,
+              "train_loss": 0.2955949902534485,
+              "val_macro_f1": 0.738594260876008
+            },
+            {
+              "epoch": 268,
+              "train_loss": 0.2934715151786804,
+              "val_macro_f1": 0.7395266632840202
+            },
+            {
+              "epoch": 269,
+              "train_loss": 0.29230180382728577,
+              "val_macro_f1": 0.7362855135552859
+            },
+            {
+              "epoch": 270,
+              "train_loss": 0.293788880109787,
+              "val_macro_f1": 0.7349470643062462
+            },
+            {
+              "epoch": 271,
+              "train_loss": 0.2949635088443756,
+              "val_macro_f1": 0.7406842468766097
+            }
+          ]
+        },
+        {
+          "architecture": "gcn_skip",
+          "best_epoch": 102,
+          "best_val_macro_f1_selection_metric": 0.7536937498380851,
+          "n_epochs_run": 162,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 158,
+              "train_loss": 0.2874360680580139,
+              "val_macro_f1": 0.7424742928184708
+            },
+            {
+              "epoch": 159,
+              "train_loss": 0.2874273657798767,
+              "val_macro_f1": 0.7434479010843531
+            },
+            {
+              "epoch": 160,
+              "train_loss": 0.2873258888721466,
+              "val_macro_f1": 0.7445718049356712
+            },
+            {
+              "epoch": 161,
+              "train_loss": 0.28729942440986633,
+              "val_macro_f1": 0.7429431199910809
+            },
+            {
+              "epoch": 162,
+              "train_loss": 0.28721627593040466,
+              "val_macro_f1": 0.7431239819739123
+            }
+          ]
+        },
+        {
+          "architecture": "gcn_skip",
+          "best_epoch": 114,
+          "best_val_macro_f1_selection_metric": 0.7467856676964114,
+          "n_epochs_run": 174,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 170,
+              "train_loss": 0.2877589762210846,
+              "val_macro_f1": 0.7431972599933013
+            },
+            {
+              "epoch": 171,
+              "train_loss": 0.28772351145744324,
+              "val_macro_f1": 0.7431972599933013
+            },
+            {
+              "epoch": 172,
+              "train_loss": 0.28768861293792725,
+              "val_macro_f1": 0.7431972599933013
+            },
+            {
+              "epoch": 173,
+              "train_loss": 0.28765425086021423,
+              "val_macro_f1": 0.7431972599933013
+            },
+            {
+              "epoch": 174,
+              "train_loss": 0.2876204252243042,
+              "val_macro_f1": 0.7431972599933013
+            }
+          ]
+        }
+      ]
+    },
+    "original|genomewide|gatv2": {
+      "split": "original",
+      "protocol": "genomewide",
+      "architecture": "gatv2",
+      "n_features": 1500,
+      "seconds": 32417.7,
+      "aggregate": {
+        "default_0.5": {
+          "val_macro_f1_all9": {
+            "mean": 0.5865,
+            "std": 0.0368,
+            "n_seeds": 3
+          },
+          "test_macro_f1_all9": {
+            "mean": 0.5631,
+            "std": 0.0374,
+            "n_seeds": 3
+          },
+          "val_macro_f1_core6": {
+            "mean": 0.7507,
+            "std": 0.0041,
+            "n_seeds": 3
+          },
+          "test_macro_f1_core6": {
+            "mean": 0.7335,
+            "std": 0.0059,
+            "n_seeds": 3
+          },
+          "test_macro_roc_auc": {
+            "mean": 0.9539,
+            "std": 0.0029,
+            "n_seeds": 3
+          },
+          "test_macro_pr_auc": {
+            "mean": 0.7451,
+            "std": 0.0067,
+            "n_seeds": 3
+          }
+        },
+        "tuned": {
+          "val_macro_f1_all9": {
+            "mean": 0.6556,
+            "std": 0.0157,
+            "n_seeds": 3
+          },
+          "test_macro_f1_all9": {
+            "mean": 0.5979,
+            "std": 0.0133,
+            "n_seeds": 3
+          },
+          "val_macro_f1_core6": {
+            "mean": 0.7742,
+            "std": 0.0006,
+            "n_seeds": 3
+          },
+          "test_macro_f1_core6": {
+            "mean": 0.7472,
+            "std": 0.0038,
+            "n_seeds": 3
+          },
+          "test_macro_roc_auc": {
+            "mean": 0.9539,
+            "std": 0.0029,
+            "n_seeds": 3
+          },
+          "test_macro_pr_auc": {
+            "mean": 0.7451,
+            "std": 0.0067,
+            "n_seeds": 3
+          }
+        }
+      },
+      "per_seed": [
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.5345332362743412,
+            "test_macro_f1_all9": 0.5102288029942236,
+            "val_macro_f1_core6": 0.7561862062353484,
+            "test_macro_f1_core6": 0.7407970663454552,
+            "test_macro_roc_auc": 0.949866928602696,
+            "test_macro_pr_auc": 0.7357732832076809,
+            "test_per_drug_f1": {
+              "RIF": 0.8839568801521877,
+              "INH": 0.8146938775510204,
+              "EMB": 0.8092783505154639,
+              "PZA": 0.6912181303116147,
+              "STM": 0.6363636363636364,
+              "LEV": 0.609271523178808,
+              "CAP": 0.13793103448275862,
+              "ETH": 0.0,
+              "LZD": 0.009345794392523364
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.6440045200834803,
+            "test_macro_f1_all9": 0.5969919032461246,
+            "val_macro_f1_core6": 0.7737765063732075,
+            "test_macro_f1_core6": 0.7425435436514944,
+            "test_macro_roc_auc": 0.949866928602696,
+            "test_macro_pr_auc": 0.7357732832076809,
+            "test_per_drug_f1": {
+              "RIF": 0.895364238410596,
+              "INH": 0.8151191454396056,
+              "EMB": 0.8201834862385321,
+              "PZA": 0.6892655367231638,
+              "STM": 0.6129032258064516,
+              "LEV": 0.6224256292906178,
+              "CAP": 0.8888888888888888,
+              "ETH": 0.0,
+              "LZD": 0.02877697841726619
+            }
+          }
+        },
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.6128009354817228,
+            "test_macro_f1_all9": 0.5912216033432652,
+            "val_macro_f1_core6": 0.7496857337069146,
+            "test_macro_f1_core6": 0.7334759235334166,
+            "test_macro_roc_auc": 0.9552765419771654,
+            "test_macro_pr_auc": 0.7484259192215237,
+            "test_per_drug_f1": {
+              "RIF": 0.8916776750330251,
+              "INH": 0.8118971061093248,
+              "EMB": 0.8139130434782609,
+              "PZA": 0.6885676741130092,
+              "STM": 0.6171107994389902,
+              "LEV": 0.5776892430278885,
+              "CAP": 0.8888888888888888,
+              "ETH": 0.0,
+              "LZD": 0.03125
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.6450753098209292,
+            "test_macro_f1_all9": 0.6145508658821561,
+            "val_macro_f1_core6": 0.773876581289128,
+            "test_macro_f1_core6": 0.7470295508557544,
+            "test_macro_roc_auc": 0.9552765419771654,
+            "test_macro_pr_auc": 0.7484259192215237,
+            "test_per_drug_f1": {
+              "RIF": 0.8915502328675982,
+              "INH": 0.8148760330578513,
+              "EMB": 0.8260869565217391,
+              "PZA": 0.7007751937984497,
+              "STM": 0.6222222222222222,
+              "LEV": 0.6266666666666667,
+              "CAP": 1.0,
+              "ETH": 0.0,
+              "LZD": 0.04878048780487805
+            }
+          }
+        },
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.6122816873033425,
+            "test_macro_f1_all9": 0.5879946003814488,
+            "val_macro_f1_core6": 0.7463202667474865,
+            "test_macro_f1_core6": 0.7262679948482674,
+            "test_macro_roc_auc": 0.9564574294130836,
+            "test_macro_pr_auc": 0.7510792046096795,
+            "test_per_drug_f1": {
+              "RIF": 0.8948069241011984,
+              "INH": 0.8096774193548387,
+              "EMB": 0.8176318063958513,
+              "PZA": 0.6819338422391857,
+              "STM": 0.5963060686015831,
+              "LEV": 0.5572519083969466,
+              "CAP": 0.8888888888888888,
+              "ETH": 0.0,
+              "LZD": 0.045454545454545456
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.6777944446173803,
+            "test_macro_f1_all9": 0.5820818539256651,
+            "val_macro_f1_core6": 0.7750250002594038,
+            "test_macro_f1_core6": 0.7519106596763766,
+            "test_macro_roc_auc": 0.9564574294130836,
+            "test_macro_pr_auc": 0.7510792046096795,
+            "test_per_drug_f1": {
+              "RIF": 0.8932547478716437,
+              "INH": 0.8130217028380634,
+              "EMB": 0.8223443223443223,
+              "PZA": 0.7070063694267515,
+              "STM": 0.6187624750499002,
+              "LEV": 0.657074340527578,
+              "CAP": 0.7272727272727273,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          }
+        }
+      ],
+      "run_info": [
+        {
+          "architecture": "gatv2",
+          "best_epoch": 81,
+          "best_val_macro_f1_selection_metric": 0.7561862062353484,
+          "n_epochs_run": 141,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 137,
+              "train_loss": 0.319510281085968,
+              "val_macro_f1": 0.7438291639432335
+            },
+            {
+              "epoch": 138,
+              "train_loss": 0.3132070004940033,
+              "val_macro_f1": 0.7421660859543504
+            },
+            {
+              "epoch": 139,
+              "train_loss": 0.32007670402526855,
+              "val_macro_f1": 0.7478582882581112
+            },
+            {
+              "epoch": 140,
+              "train_loss": 0.3097248077392578,
+              "val_macro_f1": 0.7495140928784824
+            },
+            {
+              "epoch": 141,
+              "train_loss": 0.3153056502342224,
+              "val_macro_f1": 0.746826906385795
+            }
+          ]
+        },
+        {
+          "architecture": "gatv2",
+          "best_epoch": 89,
+          "best_val_macro_f1_selection_metric": 0.7496857337069146,
+          "n_epochs_run": 149,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 145,
+              "train_loss": 0.292244553565979,
+              "val_macro_f1": 0.7471281140582273
+            },
+            {
+              "epoch": 146,
+              "train_loss": 0.2924608588218689,
+              "val_macro_f1": 0.7459499585664778
+            },
+            {
+              "epoch": 147,
+              "train_loss": 0.29073044657707214,
+              "val_macro_f1": 0.7460254458617318
+            },
+            {
+              "epoch": 148,
+              "train_loss": 0.29074615240097046,
+              "val_macro_f1": 0.746451697333053
+            },
+            {
+              "epoch": 149,
+              "train_loss": 0.2908494472503662,
+              "val_macro_f1": 0.7467258005609821
+            }
+          ]
+        },
+        {
+          "architecture": "gatv2",
+          "best_epoch": 96,
+          "best_val_macro_f1_selection_metric": 0.7463202667474865,
+          "n_epochs_run": 156,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 152,
+              "train_loss": 0.2906387746334076,
+              "val_macro_f1": 0.7356303094394874
+            },
+            {
+              "epoch": 153,
+              "train_loss": 0.28958457708358765,
+              "val_macro_f1": 0.738820930000689
+            },
+            {
+              "epoch": 154,
+              "train_loss": 0.290103554725647,
+              "val_macro_f1": 0.7396512905638238
+            },
+            {
+              "epoch": 155,
+              "train_loss": 0.28832828998565674,
+              "val_macro_f1": 0.7395894822916609
+            },
+            {
+              "epoch": 156,
+              "train_loss": 0.28748148679733276,
+              "val_macro_f1": 0.7384045314780999
+            }
+          ]
+        }
+      ]
+    },
+    "original|genomewide|gated_hybrid": {
+      "split": "original",
+      "protocol": "genomewide",
+      "architecture": "gated_hybrid",
+      "n_features": 1500,
+      "seconds": 537.7,
+      "aggregate": {
+        "default_0.5": {
+          "val_macro_f1_all9": {
+            "mean": 0.5321,
+            "std": 0.039,
+            "n_seeds": 3
+          },
+          "test_macro_f1_all9": {
+            "mean": 0.5051,
+            "std": 0.0334,
+            "n_seeds": 3
+          },
+          "val_macro_f1_core6": {
+            "mean": 0.6872,
+            "std": 0.0143,
+            "n_seeds": 3
+          },
+          "test_macro_f1_core6": {
+            "mean": 0.6738,
+            "std": 0.0126,
+            "n_seeds": 3
+          },
+          "test_macro_roc_auc": {
+            "mean": 0.9429,
+            "std": 0.003,
+            "n_seeds": 3
+          },
+          "test_macro_pr_auc": {
+            "mean": 0.7607,
+            "std": 0.0103,
+            "n_seeds": 3
+          }
+        },
+        "tuned": {
+          "val_macro_f1_all9": {
+            "mean": 0.6168,
+            "std": 0.0235,
+            "n_seeds": 3
+          },
+          "test_macro_f1_all9": {
+            "mean": 0.5968,
+            "std": 0.0087,
+            "n_seeds": 3
+          },
+          "val_macro_f1_core6": {
+            "mean": 0.7257,
+            "std": 0.0178,
+            "n_seeds": 3
+          },
+          "test_macro_f1_core6": {
+            "mean": 0.7065,
+            "std": 0.0137,
+            "n_seeds": 3
+          },
+          "test_macro_roc_auc": {
+            "mean": 0.9429,
+            "std": 0.003,
+            "n_seeds": 3
+          },
+          "test_macro_pr_auc": {
+            "mean": 0.7607,
+            "std": 0.0103,
+            "n_seeds": 3
+          }
+        }
+      },
+      "per_seed": [
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.47847571943078315,
+            "test_macro_f1_all9": 0.46895099348303987,
+            "val_macro_f1_core6": 0.6748218960329204,
+            "test_macro_f1_core6": 0.658790749749508,
+            "test_macro_roc_auc": 0.9397069310714721,
+            "test_macro_pr_auc": 0.7609913489305038,
+            "test_per_drug_f1": {
+              "RIF": 0.8354263053536021,
+              "INH": 0.7824,
+              "EMB": 0.78239608801956,
+              "PZA": 0.608786610878661,
+              "STM": 0.5207100591715976,
+              "LEV": 0.42302543507362783,
+              "CAP": 0.23529411764705882,
+              "ETH": 0.0,
+              "LZD": 0.032520325203252036
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.5877254348078238,
+            "test_macro_f1_all9": 0.5859242586787453,
+            "val_macro_f1_core6": 0.7181774888010722,
+            "test_macro_f1_core6": 0.6937012028329327,
+            "test_macro_roc_auc": 0.9397069310714721,
+            "test_macro_pr_auc": 0.7609913489305038,
+            "test_per_drug_f1": {
+              "RIF": 0.8347710683477106,
+              "INH": 0.7781299524564184,
+              "EMB": 0.7884940778341794,
+              "PZA": 0.6153846153846154,
+              "STM": 0.5369369369369369,
+              "LEV": 0.6084905660377359,
+              "CAP": 0.8888888888888888,
+              "ETH": 0.0,
+              "LZD": 0.2222222222222222
+            }
+          }
+        },
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.5700104203918395,
+            "test_macro_f1_all9": 0.5494296116862643,
+            "val_macro_f1_core6": 0.6796004405384228,
+            "test_macro_f1_core6": 0.6729240727606643,
+            "test_macro_roc_auc": 0.9420717342533684,
+            "test_macro_pr_auc": 0.7479287637239447,
+            "test_per_drug_f1": {
+              "RIF": 0.8497409326424871,
+              "INH": 0.755893536121673,
+              "EMB": 0.7956810631229236,
+              "PZA": 0.6162528216704289,
+              "STM": 0.5524044389642416,
+              "LEV": 0.4675716440422323,
+              "CAP": 0.8888888888888888,
+              "ETH": 0.0,
+              "LZD": 0.018433179723502304
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.61743357179819,
+            "test_macro_f1_all9": 0.5973945507059273,
+            "val_macro_f1_core6": 0.7085577651046925,
+            "test_macro_f1_core6": 0.7003246302916953,
+            "test_macro_roc_auc": 0.9420717342533684,
+            "test_macro_pr_auc": 0.7479287637239447,
+            "test_per_drug_f1": {
+              "RIF": 0.8458333333333333,
+              "INH": 0.7575982209043736,
+              "EMB": 0.790893760539629,
+              "PZA": 0.6214039125431531,
+              "STM": 0.5798045602605864,
+              "LEV": 0.6064139941690962,
+              "CAP": 0.8888888888888888,
+              "ETH": 0.0,
+              "LZD": 0.2857142857142857
+            }
+          }
+        },
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.5476973232533937,
+            "test_macro_f1_all9": 0.4968901029568047,
+            "val_macro_f1_core6": 0.7073121431952686,
+            "test_macro_f1_core6": 0.6895788302225068,
+            "test_macro_roc_auc": 0.9468370746115335,
+            "test_macro_pr_auc": 0.7732346737282341,
+            "test_per_drug_f1": {
+              "RIF": 0.8491694352159468,
+              "INH": 0.7929373996789727,
+              "EMB": 0.7993393889347646,
+              "PZA": 0.6329670329670329,
+              "STM": 0.5551232166018158,
+              "LEV": 0.5079365079365079,
+              "CAP": 0.3076923076923077,
+              "ETH": 0.0,
+              "LZD": 0.026845637583892617
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.645220579545135,
+            "test_macro_f1_all9": 0.6071680634834054,
+            "val_macro_f1_core6": 0.7502382767251099,
+            "test_macro_f1_core6": 0.7255669100399227,
+            "test_macro_roc_auc": 0.9468370746115335,
+            "test_macro_pr_auc": 0.7732346737282341,
+            "test_per_drug_f1": {
+              "RIF": 0.8540685944855414,
+              "INH": 0.7964169381107492,
+              "EMB": 0.8116438356164384,
+              "PZA": 0.6372881355932203,
+              "STM": 0.6011342155009451,
+              "LEV": 0.6528497409326425,
+              "CAP": 0.8888888888888888,
+              "ETH": 0.0,
+              "LZD": 0.2222222222222222
+            }
+          }
+        }
+      ],
+      "run_info": [
+        {
+          "architecture": "gated_hybrid",
+          "best_epoch": 81,
+          "best_val_macro_f1_selection_metric": 0.6748218960329204,
+          "n_epochs_run": 141,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 137,
+              "train_loss": 0.7050614356994629,
+              "val_macro_f1": 0.5779408482855306
+            },
+            {
+              "epoch": 138,
+              "train_loss": 0.6836409568786621,
+              "val_macro_f1": 0.5505976273668138
+            },
+            {
+              "epoch": 139,
+              "train_loss": 0.6714127063751221,
+              "val_macro_f1": 0.5562246845323606
+            },
+            {
+              "epoch": 140,
+              "train_loss": 0.6306455731391907,
+              "val_macro_f1": 0.5618116917977307
+            },
+            {
+              "epoch": 141,
+              "train_loss": 0.5525354743003845,
+              "val_macro_f1": 0.5561776157247352
+            }
+          ],
+          "gate_stats": {
+            "gamma_mean": 0.9977643489837646,
+            "gamma_median": 0.9999991655349731,
+            "gamma_p05": 0.9999225735664368,
+            "gamma_p95": 1.0,
+            "fraction_above_0.9": 0.9941830635070801,
+            "interpretation": "gamma is the weight on the graph-free MLP stream; near 1.0 means the model learned to ignore the graph"
+          }
+        },
+        {
+          "architecture": "gated_hybrid",
+          "best_epoch": 112,
+          "best_val_macro_f1_selection_metric": 0.6796004405384228,
+          "n_epochs_run": 172,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 168,
+              "train_loss": 0.47156497836112976,
+              "val_macro_f1": 0.6706601305030394
+            },
+            {
+              "epoch": 169,
+              "train_loss": 0.5020207166671753,
+              "val_macro_f1": 0.6743398196637057
+            },
+            {
+              "epoch": 170,
+              "train_loss": 0.48090898990631104,
+              "val_macro_f1": 0.6665128726955362
+            },
+            {
+              "epoch": 171,
+              "train_loss": 0.45506763458251953,
+              "val_macro_f1": 0.6689860312594286
+            },
+            {
+              "epoch": 172,
+              "train_loss": 0.46064668893814087,
+              "val_macro_f1": 0.6647682320789595
+            }
+          ],
+          "gate_stats": {
+            "gamma_mean": 0.8041170239448547,
+            "gamma_median": 0.954707145690918,
+            "gamma_p05": 0.3280881345272064,
+            "gamma_p95": 1.0,
+            "fraction_above_0.9": 0.5609685182571411,
+            "interpretation": "gamma is the weight on the graph-free MLP stream; near 1.0 means the model learned to ignore the graph"
+          }
+        },
+        {
+          "architecture": "gated_hybrid",
+          "best_epoch": 101,
+          "best_val_macro_f1_selection_metric": 0.7073121431952686,
+          "n_epochs_run": 161,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 157,
+              "train_loss": 0.5124338269233704,
+              "val_macro_f1": 0.6811592117487102
+            },
+            {
+              "epoch": 158,
+              "train_loss": 0.5139477252960205,
+              "val_macro_f1": 0.6803230520778515
+            },
+            {
+              "epoch": 159,
+              "train_loss": 0.47567132115364075,
+              "val_macro_f1": 0.6813671045727054
+            },
+            {
+              "epoch": 160,
+              "train_loss": 0.8460133075714111,
+              "val_macro_f1": 0.6925423353651491
+            },
+            {
+              "epoch": 161,
+              "train_loss": 0.6200749278068542,
+              "val_macro_f1": 0.6712460822975871
+            }
+          ],
+          "gate_stats": {
+            "gamma_mean": 0.9960673451423645,
+            "gamma_median": 0.9998657703399658,
+            "gamma_p05": 0.9962210059165955,
+            "gamma_p95": 0.9999995231628418,
+            "fraction_above_0.9": 0.990838348865509,
+            "interpretation": "gamma is the weight on the graph-free MLP stream; near 1.0 means the model learned to ignore the graph"
+          }
+        }
+      ]
+    },
+    "original|genomewide|random_forest": {
+      "split": "original",
+      "protocol": "genomewide",
+      "architecture": "random_forest",
+      "n_features": 1500,
+      "seconds": 19.6,
+      "aggregate": {
+        "default_0.5": {
+          "val_macro_f1_all9": {
+            "mean": 0.4394,
+            "std": 0.001,
+            "n_seeds": 3
+          },
+          "test_macro_f1_all9": {
+            "mean": 0.4906,
+            "std": 0.0018,
+            "n_seeds": 3
+          },
+          "val_macro_f1_core6": {
+            "mean": 0.487,
+            "std": 0.0022,
+            "n_seeds": 3
+          },
+          "test_macro_f1_core6": {
+            "mean": 0.4766,
+            "std": 0.0027,
+            "n_seeds": 3
+          },
+          "test_macro_roc_auc": {
+            "mean": 0.8745,
+            "std": 0.0011,
+            "n_seeds": 3
+          },
+          "test_macro_pr_auc": {
+            "mean": 0.75,
+            "std": 0.0018,
+            "n_seeds": 3
+          }
+        },
+        "tuned": {
+          "val_macro_f1_all9": {
+            "mean": 0.5987,
+            "std": 0.0028,
+            "n_seeds": 3
+          },
+          "test_macro_f1_all9": {
+            "mean": 0.5655,
+            "std": 0.0016,
+            "n_seeds": 3
+          },
+          "val_macro_f1_core6": {
+            "mean": 0.7007,
+            "std": 0.0033,
+            "n_seeds": 3
+          },
+          "test_macro_f1_core6": {
+            "mean": 0.6766,
+            "std": 0.0024,
+            "n_seeds": 3
+          },
+          "test_macro_roc_auc": {
+            "mean": 0.8745,
+            "std": 0.0011,
+            "n_seeds": 3
+          },
+          "test_macro_pr_auc": {
+            "mean": 0.75,
+            "std": 0.0018,
+            "n_seeds": 3
+          }
+        }
+      },
+      "per_seed": [
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.43851220364546273,
+            "test_macro_f1_all9": 0.48904366991877535,
+            "val_macro_f1_core6": 0.4839791316790203,
+            "test_macro_f1_core6": 0.4743062456189036,
+            "test_macro_roc_auc": 0.8737420383614442,
+            "test_macro_pr_auc": 0.7506984856916863,
+            "test_per_drug_f1": {
+              "RIF": 0.5704918032786885,
+              "INH": 0.5091514143094842,
+              "EMB": 0.4727431312690798,
+              "PZA": 0.49428320140721194,
+              "STM": 0.32752613240418116,
+              "LEV": 0.4716417910447761,
+              "CAP": 0.8888888888888888,
+              "ETH": 0.0,
+              "LZD": 0.6666666666666666
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.6011297282348035,
+            "test_macro_f1_all9": 0.5665217236742125,
+            "val_macro_f1_core6": 0.7008768915345045,
+            "test_macro_f1_core6": 0.6779075855113188,
+            "test_macro_roc_auc": 0.8737420383614442,
+            "test_macro_pr_auc": 0.7506984856916863,
+            "test_per_drug_f1": {
+              "RIF": 0.7557471264367817,
+              "INH": 0.7052980132450332,
+              "EMB": 0.6895910780669146,
+              "PZA": 0.6759098786828422,
+              "STM": 0.5668662674650699,
+              "LEV": 0.6740331491712708,
+              "CAP": 1.0,
+              "ETH": 0.0,
+              "LZD": 0.03125
+            }
+          }
+        },
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.4407835601235789,
+            "test_macro_f1_all9": 0.48967914616831565,
+            "val_macro_f1_core6": 0.48921766822769636,
+            "test_macro_f1_core6": 0.47525945999321423,
+            "test_macro_roc_auc": 0.8737461757484477,
+            "test_macro_pr_auc": 0.7475386771357004,
+            "test_per_drug_f1": {
+              "RIF": 0.5743589743589743,
+              "INH": 0.5057947019867549,
+              "EMB": 0.47244094488188976,
+              "PZA": 0.493368700265252,
+              "STM": 0.3291139240506329,
+              "LEV": 0.4764795144157815,
+              "CAP": 0.8888888888888888,
+              "ETH": 0.0,
+              "LZD": 0.6666666666666666
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.5948591276506385,
+            "test_macro_f1_all9": 0.5632809676973216,
+            "val_macro_f1_core6": 0.6965214957087619,
+            "test_macro_f1_core6": 0.6732042798288106,
+            "test_macro_roc_auc": 0.8737461757484477,
+            "test_macro_pr_auc": 0.7475386771357004,
+            "test_per_drug_f1": {
+              "RIF": 0.7543493389004872,
+              "INH": 0.714041095890411,
+              "EMB": 0.6918819188191881,
+              "PZA": 0.6610169491525424,
+              "STM": 0.5352697095435685,
+              "LEV": 0.6826666666666666,
+              "CAP": 1.0,
+              "ETH": 0.0,
+              "LZD": 0.030303030303030304
+            }
+          }
+        },
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.43883603078313194,
+            "test_macro_f1_all9": 0.4930749598033646,
+            "val_macro_f1_core6": 0.4878836758043275,
+            "test_macro_f1_core6": 0.4803531804457877,
+            "test_macro_roc_auc": 0.8761494822809093,
+            "test_macro_pr_auc": 0.7516624425358593,
+            "test_per_drug_f1": {
+              "RIF": 0.5831164001487542,
+              "INH": 0.5113160100586757,
+              "EMB": 0.47530864197530864,
+              "PZA": 0.5080789946140036,
+              "STM": 0.3298245614035088,
+              "LEV": 0.4744744744744745,
+              "CAP": 0.8888888888888888,
+              "ETH": 0.0,
+              "LZD": 0.6666666666666666
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.6002603696591127,
+            "test_macro_f1_all9": 0.5666525730417974,
+            "val_macro_f1_core6": 0.7046233587214731,
+            "test_macro_f1_core6": 0.6785502881341245,
+            "test_macro_roc_auc": 0.8761494822809093,
+            "test_macro_pr_auc": 0.7516624425358593,
+            "test_per_drug_f1": {
+              "RIF": 0.7518900343642612,
+              "INH": 0.7227191413237924,
+              "EMB": 0.6955719557195572,
+              "PZA": 0.6690140845070423,
+              "STM": 0.5559701492537313,
+              "LEV": 0.6761363636363636,
+              "CAP": 1.0,
+              "ETH": 0.0,
+              "LZD": 0.02857142857142857
+            }
+          }
+        }
+      ],
+      "run_info": [
+        {
+          "architecture": "random_forest"
+        },
+        {
+          "architecture": "random_forest"
+        },
+        {
+          "architecture": "random_forest"
+        }
+      ]
+    },
+    "phylo_clade|catalogue|mlp_only": {
+      "split": "phylo_clade",
+      "protocol": "catalogue",
+      "architecture": "mlp_only",
+      "n_features": 157,
+      "seconds": 80.8,
+      "aggregate": {
+        "default_0.5": {
+          "val_macro_f1_all9": {
+            "mean": 0.7237,
+            "std": 0.0022,
+            "n_seeds": 3
+          },
+          "test_macro_f1_all9": {
+            "mean": 0.7104,
+            "std": 0.0428,
+            "n_seeds": 3
+          },
+          "val_macro_f1_core6": {
+            "mean": 0.9188,
+            "std": 0.0033,
+            "n_seeds": 3
+          },
+          "test_macro_f1_core6": {
+            "mean": 0.9322,
+            "std": 0.0171,
+            "n_seeds": 3
+          },
+          "test_macro_roc_auc": {
+            "mean": 0.9943,
+            "std": 0.0006,
+            "n_seeds": 3
+          },
+          "test_macro_pr_auc": {
+            "mean": 0.9771,
+            "std": 0.0031,
+            "n_seeds": 3
+          }
+        },
+        "tuned": {
+          "val_macro_f1_all9": {
+            "mean": 0.7378,
+            "std": 0.0032,
+            "n_seeds": 3
+          },
+          "test_macro_f1_all9": {
+            "mean": 0.7104,
+            "std": 0.0069,
+            "n_seeds": 3
+          },
+          "val_macro_f1_core6": {
+            "mean": 0.9401,
+            "std": 0.0048,
+            "n_seeds": 3
+          },
+          "test_macro_f1_core6": {
+            "mean": 0.899,
+            "std": 0.0104,
+            "n_seeds": 3
+          },
+          "test_macro_roc_auc": {
+            "mean": 0.9943,
+            "std": 0.0006,
+            "n_seeds": 3
+          },
+          "test_macro_pr_auc": {
+            "mean": 0.9771,
+            "std": 0.0031,
+            "n_seeds": 3
+          }
+        }
+      },
+      "per_seed": [
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.7267098174998339,
+            "test_macro_f1_all9": 0.6498726746624428,
+            "val_macro_f1_core6": 0.9233980595830841,
+            "test_macro_f1_core6": 0.9081423453269974,
+            "test_macro_roc_auc": 0.9935783818645333,
+            "test_macro_pr_auc": 0.9729649363142702,
+            "test_per_drug_f1": {
+              "RIF": 0.9745042492917847,
+              "INH": 0.9989258861439313,
+              "EMB": 0.9896602658788775,
+              "PZA": 0.722972972972973,
+              "STM": 0.7627906976744186,
+              "LEV": 1.0,
+              "CAP": 0.4,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.7423856583488576,
+            "test_macro_f1_all9": 0.715667659969693,
+            "val_macro_f1_core6": 0.9469118208566197,
+            "test_macro_f1_core6": 0.9068348232878728,
+            "test_macro_roc_auc": 0.9935783818645333,
+            "test_macro_pr_auc": 0.9729649363142702,
+            "test_per_drug_f1": {
+              "RIF": 0.9762773722627737,
+              "INH": 0.9978494623655914,
+              "EMB": 0.9898107714701602,
+              "PZA": 0.722972972972973,
+              "STM": 0.7540983606557377,
+              "LEV": 1.0,
+              "CAP": 1.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          }
+        },
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.7217075809574668,
+            "test_macro_f1_all9": 0.7413700981525829,
+            "val_macro_f1_core6": 0.9158947047695335,
+            "test_macro_f1_core6": 0.9453884805622077,
+            "test_macro_roc_auc": 0.9943257141146242,
+            "test_macro_pr_auc": 0.977828966469381,
+            "test_per_drug_f1": {
+              "RIF": 0.9916589434661723,
+              "INH": 0.9989258861439313,
+              "EMB": 0.9911504424778761,
+              "PZA": 0.9181818181818182,
+              "STM": 0.7724137931034483,
+              "LEV": 1.0,
+              "CAP": 1.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.7353010814001707,
+            "test_macro_f1_all9": 0.700627685529432,
+            "val_macro_f1_core6": 0.9362849554335896,
+            "test_macro_f1_core6": 0.8842748616274813,
+            "test_macro_roc_auc": 0.9943257141146242,
+            "test_macro_pr_auc": 0.977828966469381,
+            "test_per_drug_f1": {
+              "RIF": 0.9898242368177613,
+              "INH": 0.9989258861439313,
+              "EMB": 0.9912280701754386,
+              "PZA": 0.576530612244898,
+              "STM": 0.7713625866050808,
+              "LEV": 0.9777777777777777,
+              "CAP": 1.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          }
+        },
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.722613824874551,
+            "test_macro_f1_all9": 0.7399233049133381,
+            "val_macro_f1_core6": 0.9172540706451597,
+            "test_macro_f1_core6": 0.9432182907033405,
+            "test_macro_roc_auc": 0.9949545512200582,
+            "test_macro_pr_auc": 0.9804124761332439,
+            "test_per_drug_f1": {
+              "RIF": 0.9925788497217068,
+              "INH": 0.9989258861439313,
+              "EMB": 0.9985272459499264,
+              "PZA": 0.908256880733945,
+              "STM": 0.7610208816705336,
+              "LEV": 1.0,
+              "CAP": 1.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.7358334217227045,
+            "test_macro_f1_all9": 0.7149865498247651,
+            "val_macro_f1_core6": 0.93708346591739,
+            "test_macro_f1_core6": 0.9058131580704808,
+            "test_macro_roc_auc": 0.9949545512200582,
+            "test_macro_pr_auc": 0.9804124761332439,
+            "test_per_drug_f1": {
+              "RIF": 0.9907407407407407,
+              "INH": 0.9989258861439313,
+              "EMB": 0.9955686853766618,
+              "PZA": 0.688622754491018,
+              "STM": 0.7610208816705336,
+              "LEV": 1.0,
+              "CAP": 1.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          }
+        }
+      ],
+      "run_info": [
+        {
+          "architecture": "mlp_only",
+          "best_epoch": 159,
+          "best_val_macro_f1_selection_metric": 0.9233980595830841,
+          "n_epochs_run": 219,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 215,
+              "train_loss": 0.032617248594760895,
+              "val_macro_f1": 0.9060622421004375
+            },
+            {
+              "epoch": 216,
+              "train_loss": 0.040750060230493546,
+              "val_macro_f1": 0.9058904387114685
+            },
+            {
+              "epoch": 217,
+              "train_loss": 0.03284084424376488,
+              "val_macro_f1": 0.9068020948952719
+            },
+            {
+              "epoch": 218,
+              "train_loss": 0.037990301847457886,
+              "val_macro_f1": 0.9049877160431806
+            },
+            {
+              "epoch": 219,
+              "train_loss": 0.03552309051156044,
+              "val_macro_f1": 0.9053267736139424
+            }
+          ]
+        },
+        {
+          "architecture": "mlp_only",
+          "best_epoch": 164,
+          "best_val_macro_f1_selection_metric": 0.9158947047695335,
+          "n_epochs_run": 224,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 220,
+              "train_loss": 0.026623664423823357,
+              "val_macro_f1": 0.9121619040352055
+            },
+            {
+              "epoch": 221,
+              "train_loss": 0.026103312149643898,
+              "val_macro_f1": 0.9133155365357437
+            },
+            {
+              "epoch": 222,
+              "train_loss": 0.026058554649353027,
+              "val_macro_f1": 0.9128758720335792
+            },
+            {
+              "epoch": 223,
+              "train_loss": 0.025589946657419205,
+              "val_macro_f1": 0.9127395243782105
+            },
+            {
+              "epoch": 224,
+              "train_loss": 0.024235481396317482,
+              "val_macro_f1": 0.914528044113916
+            }
+          ]
+        },
+        {
+          "architecture": "mlp_only",
+          "best_epoch": 291,
+          "best_val_macro_f1_selection_metric": 0.9172540706451597,
+          "n_epochs_run": 300,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 296,
+              "train_loss": 0.026474984362721443,
+              "val_macro_f1": 0.9037607139452665
+            },
+            {
+              "epoch": 297,
+              "train_loss": 0.024539710953831673,
+              "val_macro_f1": 0.9014205576530675
+            },
+            {
+              "epoch": 298,
+              "train_loss": 0.025576945394277573,
+              "val_macro_f1": 0.913198331487469
+            },
+            {
+              "epoch": 299,
+              "train_loss": 0.02574518509209156,
+              "val_macro_f1": 0.9119952555148472
+            },
+            {
+              "epoch": 300,
+              "train_loss": 0.02433507703244686,
+              "val_macro_f1": 0.9145204743651524
+            }
+          ]
+        }
+      ]
+    },
+    "phylo_clade|catalogue|gcn_skip": {
+      "split": "phylo_clade",
+      "protocol": "catalogue",
+      "architecture": "gcn_skip",
+      "n_features": 157,
+      "seconds": 501.5,
+      "aggregate": {
+        "default_0.5": {
+          "val_macro_f1_all9": {
+            "mean": 0.6604,
+            "std": 0.0055,
+            "n_seeds": 3
+          },
+          "test_macro_f1_all9": {
+            "mean": 0.5348,
+            "std": 0.0059,
+            "n_seeds": 3
+          },
+          "val_macro_f1_core6": {
+            "mean": 0.8239,
+            "std": 0.0083,
+            "n_seeds": 3
+          },
+          "test_macro_f1_core6": {
+            "mean": 0.8022,
+            "std": 0.0089,
+            "n_seeds": 3
+          },
+          "test_macro_roc_auc": {
+            "mean": 0.9697,
+            "std": 0.0019,
+            "n_seeds": 3
+          },
+          "test_macro_pr_auc": {
+            "mean": 0.7339,
+            "std": 0.0025,
+            "n_seeds": 3
+          }
+        },
+        "tuned": {
+          "val_macro_f1_all9": {
+            "mean": 0.6841,
+            "std": 0.0031,
+            "n_seeds": 3
+          },
+          "test_macro_f1_all9": {
+            "mean": 0.5083,
+            "std": 0.0009,
+            "n_seeds": 3
+          },
+          "val_macro_f1_core6": {
+            "mean": 0.8594,
+            "std": 0.0046,
+            "n_seeds": 3
+          },
+          "test_macro_f1_core6": {
+            "mean": 0.7625,
+            "std": 0.0013,
+            "n_seeds": 3
+          },
+          "test_macro_roc_auc": {
+            "mean": 0.9697,
+            "std": 0.0019,
+            "n_seeds": 3
+          },
+          "test_macro_pr_auc": {
+            "mean": 0.7339,
+            "std": 0.0025,
+            "n_seeds": 3
+          }
+        }
+      },
+      "per_seed": [
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.6607293262382714,
+            "test_macro_f1_all9": 0.5427127429745825,
+            "val_macro_f1_core6": 0.8244273226907405,
+            "test_macro_f1_core6": 0.8140691144618737,
+            "test_macro_roc_auc": 0.9702239916365014,
+            "test_macro_pr_auc": 0.7365614942869438,
+            "test_per_drug_f1": {
+              "RIF": 0.949343339587242,
+              "INH": 0.983991462113127,
+              "EMB": 0.8632707774798928,
+              "PZA": 0.46557377049180326,
+              "STM": 0.6797066014669927,
+              "LEV": 0.9425287356321839,
+              "CAP": 0.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.6866830283891866,
+            "test_macro_f1_all9": 0.5095559824643899,
+            "val_macro_f1_core6": 0.8633578759171131,
+            "test_macro_f1_core6": 0.7643339736965848,
+            "test_macro_roc_auc": 0.9702239916365014,
+            "test_macro_pr_auc": 0.7365614942869438,
+            "test_per_drug_f1": {
+              "RIF": 0.9308176100628931,
+              "INH": 0.9287863590772317,
+              "EMB": 0.8939393939393939,
+              "PZA": 0.42769857433808556,
+              "STM": 0.6714285714285714,
+              "LEV": 0.7333333333333333,
+              "CAP": 0.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          }
+        },
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.6669473016785548,
+            "test_macro_f1_all9": 0.5331656079823076,
+            "val_macro_f1_core6": 0.8337542858511654,
+            "test_macro_f1_core6": 0.7997484119734614,
+            "test_macro_roc_auc": 0.9670745877398276,
+            "test_macro_pr_auc": 0.7345997201165615,
+            "test_per_drug_f1": {
+              "RIF": 0.9461756373937678,
+              "INH": 0.9787234042553191,
+              "EMB": 0.8594377510040161,
+              "PZA": 0.4573170731707317,
+              "STM": 0.6557377049180327,
+              "LEV": 0.9010989010989011,
+              "CAP": 0.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.6857125537840023,
+            "test_macro_f1_all9": 0.5078314307340206,
+            "val_macro_f1_core6": 0.8619021640093368,
+            "test_macro_f1_core6": 0.7617471461010309,
+            "test_macro_roc_auc": 0.9670745877398276,
+            "test_macro_pr_auc": 0.7345997201165615,
+            "test_per_drug_f1": {
+              "RIF": 0.9199288256227758,
+              "INH": 0.9818569903948773,
+              "EMB": 0.8941877794336811,
+              "PZA": 0.3964285714285714,
+              "STM": 0.6430379746835443,
+              "LEV": 0.7350427350427351,
+              "CAP": 0.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          }
+        },
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.6534288748514397,
+            "test_macro_f1_all9": 0.5284957307433051,
+            "val_macro_f1_core6": 0.813476645610493,
+            "test_macro_f1_core6": 0.7927435961149577,
+            "test_macro_roc_auc": 0.9716638147505947,
+            "test_macro_pr_auc": 0.7304749592935699,
+            "test_per_drug_f1": {
+              "RIF": 0.9397590361445783,
+              "INH": 0.9325153374233128,
+              "EMB": 0.8518024032042724,
+              "PZA": 0.46206896551724136,
+              "STM": 0.6384976525821596,
+              "LEV": 0.9318181818181818,
+              "CAP": 0.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.6797706306737824,
+            "test_macro_f1_all9": 0.507564925951628,
+            "val_macro_f1_core6": 0.8529892793440069,
+            "test_macro_f1_core6": 0.7613473889274421,
+            "test_macro_roc_auc": 0.9716638147505947,
+            "test_macro_pr_auc": 0.7304749592935699,
+            "test_per_drug_f1": {
+              "RIF": 0.9245960502692998,
+              "INH": 0.9298067141403866,
+              "EMB": 0.8854961832061069,
+              "PZA": 0.4014732965009208,
+              "STM": 0.6342592592592593,
+              "LEV": 0.7924528301886793,
+              "CAP": 0.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          }
+        }
+      ],
+      "run_info": [
+        {
+          "architecture": "gcn_skip",
+          "best_epoch": 226,
+          "best_val_macro_f1_selection_metric": 0.8244273226907405,
+          "n_epochs_run": 286,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 282,
+              "train_loss": 0.11154451221227646,
+              "val_macro_f1": 0.7781954087470547
+            },
+            {
+              "epoch": 283,
+              "train_loss": 0.11203749477863312,
+              "val_macro_f1": 0.7631078820657747
+            },
+            {
+              "epoch": 284,
+              "train_loss": 0.11071611940860748,
+              "val_macro_f1": 0.7806351231537763
+            },
+            {
+              "epoch": 285,
+              "train_loss": 0.11277572065591812,
+              "val_macro_f1": 0.7692085991289401
+            },
+            {
+              "epoch": 286,
+              "train_loss": 0.11113827675580978,
+              "val_macro_f1": 0.7675094514226307
+            }
+          ]
+        },
+        {
+          "architecture": "gcn_skip",
+          "best_epoch": 179,
+          "best_val_macro_f1_selection_metric": 0.8337542858511654,
+          "n_epochs_run": 239,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 235,
+              "train_loss": 0.11294881254434586,
+              "val_macro_f1": 0.7881728100449487
+            },
+            {
+              "epoch": 236,
+              "train_loss": 0.11180547624826431,
+              "val_macro_f1": 0.768991337591406
+            },
+            {
+              "epoch": 237,
+              "train_loss": 0.11335139721632004,
+              "val_macro_f1": 0.7851429637008366
+            },
+            {
+              "epoch": 238,
+              "train_loss": 0.11169636249542236,
+              "val_macro_f1": 0.7882339778802256
+            },
+            {
+              "epoch": 239,
+              "train_loss": 0.11225670576095581,
+              "val_macro_f1": 0.7674417617400411
+            }
+          ]
+        },
+        {
+          "architecture": "gcn_skip",
+          "best_epoch": 95,
+          "best_val_macro_f1_selection_metric": 0.813476645610493,
+          "n_epochs_run": 155,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 151,
+              "train_loss": 0.11896230280399323,
+              "val_macro_f1": 0.7739355236958207
+            },
+            {
+              "epoch": 152,
+              "train_loss": 0.11802978068590164,
+              "val_macro_f1": 0.7586358426225127
+            },
+            {
+              "epoch": 153,
+              "train_loss": 0.11832810938358307,
+              "val_macro_f1": 0.7916036244132006
+            },
+            {
+              "epoch": 154,
+              "train_loss": 0.11947465687990189,
+              "val_macro_f1": 0.7699683160262144
+            },
+            {
+              "epoch": 155,
+              "train_loss": 0.11595558375120163,
+              "val_macro_f1": 0.7631915085491122
+            }
+          ]
+        }
+      ]
+    },
+    "phylo_clade|catalogue|gatv2": {
+      "split": "phylo_clade",
+      "protocol": "catalogue",
+      "architecture": "gatv2",
+      "n_features": 157,
+      "seconds": 6850.6,
+      "aggregate": {
+        "default_0.5": {
+          "val_macro_f1_all9": {
+            "mean": 0.6296,
+            "std": 0.0099,
+            "n_seeds": 3
+          },
+          "test_macro_f1_all9": {
+            "mean": 0.4916,
+            "std": 0.0004,
+            "n_seeds": 3
+          },
+          "val_macro_f1_core6": {
+            "mean": 0.7777,
+            "std": 0.0148,
+            "n_seeds": 3
+          },
+          "test_macro_f1_core6": {
+            "mean": 0.7374,
+            "std": 0.0006,
+            "n_seeds": 3
+          },
+          "test_macro_roc_auc": {
+            "mean": 0.9651,
+            "std": 0.0068,
+            "n_seeds": 3
+          },
+          "test_macro_pr_auc": {
+            "mean": 0.7576,
+            "std": 0.0736,
+            "n_seeds": 3
+          }
+        },
+        "tuned": {
+          "val_macro_f1_all9": {
+            "mean": 0.6549,
+            "std": 0.0073,
+            "n_seeds": 3
+          },
+          "test_macro_f1_all9": {
+            "mean": 0.4896,
+            "std": 0.0177,
+            "n_seeds": 3
+          },
+          "val_macro_f1_core6": {
+            "mean": 0.8157,
+            "std": 0.0109,
+            "n_seeds": 3
+          },
+          "test_macro_f1_core6": {
+            "mean": 0.7344,
+            "std": 0.0265,
+            "n_seeds": 3
+          },
+          "test_macro_roc_auc": {
+            "mean": 0.9651,
+            "std": 0.0068,
+            "n_seeds": 3
+          },
+          "test_macro_pr_auc": {
+            "mean": 0.7576,
+            "std": 0.0736,
+            "n_seeds": 3
+          }
+        }
+      },
+      "per_seed": [
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.6225084430219318,
+            "test_macro_f1_all9": 0.4914999671064149,
+            "val_macro_f1_core6": 0.7670959978662308,
+            "test_macro_f1_core6": 0.7372499506596223,
+            "test_macro_roc_auc": 0.9561591252720986,
+            "test_macro_pr_auc": 0.6997494795815308,
+            "test_per_drug_f1": {
+              "RIF": 0.9229323308270677,
+              "INH": 0.8436018957345972,
+              "EMB": 0.8354755784061697,
+              "PZA": 0.41454545454545455,
+              "STM": 0.6736111111111112,
+              "LEV": 0.7333333333333333,
+              "CAP": 0.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.647611007266785,
+            "test_macro_f1_all9": 0.48138739701940003,
+            "val_macro_f1_core6": 0.8047498442335111,
+            "test_macro_f1_core6": 0.7220810955291003,
+            "test_macro_roc_auc": 0.9561591252720986,
+            "test_macro_pr_auc": 0.6997494795815308,
+            "test_per_drug_f1": {
+              "RIF": 0.9229323308270677,
+              "INH": 0.8568627450980392,
+              "EMB": 0.8648648648648649,
+              "PZA": 0.35714285714285715,
+              "STM": 0.6510721247563352,
+              "LEV": 0.6796116504854369,
+              "CAP": 0.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          }
+        },
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.6226689488945837,
+            "test_macro_f1_all9": 0.4912378303991447,
+            "val_macro_f1_core6": 0.7673367566752088,
+            "test_macro_f1_core6": 0.7368567455987173,
+            "test_macro_roc_auc": 0.9666163331569125,
+            "test_macro_pr_auc": 0.711712240272714,
+            "test_per_drug_f1": {
+              "RIF": 0.9229374433363554,
+              "INH": 0.8877654196157735,
+              "EMB": 0.8262548262548263,
+              "PZA": 0.43448275862068964,
+              "STM": 0.5576208178438662,
+              "LEV": 0.7920792079207921,
+              "CAP": 0.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.6523202944249172,
+            "test_macro_f1_all9": 0.4733127468193167,
+            "val_macro_f1_core6": 0.8118137749707092,
+            "test_macro_f1_core6": 0.709969120228975,
+            "test_macro_roc_auc": 0.9666163331569125,
+            "test_macro_pr_auc": 0.711712240272714,
+            "test_per_drug_f1": {
+              "RIF": 0.9162916291629163,
+              "INH": 0.8923395445134575,
+              "EMB": 0.8362183754993342,
+              "PZA": 0.37398373983739835,
+              "STM": 0.5948275862068966,
+              "LEV": 0.6461538461538462,
+              "CAP": 0.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          }
+        },
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.6435823786939996,
+            "test_macro_f1_all9": 0.49215644627734734,
+            "val_macro_f1_core6": 0.7987069013743326,
+            "test_macro_f1_core6": 0.738234669416021,
+            "test_macro_roc_auc": 0.9725350032345922,
+            "test_macro_pr_auc": 0.8614839549333189,
+            "test_per_drug_f1": {
+              "RIF": 0.9333333333333333,
+              "INH": 0.9237029501525941,
+              "EMB": 0.8519480519480519,
+              "PZA": 0.4244031830238727,
+              "STM": 0.6003683241252302,
+              "LEV": 0.6956521739130435,
+              "CAP": 0.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.6648356498615585,
+            "test_macro_f1_all9": 0.5141804153845494,
+            "val_macro_f1_core6": 0.8305868081256712,
+            "test_macro_f1_core6": 0.7712706230768241,
+            "test_macro_roc_auc": 0.9725350032345922,
+            "test_macro_pr_auc": 0.8614839549333189,
+            "test_per_drug_f1": {
+              "RIF": 0.9347014925373134,
+              "INH": 0.9376299376299376,
+              "EMB": 0.9010654490106544,
+              "PZA": 0.4166666666666667,
+              "STM": 0.6285714285714286,
+              "LEV": 0.8089887640449438,
+              "CAP": 0.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          }
+        }
+      ],
+      "run_info": [
+        {
+          "architecture": "gatv2",
+          "best_epoch": 54,
+          "best_val_macro_f1_selection_metric": 0.7670959978662308,
+          "n_epochs_run": 114,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 110,
+              "train_loss": 0.10982974618673325,
+              "val_macro_f1": 0.7253367739914771
+            },
+            {
+              "epoch": 111,
+              "train_loss": 0.10865610837936401,
+              "val_macro_f1": 0.7392720795105711
+            },
+            {
+              "epoch": 112,
+              "train_loss": 0.10969202220439911,
+              "val_macro_f1": 0.7308851704914118
+            },
+            {
+              "epoch": 113,
+              "train_loss": 0.1118302196264267,
+              "val_macro_f1": 0.7285545995885925
+            },
+            {
+              "epoch": 114,
+              "train_loss": 0.10878118127584457,
+              "val_macro_f1": 0.7332758230908173
+            }
+          ]
+        },
+        {
+          "architecture": "gatv2",
+          "best_epoch": 48,
+          "best_val_macro_f1_selection_metric": 0.7673367566752088,
+          "n_epochs_run": 108,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 104,
+              "train_loss": 0.11000938713550568,
+              "val_macro_f1": 0.7413446425067356
+            },
+            {
+              "epoch": 105,
+              "train_loss": 0.10953737050294876,
+              "val_macro_f1": 0.7392535309690528
+            },
+            {
+              "epoch": 106,
+              "train_loss": 0.11071809381246567,
+              "val_macro_f1": 0.7306092332735677
+            },
+            {
+              "epoch": 107,
+              "train_loss": 0.11025143414735794,
+              "val_macro_f1": 0.7310081788851285
+            },
+            {
+              "epoch": 108,
+              "train_loss": 0.10998677462339401,
+              "val_macro_f1": 0.7434317225510343
+            }
+          ]
+        },
+        {
+          "architecture": "gatv2",
+          "best_epoch": 99,
+          "best_val_macro_f1_selection_metric": 0.7987069013743326,
+          "n_epochs_run": 159,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 155,
+              "train_loss": 0.10197635740041733,
+              "val_macro_f1": 0.7408972303822171
+            },
+            {
+              "epoch": 156,
+              "train_loss": 0.10059129446744919,
+              "val_macro_f1": 0.7472665132829656
+            },
+            {
+              "epoch": 157,
+              "train_loss": 0.10221540182828903,
+              "val_macro_f1": 0.7412546236955304
+            },
+            {
+              "epoch": 158,
+              "train_loss": 0.09994600713253021,
+              "val_macro_f1": 0.7442661080949488
+            },
+            {
+              "epoch": 159,
+              "train_loss": 0.09903836250305176,
+              "val_macro_f1": 0.7441058629377846
+            }
+          ]
+        }
+      ]
+    },
+    "phylo_clade|catalogue|gated_hybrid": {
+      "split": "phylo_clade",
+      "protocol": "catalogue",
+      "architecture": "gated_hybrid",
+      "n_features": 157,
+      "seconds": 209.0,
+      "aggregate": {
+        "default_0.5": {
+          "val_macro_f1_all9": {
+            "mean": 0.7197,
+            "std": 0.0063,
+            "n_seeds": 3
+          },
+          "test_macro_f1_all9": {
+            "mean": 0.6424,
+            "std": 0.0661,
+            "n_seeds": 3
+          },
+          "val_macro_f1_core6": {
+            "mean": 0.9129,
+            "std": 0.0095,
+            "n_seeds": 3
+          },
+          "test_macro_f1_core6": {
+            "mean": 0.908,
+            "std": 0.033,
+            "n_seeds": 3
+          },
+          "test_macro_roc_auc": {
+            "mean": 0.9903,
+            "std": 0.0069,
+            "n_seeds": 3
+          },
+          "test_macro_pr_auc": {
+            "mean": 0.9648,
+            "std": 0.0216,
+            "n_seeds": 3
+          }
+        },
+        "tuned": {
+          "val_macro_f1_all9": {
+            "mean": 0.7328,
+            "std": 0.0105,
+            "n_seeds": 3
+          },
+          "test_macro_f1_all9": {
+            "mean": 0.5996,
+            "std": 0.0148,
+            "n_seeds": 3
+          },
+          "val_macro_f1_core6": {
+            "mean": 0.9325,
+            "std": 0.0157,
+            "n_seeds": 3
+          },
+          "test_macro_f1_core6": {
+            "mean": 0.8993,
+            "std": 0.0222,
+            "n_seeds": 3
+          },
+          "test_macro_roc_auc": {
+            "mean": 0.9903,
+            "std": 0.0069,
+            "n_seeds": 3
+          },
+          "test_macro_pr_auc": {
+            "mean": 0.9648,
+            "std": 0.0216,
+            "n_seeds": 3
+          }
+        }
+      },
+      "per_seed": [
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.7252599742623713,
+            "test_macro_f1_all9": 0.6209377653050792,
+            "val_macro_f1_core6": 0.9212232947268904,
+            "test_macro_f1_core6": 0.9314066479576187,
+            "test_macro_roc_auc": 0.9952035314847787,
+            "test_macro_pr_auc": 0.9810148217042566,
+            "test_per_drug_f1": {
+              "RIF": 0.9834558823529411,
+              "INH": 0.9978494623655914,
+              "EMB": 0.9911504424778761,
+              "PZA": 0.8446215139442231,
+              "STM": 0.7713625866050808,
+              "LEV": 1.0,
+              "CAP": 0.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.7432314603744209,
+            "test_macro_f1_all9": 0.6137484313612096,
+            "val_macro_f1_core6": 0.9481805238949647,
+            "test_macro_f1_core6": 0.9206226470418145,
+            "test_macro_roc_auc": 0.9952035314847787,
+            "test_macro_pr_auc": 0.9810148217042566,
+            "test_per_drug_f1": {
+              "RIF": 0.9834558823529411,
+              "INH": 0.9978494623655914,
+              "EMB": 0.9926362297496318,
+              "PZA": 0.7870036101083032,
+              "STM": 0.7627906976744186,
+              "LEV": 1.0,
+              "CAP": 0.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          }
+        },
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.7230035309301359,
+            "test_macro_f1_all9": 0.7319289114368858,
+            "val_macro_f1_core6": 0.9178386297285371,
+            "test_macro_f1_core6": 0.9312267004886619,
+            "test_macro_roc_auc": 0.9951847115490088,
+            "test_macro_pr_auc": 0.9791928403652719,
+            "test_per_drug_f1": {
+              "RIF": 0.9859943977591037,
+              "INH": 0.9989258861439313,
+              "EMB": 0.9805097451274363,
+              "PZA": 0.8477366255144033,
+              "STM": 0.7741935483870968,
+              "LEV": 1.0,
+              "CAP": 1.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.7366417359704643,
+            "test_macro_f1_all9": 0.6057602261898342,
+            "val_macro_f1_core6": 0.93829593728903,
+            "test_macro_f1_core6": 0.9086403392847514,
+            "test_macro_roc_auc": 0.9951847115490088,
+            "test_macro_pr_auc": 0.9791928403652719,
+            "test_per_drug_f1": {
+              "RIF": 0.9859943977591037,
+              "INH": 0.9989258861439313,
+              "EMB": 0.9925925925925926,
+              "PZA": 0.7115384615384616,
+              "STM": 0.7627906976744186,
+              "LEV": 1.0,
+              "CAP": 0.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          }
+        },
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.710809051132001,
+            "test_macro_f1_all9": 0.5742472594727597,
+            "val_macro_f1_core6": 0.8995469100313347,
+            "test_macro_f1_core6": 0.8613708892091395,
+            "test_macro_roc_auc": 0.9806131708638316,
+            "test_macro_pr_auc": 0.9342802526812276,
+            "test_per_drug_f1": {
+              "RIF": 0.969807868252516,
+              "INH": 0.9967845659163987,
+              "EMB": 0.9062937062937063,
+              "PZA": 0.5555555555555556,
+              "STM": 0.7713625866050808,
+              "LEV": 0.968421052631579,
+              "CAP": 0.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.718432862006599,
+            "test_macro_f1_all9": 0.5791459421039711,
+            "val_macro_f1_core6": 0.9109826263432318,
+            "test_macro_f1_core6": 0.8687189131559566,
+            "test_macro_roc_auc": 0.9806131708638316,
+            "test_macro_pr_auc": 0.9342802526812276,
+            "test_per_drug_f1": {
+              "RIF": 0.9707495429616088,
+              "INH": 0.9957173447537473,
+              "EMB": 0.9345794392523364,
+              "PZA": 0.5484764542936288,
+              "STM": 0.7627906976744186,
+              "LEV": 1.0,
+              "CAP": 0.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          }
+        }
+      ],
+      "run_info": [
+        {
+          "architecture": "gated_hybrid",
+          "best_epoch": 181,
+          "best_val_macro_f1_selection_metric": 0.9212232947268904,
+          "n_epochs_run": 241,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 237,
+              "train_loss": 0.025300435721874237,
+              "val_macro_f1": 0.912168419644057
+            },
+            {
+              "epoch": 238,
+              "train_loss": 0.02622211165726185,
+              "val_macro_f1": 0.9125111107056109
+            },
+            {
+              "epoch": 239,
+              "train_loss": 0.039330579340457916,
+              "val_macro_f1": 0.9130025148854829
+            },
+            {
+              "epoch": 240,
+              "train_loss": 0.037330787628889084,
+              "val_macro_f1": 0.9113773696737727
+            },
+            {
+              "epoch": 241,
+              "train_loss": 0.03743091970682144,
+              "val_macro_f1": 0.8990730698933267
+            }
+          ],
+          "gate_stats": {
+            "gamma_mean": 0.8211973905563354,
+            "gamma_median": 0.7583666443824768,
+            "gamma_p05": 0.7583666443824768,
+            "gamma_p95": 0.9593673944473267,
+            "fraction_above_0.9": 0.29898932576179504,
+            "interpretation": "gamma is the weight on the graph-free MLP stream; near 1.0 means the model learned to ignore the graph"
+          }
+        },
+        {
+          "architecture": "gated_hybrid",
+          "best_epoch": 155,
+          "best_val_macro_f1_selection_metric": 0.9178386297285371,
+          "n_epochs_run": 215,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 211,
+              "train_loss": 0.02927948161959648,
+              "val_macro_f1": 0.912255768494247
+            },
+            {
+              "epoch": 212,
+              "train_loss": 0.027908997610211372,
+              "val_macro_f1": 0.9100914194165098
+            },
+            {
+              "epoch": 213,
+              "train_loss": 0.026800934225320816,
+              "val_macro_f1": 0.9106717837952178
+            },
+            {
+              "epoch": 214,
+              "train_loss": 0.02758854068815708,
+              "val_macro_f1": 0.9119576572784122
+            },
+            {
+              "epoch": 215,
+              "train_loss": 0.02689836546778679,
+              "val_macro_f1": 0.9116132186353779
+            }
+          ],
+          "gate_stats": {
+            "gamma_mean": 0.88625168800354,
+            "gamma_median": 0.8555177450180054,
+            "gamma_p05": 0.8555177450180054,
+            "gamma_p95": 0.9666175842285156,
+            "fraction_above_0.9": 0.3350541591644287,
+            "interpretation": "gamma is the weight on the graph-free MLP stream; near 1.0 means the model learned to ignore the graph"
+          }
+        },
+        {
+          "architecture": "gated_hybrid",
+          "best_epoch": 39,
+          "best_val_macro_f1_selection_metric": 0.8995469100313347,
+          "n_epochs_run": 99,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 95,
+              "train_loss": 0.043181244283914566,
+              "val_macro_f1": 0.8969992803315813
+            },
+            {
+              "epoch": 96,
+              "train_loss": 0.04126109555363655,
+              "val_macro_f1": 0.8947851429238782
+            },
+            {
+              "epoch": 97,
+              "train_loss": 0.04122335463762283,
+              "val_macro_f1": 0.8901077762751456
+            },
+            {
+              "epoch": 98,
+              "train_loss": 0.03977571427822113,
+              "val_macro_f1": 0.8834941462637719
+            },
+            {
+              "epoch": 99,
+              "train_loss": 0.03842442110180855,
+              "val_macro_f1": 0.8864057278666436
+            }
+          ],
+          "gate_stats": {
+            "gamma_mean": 0.6151641607284546,
+            "gamma_median": 0.5880123972892761,
+            "gamma_p05": 0.5880123972892761,
+            "gamma_p95": 0.7256191372871399,
+            "fraction_above_0.9": 0.00014542281860485673,
+            "interpretation": "gamma is the weight on the graph-free MLP stream; near 1.0 means the model learned to ignore the graph"
+          }
+        }
+      ]
+    },
+    "phylo_clade|catalogue|random_forest": {
+      "split": "phylo_clade",
+      "protocol": "catalogue",
+      "architecture": "random_forest",
+      "n_features": 157,
+      "seconds": 7.2,
+      "aggregate": {
+        "default_0.5": {
+          "val_macro_f1_all9": {
+            "mean": 0.6189,
+            "std": 0.0011,
+            "n_seeds": 3
+          },
+          "test_macro_f1_all9": {
+            "mean": 0.6123,
+            "std": 0.003,
+            "n_seeds": 3
+          },
+          "val_macro_f1_core6": {
+            "mean": 0.7617,
+            "std": 0.0016,
+            "n_seeds": 3
+          },
+          "test_macro_f1_core6": {
+            "mean": 0.7518,
+            "std": 0.0046,
+            "n_seeds": 3
+          },
+          "test_macro_roc_auc": {
+            "mean": 0.9762,
+            "std": 0.0014,
+            "n_seeds": 3
+          },
+          "test_macro_pr_auc": {
+            "mean": 0.8823,
+            "std": 0.0027,
+            "n_seeds": 3
+          }
+        },
+        "tuned": {
+          "val_macro_f1_all9": {
+            "mean": 0.6999,
+            "std": 0.0019,
+            "n_seeds": 3
+          },
+          "test_macro_f1_all9": {
+            "mean": 0.6079,
+            "std": 0.04,
+            "n_seeds": 3
+          },
+          "val_macro_f1_core6": {
+            "mean": 0.8832,
+            "std": 0.0028,
+            "n_seeds": 3
+          },
+          "test_macro_f1_core6": {
+            "mean": 0.8008,
+            "std": 0.0194,
+            "n_seeds": 3
+          },
+          "test_macro_roc_auc": {
+            "mean": 0.9762,
+            "std": 0.0014,
+            "n_seeds": 3
+          },
+          "test_macro_pr_auc": {
+            "mean": 0.8823,
+            "std": 0.0027,
+            "n_seeds": 3
+          }
+        }
+      },
+      "per_seed": [
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.6191435304597523,
+            "test_macro_f1_all9": 0.611886014469275,
+            "val_macro_f1_core6": 0.7620486290229619,
+            "test_macro_f1_core6": 0.7511623550372458,
+            "test_macro_roc_auc": 0.9781194280657914,
+            "test_macro_pr_auc": 0.8858475885094207,
+            "test_per_drug_f1": {
+              "RIF": 0.92725509214355,
+              "INH": 0.9815016322089227,
+              "EMB": 0.9377845220030349,
+              "PZA": 0.13138686131386862,
+              "STM": 0.6113989637305699,
+              "LEV": 0.9176470588235294,
+              "CAP": 1.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.7006768275761766,
+            "test_macro_f1_all9": 0.6402289421352333,
+            "val_macro_f1_core6": 0.8843485746975981,
+            "test_macro_f1_core6": 0.7936767465361833,
+            "test_macro_roc_auc": 0.9781194280657914,
+            "test_macro_pr_auc": 0.8858475885094207,
+            "test_per_drug_f1": {
+              "RIF": 0.9597069597069597,
+              "INH": 0.9525773195876288,
+              "EMB": 0.9395348837209302,
+              "PZA": 0.40370370370370373,
+              "STM": 0.7373068432671082,
+              "LEV": 0.7692307692307693,
+              "CAP": 1.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          }
+        },
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.6201352779204732,
+            "test_macro_f1_all9": 0.608876428253881,
+            "val_macro_f1_core6": 0.7635362502140431,
+            "test_macro_f1_core6": 0.7466479757141548,
+            "test_macro_roc_auc": 0.9750792859917387,
+            "test_macro_pr_auc": 0.8792248933268786,
+            "test_per_drug_f1": {
+              "RIF": 0.9187071498530852,
+              "INH": 0.9815016322089227,
+              "EMB": 0.9443609022556391,
+              "PZA": 0.1323529411764706,
+              "STM": 0.6113989637305699,
+              "LEV": 0.891566265060241,
+              "CAP": 1.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.7016682864456314,
+            "test_macro_f1_all9": 0.5515397910740245,
+            "val_macro_f1_core6": 0.8858357630017805,
+            "test_macro_f1_core6": 0.8273096866110365,
+            "test_macro_roc_auc": 0.9750792859917387,
+            "test_macro_pr_auc": 0.8792248933268786,
+            "test_per_drug_f1": {
+              "RIF": 0.9597069597069597,
+              "INH": 0.9535603715170279,
+              "EMB": 0.9473684210526315,
+              "PZA": 0.416,
+              "STM": 0.7209302325581395,
+              "LEV": 0.9662921348314607,
+              "CAP": 0.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          }
+        },
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.6175345771234362,
+            "test_macro_f1_all9": 0.6162667488495599,
+            "val_macro_f1_core6": 0.7596351990184874,
+            "test_macro_f1_core6": 0.7577334566076733,
+            "test_macro_roc_auc": 0.9753762528452077,
+            "test_macro_pr_auc": 0.8818344242539075,
+            "test_per_drug_f1": {
+              "RIF": 0.9271137026239067,
+              "INH": 0.9815016322089227,
+              "EMB": 0.948948948948949,
+              "PZA": 0.13432835820895522,
+              "STM": 0.649746192893401,
+              "LEV": 0.9047619047619048,
+              "CAP": 1.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.6973152698378335,
+            "test_macro_f1_all9": 0.6319732111196998,
+            "val_macro_f1_core6": 0.8793062380900838,
+            "test_macro_f1_core6": 0.7812931500128831,
+            "test_macro_roc_auc": 0.9753762528452077,
+            "test_macro_pr_auc": 0.8818344242539075,
+            "test_per_drug_f1": {
+              "RIF": 0.9579524680073126,
+              "INH": 0.9565217391304348,
+              "EMB": 0.937888198757764,
+              "PZA": 0.33147632311977715,
+              "STM": 0.7213114754098361,
+              "LEV": 0.782608695652174,
+              "CAP": 1.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          }
+        }
+      ],
+      "run_info": [
+        {
+          "architecture": "random_forest"
+        },
+        {
+          "architecture": "random_forest"
+        },
+        {
+          "architecture": "random_forest"
+        }
+      ]
+    },
+    "phylo_clade|genomewide|mlp_only": {
+      "split": "phylo_clade",
+      "protocol": "genomewide",
+      "architecture": "mlp_only",
+      "n_features": 1500,
+      "seconds": 31.1,
+      "aggregate": {
+        "default_0.5": {
+          "val_macro_f1_all9": {
+            "mean": 0.4229,
+            "std": 0.0078,
+            "n_seeds": 3
+          },
+          "test_macro_f1_all9": {
+            "mean": 0.3259,
+            "std": 0.0277,
+            "n_seeds": 3
+          },
+          "val_macro_f1_core6": {
+            "mean": 0.575,
+            "std": 0.0103,
+            "n_seeds": 3
+          },
+          "test_macro_f1_core6": {
+            "mean": 0.4883,
+            "std": 0.0417,
+            "n_seeds": 3
+          },
+          "test_macro_roc_auc": {
+            "mean": 0.8136,
+            "std": 0.0585,
+            "n_seeds": 3
+          },
+          "test_macro_pr_auc": {
+            "mean": 0.3906,
+            "std": 0.0584,
+            "n_seeds": 3
+          }
+        },
+        "tuned": {
+          "val_macro_f1_all9": {
+            "mean": 0.4672,
+            "std": 0.0221,
+            "n_seeds": 3
+          },
+          "test_macro_f1_all9": {
+            "mean": 0.3438,
+            "std": 0.0261,
+            "n_seeds": 3
+          },
+          "val_macro_f1_core6": {
+            "mean": 0.5908,
+            "std": 0.0011,
+            "n_seeds": 3
+          },
+          "test_macro_f1_core6": {
+            "mean": 0.515,
+            "std": 0.039,
+            "n_seeds": 3
+          },
+          "test_macro_roc_auc": {
+            "mean": 0.8136,
+            "std": 0.0585,
+            "n_seeds": 3
+          },
+          "test_macro_pr_auc": {
+            "mean": 0.3906,
+            "std": 0.0584,
+            "n_seeds": 3
+          }
+        }
+      },
+      "per_seed": [
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.4173125594526298,
+            "test_macro_f1_all9": 0.36325249009717636,
+            "val_macro_f1_core6": 0.5802172051920167,
+            "test_macro_f1_core6": 0.5448787351457646,
+            "test_macro_roc_auc": 0.8551313462829979,
+            "test_macro_pr_auc": 0.44462191613087393,
+            "test_per_drug_f1": {
+              "RIF": 0.7662116040955631,
+              "INH": 0.8622047244094488,
+              "EMB": 0.6874279123414071,
+              "PZA": 0.3613138686131387,
+              "STM": 0.4541832669322709,
+              "LEV": 0.13793103448275862,
+              "CAP": 0.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.43630293600599646,
+            "test_macro_f1_all9": 0.3710767712099541,
+            "val_macro_f1_core6": 0.5919544040089947,
+            "test_macro_f1_core6": 0.5566151568149311,
+            "test_macro_roc_auc": 0.8551313462829979,
+            "test_macro_pr_auc": 0.44462191613087393,
+            "test_per_drug_f1": {
+              "RIF": 0.7068452380952381,
+              "INH": 0.8788853161843515,
+              "EMB": 0.6942752740560292,
+              "PZA": 0.3682170542635659,
+              "STM": 0.5556978233034571,
+              "LEV": 0.13577023498694518,
+              "CAP": 0.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          }
+        },
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.4338768979333485,
+            "test_macro_f1_all9": 0.31725319446260375,
+            "val_macro_f1_core6": 0.584148680233356,
+            "test_macro_f1_core6": 0.47433658181736243,
+            "test_macro_roc_auc": 0.8547318769197011,
+            "test_macro_pr_auc": 0.41763792074709283,
+            "test_per_drug_f1": {
+              "RIF": 0.6828929068150209,
+              "INH": 0.6899766899766899,
+              "EMB": 0.5775301764159703,
+              "PZA": 0.3249581239530988,
+              "STM": 0.41403508771929826,
+              "LEV": 0.1566265060240964,
+              "CAP": 0.009259259259259259,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.4782511559592433,
+            "test_macro_f1_all9": 0.35171101683306655,
+            "val_macro_f1_core6": 0.5909399523296694,
+            "test_macro_f1_core6": 0.5255463232293978,
+            "test_macro_roc_auc": 0.8547318769197011,
+            "test_macro_pr_auc": 0.41763792074709283,
+            "test_per_drug_f1": {
+              "RIF": 0.6814404432132964,
+              "INH": 0.811214953271028,
+              "EMB": 0.6689576174112256,
+              "PZA": 0.3047337278106509,
+              "STM": 0.5317073170731708,
+              "LEV": 0.15522388059701492,
+              "CAP": 0.012121212121212121,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          }
+        },
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.417440083560815,
+            "test_macro_f1_all9": 0.29705208818513634,
+            "val_macro_f1_core6": 0.5605035596846569,
+            "test_macro_f1_core6": 0.4455781322777046,
+            "test_macro_roc_auc": 0.730914316280753,
+            "test_macro_pr_auc": 0.3094040533846688,
+            "test_per_drug_f1": {
+              "RIF": 0.6730769230769231,
+              "INH": 0.7059760956175298,
+              "EMB": 0.5407279029462738,
+              "PZA": 0.24691358024691357,
+              "STM": 0.4199288256227758,
+              "LEV": 0.08684546615581099,
+              "CAP": 0.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.4869337870116614,
+            "test_macro_f1_all9": 0.3086370076418867,
+            "val_macro_f1_core6": 0.5893750394918511,
+            "test_macro_f1_core6": 0.46295551146283004,
+            "test_macro_roc_auc": 0.730914316280753,
+            "test_macro_pr_auc": 0.3094040533846688,
+            "test_per_drug_f1": {
+              "RIF": 0.7117117117117117,
+              "INH": 0.7082990961380444,
+              "EMB": 0.5652582159624413,
+              "PZA": 0.22821576763485477,
+              "STM": 0.4537313432835821,
+              "LEV": 0.11051693404634581,
+              "CAP": 0.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          }
+        }
+      ],
+      "run_info": [
+        {
+          "architecture": "mlp_only",
+          "best_epoch": 110,
+          "best_val_macro_f1_selection_metric": 0.5802172051920167,
+          "n_epochs_run": 170,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 166,
+              "train_loss": 0.5130943059921265,
+              "val_macro_f1": 0.33136850107432975
+            },
+            {
+              "epoch": 167,
+              "train_loss": 0.49827295541763306,
+              "val_macro_f1": 0.3815260982663122
+            },
+            {
+              "epoch": 168,
+              "train_loss": 0.5456782579421997,
+              "val_macro_f1": 0.34156141098124754
+            },
+            {
+              "epoch": 169,
+              "train_loss": 0.49757036566734314,
+              "val_macro_f1": 0.3344394283151066
+            },
+            {
+              "epoch": 170,
+              "train_loss": 0.48512378334999084,
+              "val_macro_f1": 0.27900750739880403
+            }
+          ]
+        },
+        {
+          "architecture": "mlp_only",
+          "best_epoch": 105,
+          "best_val_macro_f1_selection_metric": 0.584148680233356,
+          "n_epochs_run": 165,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 161,
+              "train_loss": 0.37259331345558167,
+              "val_macro_f1": 0.36620074747021275
+            },
+            {
+              "epoch": 162,
+              "train_loss": 0.4107261300086975,
+              "val_macro_f1": 0.3644267716824929
+            },
+            {
+              "epoch": 163,
+              "train_loss": 0.5439750552177429,
+              "val_macro_f1": 0.48877342310716143
+            },
+            {
+              "epoch": 164,
+              "train_loss": 0.5754331350326538,
+              "val_macro_f1": 0.37431978839685515
+            },
+            {
+              "epoch": 165,
+              "train_loss": 0.9462423324584961,
+              "val_macro_f1": 0.371356019784058
+            }
+          ]
+        },
+        {
+          "architecture": "mlp_only",
+          "best_epoch": 120,
+          "best_val_macro_f1_selection_metric": 0.5605035596846569,
+          "n_epochs_run": 180,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 176,
+              "train_loss": 0.7181048393249512,
+              "val_macro_f1": 0.11492045940844331
+            },
+            {
+              "epoch": 177,
+              "train_loss": 0.7140750288963318,
+              "val_macro_f1": 0.07199295816001851
+            },
+            {
+              "epoch": 178,
+              "train_loss": 0.669815182685852,
+              "val_macro_f1": 0.06098114557823705
+            },
+            {
+              "epoch": 179,
+              "train_loss": 0.6633833050727844,
+              "val_macro_f1": 0.07769484379558314
+            },
+            {
+              "epoch": 180,
+              "train_loss": 0.7082340121269226,
+              "val_macro_f1": 0.09098961212128324
+            }
+          ]
+        }
+      ]
+    },
+    "phylo_clade|genomewide|gcn_skip": {
+      "split": "phylo_clade",
+      "protocol": "genomewide",
+      "architecture": "gcn_skip",
+      "n_features": 1500,
+      "seconds": 373.0,
+      "aggregate": {
+        "default_0.5": {
+          "val_macro_f1_all9": {
+            "mean": 0.4242,
+            "std": 0.0117,
+            "n_seeds": 3
+          },
+          "test_macro_f1_all9": {
+            "mean": 0.3657,
+            "std": 0.0087,
+            "n_seeds": 3
+          },
+          "val_macro_f1_core6": {
+            "mean": 0.5574,
+            "std": 0.0179,
+            "n_seeds": 3
+          },
+          "test_macro_f1_core6": {
+            "mean": 0.5479,
+            "std": 0.0131,
+            "n_seeds": 3
+          },
+          "test_macro_roc_auc": {
+            "mean": 0.8396,
+            "std": 0.003,
+            "n_seeds": 3
+          },
+          "test_macro_pr_auc": {
+            "mean": 0.4687,
+            "std": 0.006,
+            "n_seeds": 3
+          }
+        },
+        "tuned": {
+          "val_macro_f1_all9": {
+            "mean": 0.4921,
+            "std": 0.0067,
+            "n_seeds": 3
+          },
+          "test_macro_f1_all9": {
+            "mean": 0.3688,
+            "std": 0.0062,
+            "n_seeds": 3
+          },
+          "val_macro_f1_core6": {
+            "mean": 0.5954,
+            "std": 0.0047,
+            "n_seeds": 3
+          },
+          "test_macro_f1_core6": {
+            "mean": 0.5533,
+            "std": 0.0093,
+            "n_seeds": 3
+          },
+          "test_macro_roc_auc": {
+            "mean": 0.8396,
+            "std": 0.003,
+            "n_seeds": 3
+          },
+          "test_macro_pr_auc": {
+            "mean": 0.4687,
+            "std": 0.006,
+            "n_seeds": 3
+          }
+        }
+      },
+      "per_seed": [
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.41099554045138054,
+            "test_macro_f1_all9": 0.35353774493108764,
+            "val_macro_f1_core6": 0.5391123582961185,
+            "test_macro_f1_core6": 0.5295314235981818,
+            "test_macro_roc_auc": 0.8359033756806805,
+            "test_macro_pr_auc": 0.4603022862713706,
+            "test_per_drug_f1": {
+              "RIF": 0.8036253776435045,
+              "INH": 0.9441401971522454,
+              "EMB": 0.6847090663058186,
+              "PZA": 0.1032258064516129,
+              "STM": 0.6116373477672531,
+              "LEV": 0.029850746268656716,
+              "CAP": 0.004651162790697674,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.4981896446245617,
+            "test_macro_f1_all9": 0.3603181891284243,
+            "val_macro_f1_core6": 0.5991363187886943,
+            "test_macro_f1_core6": 0.5404772836926365,
+            "test_macro_roc_auc": 0.8359033756806805,
+            "test_macro_pr_auc": 0.4603022862713706,
+            "test_per_drug_f1": {
+              "RIF": 0.7671232876712328,
+              "INH": 0.9492671927846674,
+              "EMB": 0.6957547169811321,
+              "PZA": 0.21153846153846154,
+              "STM": 0.5495283018867925,
+              "LEV": 0.06965174129353234,
+              "CAP": 0.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          }
+        },
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.4221107253399835,
+            "test_macro_f1_all9": 0.37343605369009475,
+            "val_macro_f1_core6": 0.551405081720667,
+            "test_macro_f1_core6": 0.5594724172767918,
+            "test_macro_roc_auc": 0.8395812065873873,
+            "test_macro_pr_auc": 0.4738380839483942,
+            "test_per_drug_f1": {
+              "RIF": 0.8070175438596491,
+              "INH": 0.9433551198257081,
+              "EMB": 0.7159235668789808,
+              "PZA": 0.2757475083056478,
+              "STM": 0.587012987012987,
+              "LEV": 0.027777777777777776,
+              "CAP": 0.00408997955010225,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.4827513202338167,
+            "test_macro_f1_all9": 0.3713526927577321,
+            "val_macro_f1_core6": 0.5887103136840585,
+            "test_macro_f1_core6": 0.5570290391365981,
+            "test_macro_roc_auc": 0.8395812065873873,
+            "test_macro_pr_auc": 0.4738380839483942,
+            "test_per_drug_f1": {
+              "RIF": 0.8095238095238095,
+              "INH": 0.950561797752809,
+              "EMB": 0.7009569377990431,
+              "PZA": 0.2852897473997028,
+              "STM": 0.4947589098532495,
+              "LEV": 0.10108303249097472,
+              "CAP": 0.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          }
+        },
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.4394106569891256,
+            "test_macro_f1_all9": 0.3702162354600244,
+            "val_macro_f1_core6": 0.5817350331027361,
+            "test_macro_f1_core6": 0.5545563040348906,
+            "test_macro_roc_auc": 0.8433405642529896,
+            "test_macro_pr_auc": 0.47208405188155383,
+            "test_per_drug_f1": {
+              "RIF": 0.8117647058823529,
+              "INH": 0.9463307776560789,
+              "EMB": 0.7125307125307125,
+              "PZA": 0.272108843537415,
+              "STM": 0.5575757575757576,
+              "LEV": 0.02702702702702703,
+              "CAP": 0.004608294930875576,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.495455500498477,
+            "test_macro_f1_all9": 0.37486538333043734,
+            "val_macro_f1_core6": 0.5982557145158314,
+            "test_macro_f1_core6": 0.562298074995656,
+            "test_macro_roc_auc": 0.8433405642529896,
+            "test_macro_pr_auc": 0.47208405188155383,
+            "test_per_drug_f1": {
+              "RIF": 0.8083416087388282,
+              "INH": 0.9492671927846674,
+              "EMB": 0.7187112763320942,
+              "PZA": 0.26774847870182555,
+              "STM": 0.5579710144927537,
+              "LEV": 0.07174887892376682,
+              "CAP": 0.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          }
+        }
+      ],
+      "run_info": [
+        {
+          "architecture": "gcn_skip",
+          "best_epoch": 233,
+          "best_val_macro_f1_selection_metric": 0.5391123582961185,
+          "n_epochs_run": 293,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 289,
+              "train_loss": 0.19625598192214966,
+              "val_macro_f1": 0.5375466343074519
+            },
+            {
+              "epoch": 290,
+              "train_loss": 0.19624315202236176,
+              "val_macro_f1": 0.5376722545574362
+            },
+            {
+              "epoch": 291,
+              "train_loss": 0.1962299346923828,
+              "val_macro_f1": 0.5377159279407681
+            },
+            {
+              "epoch": 292,
+              "train_loss": 0.19621723890304565,
+              "val_macro_f1": 0.5373209885787379
+            },
+            {
+              "epoch": 293,
+              "train_loss": 0.19620481133460999,
+              "val_macro_f1": 0.5370701592743503
+            }
+          ]
+        },
+        {
+          "architecture": "gcn_skip",
+          "best_epoch": 109,
+          "best_val_macro_f1_selection_metric": 0.551405081720667,
+          "n_epochs_run": 169,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 165,
+              "train_loss": 0.20113161206245422,
+              "val_macro_f1": 0.5294752957008746
+            },
+            {
+              "epoch": 166,
+              "train_loss": 0.20074652135372162,
+              "val_macro_f1": 0.5303961081824246
+            },
+            {
+              "epoch": 167,
+              "train_loss": 0.1997983604669571,
+              "val_macro_f1": 0.5267233881781631
+            },
+            {
+              "epoch": 168,
+              "train_loss": 0.2000335305929184,
+              "val_macro_f1": 0.5297480222812493
+            },
+            {
+              "epoch": 169,
+              "train_loss": 0.20014819502830505,
+              "val_macro_f1": 0.5140613487130289
+            }
+          ]
+        },
+        {
+          "architecture": "gcn_skip",
+          "best_epoch": 197,
+          "best_val_macro_f1_selection_metric": 0.5817350331027361,
+          "n_epochs_run": 257,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 253,
+              "train_loss": 0.19761799275875092,
+              "val_macro_f1": 0.5373543892606863
+            },
+            {
+              "epoch": 254,
+              "train_loss": 0.19762936234474182,
+              "val_macro_f1": 0.5328618741573025
+            },
+            {
+              "epoch": 255,
+              "train_loss": 0.19751054048538208,
+              "val_macro_f1": 0.5297223288720448
+            },
+            {
+              "epoch": 256,
+              "train_loss": 0.1975090205669403,
+              "val_macro_f1": 0.5379104827665618
+            },
+            {
+              "epoch": 257,
+              "train_loss": 0.19746926426887512,
+              "val_macro_f1": 0.5421536099607546
+            }
+          ]
+        }
+      ]
+    },
+    "phylo_clade|genomewide|gatv2": {
+      "split": "phylo_clade",
+      "protocol": "genomewide",
+      "architecture": "gatv2",
+      "n_features": 1500,
+      "seconds": 1041.8,
+      "aggregate": {
+        "default_0.5": {
+          "val_macro_f1_all9": {
+            "mean": 0.3765,
+            "std": 0.1225,
+            "n_seeds": 3
+          },
+          "test_macro_f1_all9": {
+            "mean": 0.2996,
+            "std": 0.0959,
+            "n_seeds": 3
+          },
+          "val_macro_f1_core6": {
+            "mean": 0.4844,
+            "std": 0.1583,
+            "n_seeds": 3
+          },
+          "test_macro_f1_core6": {
+            "mean": 0.4492,
+            "std": 0.1436,
+            "n_seeds": 3
+          },
+          "test_macro_roc_auc": {
+            "mean": 0.7204,
+            "std": 0.1956,
+            "n_seeds": 3
+          },
+          "test_macro_pr_auc": {
+            "mean": 0.3557,
+            "std": 0.1619,
+            "n_seeds": 3
+          }
+        },
+        "tuned": {
+          "val_macro_f1_all9": {
+            "mean": 0.446,
+            "std": 0.1031,
+            "n_seeds": 3
+          },
+          "test_macro_f1_all9": {
+            "mean": 0.3148,
+            "std": 0.0845,
+            "n_seeds": 3
+          },
+          "val_macro_f1_core6": {
+            "mean": 0.5212,
+            "std": 0.1376,
+            "n_seeds": 3
+          },
+          "test_macro_f1_core6": {
+            "mean": 0.4722,
+            "std": 0.1267,
+            "n_seeds": 3
+          },
+          "test_macro_roc_auc": {
+            "mean": 0.7204,
+            "std": 0.1956,
+            "n_seeds": 3
+          },
+          "test_macro_pr_auc": {
+            "mean": 0.3557,
+            "std": 0.1619,
+            "n_seeds": 3
+          }
+        }
+      },
+      "per_seed": [
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.48043768596789743,
+            "test_macro_f1_all9": 0.3608580707076301,
+            "val_macro_f1_core6": 0.5968470051423223,
+            "test_macro_f1_core6": 0.541287106061445,
+            "test_macro_roc_auc": 0.8401963583637745,
+            "test_macro_pr_auc": 0.4677620994659156,
+            "test_per_drug_f1": {
+              "RIF": 0.8045977011494253,
+              "INH": 0.9503858875413451,
+              "EMB": 0.7213930348258707,
+              "PZA": 0.18829516539440203,
+              "STM": 0.5544794188861986,
+              "LEV": 0.02857142857142857,
+              "CAP": 0.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.5246484530566656,
+            "test_macro_f1_all9": 0.37284257320233394,
+            "val_macro_f1_core6": 0.6203060129183319,
+            "test_macro_f1_core6": 0.559263859803501,
+            "test_macro_roc_auc": 0.8401963583637745,
+            "test_macro_pr_auc": 0.4677620994659156,
+            "test_per_drug_f1": {
+              "RIF": 0.8034351145038168,
+              "INH": 0.9493813273340832,
+              "EMB": 0.7213930348258707,
+              "PZA": 0.1971153846153846,
+              "STM": 0.6162310866574966,
+              "LEV": 0.06802721088435375,
+              "CAP": 0.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          }
+        },
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.4445523944690608,
+            "test_macro_f1_all9": 0.37381391860539454,
+            "val_macro_f1_core6": 0.595790340337471,
+            "test_macro_f1_core6": 0.5598683629890807,
+            "test_macro_roc_auc": 0.8764519574855206,
+            "test_macro_pr_auc": 0.47252294362214425,
+            "test_per_drug_f1": {
+              "RIF": 0.8048533872598584,
+              "INH": 0.950561797752809,
+              "EMB": 0.7251612903225807,
+              "PZA": 0.2578947368421053,
+              "STM": 0.5913272010512484,
+              "LEV": 0.029411764705882353,
+              "CAP": 0.005115089514066497,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.513036580308563,
+            "test_macro_f1_all9": 0.37623390952752084,
+            "val_macro_f1_core6": 0.6167770926850669,
+            "test_macro_f1_core6": 0.5643508642912812,
+            "test_macro_roc_auc": 0.8764519574855206,
+            "test_macro_pr_auc": 0.47252294362214425,
+            "test_per_drug_f1": {
+              "RIF": 0.8154761904761905,
+              "INH": 0.9492671927846674,
+              "EMB": 0.7178841309823678,
+              "PZA": 0.24449877750611246,
+              "STM": 0.5862516212710766,
+              "LEV": 0.07272727272727272,
+              "CAP": 0.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          }
+        },
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.20443618395613855,
+            "test_macro_f1_all9": 0.16422726329299658,
+            "val_macro_f1_core6": 0.260554985154066,
+            "test_macro_f1_core6": 0.24634089493949485,
+            "test_macro_roc_auc": 0.44456772979957204,
+            "test_macro_pr_auc": 0.1266980491703896,
+            "test_per_drug_f1": {
+              "RIF": 0.4233576642335766,
+              "INH": 0.43838193791157104,
+              "EMB": 0.15208034433285508,
+              "PZA": 0.1347678369195923,
+              "STM": 0.2760768033212247,
+              "LEV": 0.05338078291814947,
+              "CAP": 0.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.3002826879866785,
+            "test_macro_f1_all9": 0.19540505818467965,
+            "val_macro_f1_core6": 0.3266145081704939,
+            "test_macro_f1_core6": 0.29310758727701947,
+            "test_macro_roc_auc": 0.44456772979957204,
+            "test_macro_pr_auc": 0.1266980491703896,
+            "test_per_drug_f1": {
+              "RIF": 0.4767714687939934,
+              "INH": 0.45594713656387664,
+              "EMB": 0.34027425088877605,
+              "PZA": 0.13499716392512762,
+              "STM": 0.2875924404272802,
+              "LEV": 0.06306306306306306,
+              "CAP": 0.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          }
+        }
+      ],
+      "run_info": [
+        {
+          "architecture": "gatv2",
+          "best_epoch": 263,
+          "best_val_macro_f1_selection_metric": 0.5968470051423223,
+          "n_epochs_run": 300,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 296,
+              "train_loss": 0.19910837709903717,
+              "val_macro_f1": 0.5503095353204522
+            },
+            {
+              "epoch": 297,
+              "train_loss": 0.20040099322795868,
+              "val_macro_f1": 0.5729594923150653
+            },
+            {
+              "epoch": 298,
+              "train_loss": 0.20008164644241333,
+              "val_macro_f1": 0.5576517844611981
+            },
+            {
+              "epoch": 299,
+              "train_loss": 0.19849242269992828,
+              "val_macro_f1": 0.5552299939271795
+            },
+            {
+              "epoch": 300,
+              "train_loss": 0.1988968402147293,
+              "val_macro_f1": 0.5869740414546581
+            }
+          ]
+        },
+        {
+          "architecture": "gatv2",
+          "best_epoch": 194,
+          "best_val_macro_f1_selection_metric": 0.595790340337471,
+          "n_epochs_run": 254,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 250,
+              "train_loss": 0.19783180952072144,
+              "val_macro_f1": 0.5563477347392524
+            },
+            {
+              "epoch": 251,
+              "train_loss": 0.19819623231887817,
+              "val_macro_f1": 0.57136326559387
+            },
+            {
+              "epoch": 252,
+              "train_loss": 0.197315976023674,
+              "val_macro_f1": 0.5743281921564195
+            },
+            {
+              "epoch": 253,
+              "train_loss": 0.19816122949123383,
+              "val_macro_f1": 0.5869405966685873
+            },
+            {
+              "epoch": 254,
+              "train_loss": 0.19626660645008087,
+              "val_macro_f1": 0.567237966967664
+            }
+          ]
+        },
+        {
+          "architecture": "gatv2",
+          "best_epoch": 1,
+          "best_val_macro_f1_selection_metric": 0.260554985154066,
+          "n_epochs_run": 61,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 57,
+              "train_loss": 0.25020110607147217,
+              "val_macro_f1": 0.022459256085825514
+            },
+            {
+              "epoch": 58,
+              "train_loss": 0.2499387413263321,
+              "val_macro_f1": 0.021894060577685875
+            },
+            {
+              "epoch": 59,
+              "train_loss": 0.24813541769981384,
+              "val_macro_f1": 0.019206743730355993
+            },
+            {
+              "epoch": 60,
+              "train_loss": 0.25189730525016785,
+              "val_macro_f1": 0.018291396317982805
+            },
+            {
+              "epoch": 61,
+              "train_loss": 0.2455115020275116,
+              "val_macro_f1": 0.01793608752691898
+            }
+          ]
+        }
+      ]
+    },
+    "phylo_clade|genomewide|gated_hybrid": {
+      "split": "phylo_clade",
+      "protocol": "genomewide",
+      "architecture": "gated_hybrid",
+      "n_features": 1500,
+      "seconds": 304.7,
+      "aggregate": {
+        "default_0.5": {
+          "val_macro_f1_all9": {
+            "mean": 0.4211,
+            "std": 0.0034,
+            "n_seeds": 3
+          },
+          "test_macro_f1_all9": {
+            "mean": 0.2984,
+            "std": 0.0361,
+            "n_seeds": 3
+          },
+          "val_macro_f1_core6": {
+            "mean": 0.5582,
+            "std": 0.0222,
+            "n_seeds": 3
+          },
+          "test_macro_f1_core6": {
+            "mean": 0.4474,
+            "std": 0.0543,
+            "n_seeds": 3
+          },
+          "test_macro_roc_auc": {
+            "mean": 0.7466,
+            "std": 0.0576,
+            "n_seeds": 3
+          },
+          "test_macro_pr_auc": {
+            "mean": 0.3467,
+            "std": 0.0519,
+            "n_seeds": 3
+          }
+        },
+        "tuned": {
+          "val_macro_f1_all9": {
+            "mean": 0.4465,
+            "std": 0.0095,
+            "n_seeds": 3
+          },
+          "test_macro_f1_all9": {
+            "mean": 0.3003,
+            "std": 0.0356,
+            "n_seeds": 3
+          },
+          "val_macro_f1_core6": {
+            "mean": 0.5739,
+            "std": 0.0137,
+            "n_seeds": 3
+          },
+          "test_macro_f1_core6": {
+            "mean": 0.4504,
+            "std": 0.0534,
+            "n_seeds": 3
+          },
+          "test_macro_roc_auc": {
+            "mean": 0.7466,
+            "std": 0.0576,
+            "n_seeds": 3
+          },
+          "test_macro_pr_auc": {
+            "mean": 0.3467,
+            "std": 0.0519,
+            "n_seeds": 3
+          }
+        }
+      },
+      "per_seed": [
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.41629571704381596,
+            "test_macro_f1_all9": 0.2697126123367468,
+            "val_macro_f1_core6": 0.5695912548906185,
+            "test_macro_f1_core6": 0.40390091583310955,
+            "test_macro_roc_auc": 0.7158884242292537,
+            "test_macro_pr_auc": 0.285859420724378,
+            "test_per_drug_f1": {
+              "RIF": 0.6744186046511628,
+              "INH": 0.6433770014556041,
+              "EMB": 0.5074135090609555,
+              "PZA": 0.13991769547325103,
+              "STM": 0.3823293172690763,
+              "LEV": 0.0759493670886076,
+              "CAP": 0.004008016032064128,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.43511773877979293,
+            "test_macro_f1_all9": 0.27436202672700666,
+            "val_macro_f1_core6": 0.584968274836356,
+            "test_macro_f1_core6": 0.41154304009051007,
+            "test_macro_roc_auc": 0.7158884242292537,
+            "test_macro_pr_auc": 0.285859420724378,
+            "test_per_drug_f1": {
+              "RIF": 0.656084656084656,
+              "INH": 0.6547352721849367,
+              "EMB": 0.5032467532467533,
+              "PZA": 0.19189412737799835,
+              "STM": 0.39270919635459817,
+              "LEV": 0.07058823529411765,
+              "CAP": 0.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          }
+        },
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.42320609381178353,
+            "test_macro_f1_all9": 0.34930411494702907,
+            "val_macro_f1_core6": 0.5778985716119842,
+            "test_macro_f1_core6": 0.5239561724205436,
+            "test_macro_roc_auc": 0.8273095753805583,
+            "test_macro_pr_auc": 0.4126756676747755,
+            "test_per_drug_f1": {
+              "RIF": 0.7649006622516556,
+              "INH": 0.8157156220767072,
+              "EMB": 0.6395833333333333,
+              "PZA": 0.3164179104477612,
+              "STM": 0.4909670563230606,
+              "LEV": 0.1161524500907441,
+              "CAP": 0.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.45827699379164244,
+            "test_macro_f1_all9": 0.3506256985262442,
+            "val_macro_f1_core6": 0.5821523327927269,
+            "test_macro_f1_core6": 0.5259385477893663,
+            "test_macro_roc_auc": 0.8273095753805583,
+            "test_macro_pr_auc": 0.4126756676747755,
+            "test_per_drug_f1": {
+              "RIF": 0.6984815618221258,
+              "INH": 0.8246445497630331,
+              "EMB": 0.6644808743169399,
+              "PZA": 0.3389261744966443,
+              "STM": 0.5135746606334841,
+              "LEV": 0.11552346570397112,
+              "CAP": 0.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          }
+        },
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.4236744743994227,
+            "test_macro_f1_all9": 0.27624586746546376,
+            "val_macro_f1_core6": 0.5271783782658006,
+            "test_macro_f1_core6": 0.4143688011981956,
+            "test_macro_roc_auc": 0.6966667618230585,
+            "test_macro_pr_auc": 0.3414181136932156,
+            "test_per_drug_f1": {
+              "RIF": 0.704248366013072,
+              "INH": 0.65625,
+              "EMB": 0.5,
+              "PZA": 0.21772151898734177,
+              "STM": 0.340878828229028,
+              "LEV": 0.06711409395973154,
+              "CAP": 0.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.446085857754046,
+            "test_macro_f1_all9": 0.2758766674423699,
+            "val_macro_f1_core6": 0.5545454532977357,
+            "test_macro_f1_core6": 0.41381500116355485,
+            "test_macro_roc_auc": 0.6966667618230585,
+            "test_macro_pr_auc": 0.3414181136932156,
+            "test_per_drug_f1": {
+              "RIF": 0.6965342349957735,
+              "INH": 0.6099547511312218,
+              "EMB": 0.5172413793103449,
+              "PZA": 0.23222748815165878,
+              "STM": 0.35693215339233036,
+              "LEV": 0.07,
+              "CAP": 0.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          }
+        }
+      ],
+      "run_info": [
+        {
+          "architecture": "gated_hybrid",
+          "best_epoch": 65,
+          "best_val_macro_f1_selection_metric": 0.5695912548906185,
+          "n_epochs_run": 125,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 121,
+              "train_loss": 0.5204276442527771,
+              "val_macro_f1": 0.4264647873653704
+            },
+            {
+              "epoch": 122,
+              "train_loss": 0.4109632968902588,
+              "val_macro_f1": 0.4146148558533905
+            },
+            {
+              "epoch": 123,
+              "train_loss": 0.4193832278251648,
+              "val_macro_f1": 0.43118782220647817
+            },
+            {
+              "epoch": 124,
+              "train_loss": 0.41305670142173767,
+              "val_macro_f1": 0.41967425398666586
+            },
+            {
+              "epoch": 125,
+              "train_loss": 0.4004749357700348,
+              "val_macro_f1": 0.417329467144026
+            }
+          ],
+          "gate_stats": {
+            "gamma_mean": 0.9987015128135681,
+            "gamma_median": 1.0,
+            "gamma_p05": 0.9999938607215881,
+            "gamma_p95": 1.0,
+            "fraction_above_0.9": 0.9961463212966919,
+            "interpretation": "gamma is the weight on the graph-free MLP stream; near 1.0 means the model learned to ignore the graph"
+          }
+        },
+        {
+          "architecture": "gated_hybrid",
+          "best_epoch": 157,
+          "best_val_macro_f1_selection_metric": 0.5778985716119842,
+          "n_epochs_run": 217,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 213,
+              "train_loss": 0.4069361090660095,
+              "val_macro_f1": 0.5177999314644807
+            },
+            {
+              "epoch": 214,
+              "train_loss": 0.40795981884002686,
+              "val_macro_f1": 0.5053056147927409
+            },
+            {
+              "epoch": 215,
+              "train_loss": 0.44673019647598267,
+              "val_macro_f1": 0.5056033661506635
+            },
+            {
+              "epoch": 216,
+              "train_loss": 0.4075925648212433,
+              "val_macro_f1": 0.509177327285154
+            },
+            {
+              "epoch": 217,
+              "train_loss": 0.40680140256881714,
+              "val_macro_f1": 0.514921582818982
+            }
+          ],
+          "gate_stats": {
+            "gamma_mean": 0.9984585642814636,
+            "gamma_median": 1.0,
+            "gamma_p05": 0.999943733215332,
+            "gamma_p95": 1.0,
+            "fraction_above_0.9": 0.9954192042350769,
+            "interpretation": "gamma is the weight on the graph-free MLP stream; near 1.0 means the model learned to ignore the graph"
+          }
+        },
+        {
+          "architecture": "gated_hybrid",
+          "best_epoch": 56,
+          "best_val_macro_f1_selection_metric": 0.5271783782658006,
+          "n_epochs_run": 116,
+          "multitask_lineage": false,
+          "lambda_lineage": 0.0,
+          "history_tail": [
+            {
+              "epoch": 112,
+              "train_loss": 0.4036868214607239,
+              "val_macro_f1": 0.22661896490617447
+            },
+            {
+              "epoch": 113,
+              "train_loss": 0.39037421345710754,
+              "val_macro_f1": 0.2216110662366981
+            },
+            {
+              "epoch": 114,
+              "train_loss": 0.41079461574554443,
+              "val_macro_f1": 0.22181661958538137
+            },
+            {
+              "epoch": 115,
+              "train_loss": 0.39829859137535095,
+              "val_macro_f1": 0.19888718711416464
+            },
+            {
+              "epoch": 116,
+              "train_loss": 0.3872005045413971,
+              "val_macro_f1": 0.2002927983871241
+            }
+          ],
+          "gate_stats": {
+            "gamma_mean": 0.715751588344574,
+            "gamma_median": 0.9449338912963867,
+            "gamma_p05": 1.932307168317493e-05,
+            "gamma_p95": 1.0,
+            "fraction_above_0.9": 0.5406820178031921,
+            "interpretation": "gamma is the weight on the graph-free MLP stream; near 1.0 means the model learned to ignore the graph"
+          }
+        }
+      ]
+    },
+    "phylo_clade|genomewide|random_forest": {
+      "split": "phylo_clade",
+      "protocol": "genomewide",
+      "architecture": "random_forest",
+      "n_features": 1500,
+      "seconds": 19.0,
+      "aggregate": {
+        "default_0.5": {
+          "val_macro_f1_all9": {
+            "mean": 0.2594,
+            "std": 0.0029,
+            "n_seeds": 3
+          },
+          "test_macro_f1_all9": {
+            "mean": 0.174,
+            "std": 0.001,
+            "n_seeds": 3
+          },
+          "val_macro_f1_core6": {
+            "mean": 0.2589,
+            "std": 0.0006,
+            "n_seeds": 3
+          },
+          "test_macro_f1_core6": {
+            "mean": 0.261,
+            "std": 0.0014,
+            "n_seeds": 3
+          },
+          "test_macro_roc_auc": {
+            "mean": 0.5533,
+            "std": 0.0309,
+            "n_seeds": 3
+          },
+          "test_macro_pr_auc": {
+            "mean": 0.2269,
+            "std": 0.015,
+            "n_seeds": 3
+          }
+        },
+        "tuned": {
+          "val_macro_f1_all9": {
+            "mean": 0.4727,
+            "std": 0.0047,
+            "n_seeds": 3
+          },
+          "test_macro_f1_all9": {
+            "mean": 0.2407,
+            "std": 0.0144,
+            "n_seeds": 3
+          },
+          "val_macro_f1_core6": {
+            "mean": 0.5424,
+            "std": 0.0071,
+            "n_seeds": 3
+          },
+          "test_macro_f1_core6": {
+            "mean": 0.361,
+            "std": 0.0216,
+            "n_seeds": 3
+          },
+          "test_macro_roc_auc": {
+            "mean": 0.5533,
+            "std": 0.0309,
+            "n_seeds": 3
+          },
+          "test_macro_pr_auc": {
+            "mean": 0.2269,
+            "std": 0.015,
+            "n_seeds": 3
+          }
+        }
+      },
+      "per_seed": [
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.2622617353903369,
+            "test_macro_f1_all9": 0.17371219803274315,
+            "val_macro_f1_core6": 0.25797593641883876,
+            "test_macro_f1_core6": 0.2605682970491147,
+            "test_macro_roc_auc": 0.5901364517086882,
+            "test_macro_pr_auc": 0.23739447286416215,
+            "test_per_drug_f1": {
+              "RIF": 0.4874486535828389,
+              "INH": 0.44285714285714284,
+              "EMB": 0.3414387031408308,
+              "PZA": 0.03463203463203463,
+              "STM": 0.2570332480818414,
+              "LEV": 0.0,
+              "CAP": 0.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.4746524886600158,
+            "test_macro_f1_all9": 0.2206477226578162,
+            "val_macro_f1_core6": 0.5453120663233572,
+            "test_macro_f1_core6": 0.3309715839867243,
+            "test_macro_roc_auc": 0.5901364517086882,
+            "test_macro_pr_auc": 0.23739447286416215,
+            "test_per_drug_f1": {
+              "RIF": 0.4788507581803671,
+              "INH": 0.6733466933867736,
+              "EMB": 0.4835589941972921,
+              "PZA": 0.1457689932056825,
+              "STM": 0.16348773841961853,
+              "LEV": 0.04081632653061224,
+              "CAP": 0.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          }
+        },
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.25532602814549527,
+            "test_macro_f1_all9": 0.1729370665817734,
+            "val_macro_f1_core6": 0.25917951840871917,
+            "test_macro_f1_core6": 0.2594055998726601,
+            "test_macro_roc_auc": 0.5145109437072792,
+            "test_macro_pr_auc": 0.20567040582581295,
+            "test_per_drug_f1": {
+              "RIF": 0.488929889298893,
+              "INH": 0.44819277108433736,
+              "EMB": 0.3442959917780062,
+              "PZA": 0.034334763948497854,
+              "STM": 0.2406801831262263,
+              "LEV": 0.0,
+              "CAP": 0.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.46618758543951994,
+            "test_macro_f1_all9": 0.24743557634011712,
+            "val_macro_f1_core6": 0.5326147114926134,
+            "test_macro_f1_core6": 0.37115336451017567,
+            "test_macro_roc_auc": 0.5145109437072792,
+            "test_macro_pr_auc": 0.20567040582581295,
+            "test_per_drug_f1": {
+              "RIF": 0.5453020134228188,
+              "INH": 0.5952380952380952,
+              "EMB": 0.4833164812942366,
+              "PZA": 0.14173228346456693,
+              "STM": 0.22603719599427755,
+              "LEV": 0.23529411764705882,
+              "CAP": 0.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          }
+        },
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.2605186876255655,
+            "test_macro_f1_all9": 0.17525112355227243,
+            "val_macro_f1_core6": 0.259464900125217,
+            "test_macro_f1_core6": 0.26287668532840863,
+            "test_macro_roc_auc": 0.5552718969122835,
+            "test_macro_pr_auc": 0.2375316082043197,
+            "test_per_drug_f1": {
+              "RIF": 0.4891354600092464,
+              "INH": 0.45321637426900585,
+              "EMB": 0.3455012853470437,
+              "PZA": 0.03411513859275053,
+              "STM": 0.2552918537524054,
+              "LEV": 0.0,
+              "CAP": 0.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.47728746272992645,
+            "test_macro_f1_all9": 0.2539264385100027,
+            "val_macro_f1_core6": 0.549264527428223,
+            "test_macro_f1_core6": 0.38088965776500405,
+            "test_macro_roc_auc": 0.5552718969122835,
+            "test_macro_pr_auc": 0.2375316082043197,
+            "test_per_drug_f1": {
+              "RIF": 0.534516765285996,
+              "INH": 0.6625386996904025,
+              "EMB": 0.522372528616025,
+              "PZA": 0.14940098661028894,
+              "STM": 0.21897810218978103,
+              "LEV": 0.19753086419753085,
+              "CAP": 0.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          }
+        }
+      ],
+      "run_info": [
+        {
+          "architecture": "random_forest"
+        },
+        {
+          "architecture": "random_forest"
+        },
+        {
+          "architecture": "random_forest"
+        }
+      ]
+    }
+  },
+  "summary_table": [
+    {
+      "split": "original",
+      "protocol": "catalogue",
+      "architecture": "gated_hybrid",
+      "n_features": 157,
+      "test_core6_f1_mean": 0.9969,
+      "test_core6_f1_std": 0.0002,
+      "test_all9_f1_mean": 0.8745,
+      "test_pr_auc_mean": 0.9989
+    },
+    {
+      "split": "original",
+      "protocol": "catalogue",
+      "architecture": "mlp_only",
+      "n_features": 157,
+      "test_core6_f1_mean": 0.9938,
+      "test_core6_f1_std": 0.0022,
+      "test_all9_f1_mean": 0.8506,
+      "test_pr_auc_mean": 0.962
+    },
+    {
+      "split": "original",
+      "protocol": "catalogue",
+      "architecture": "random_forest",
+      "n_features": 157,
+      "test_core6_f1_mean": 0.9709,
+      "test_core6_f1_std": 0.0006,
+      "test_all9_f1_mean": 0.8695,
+      "test_pr_auc_mean": 0.9948
+    },
+    {
+      "split": "original",
+      "protocol": "catalogue",
+      "architecture": "gcn_skip",
+      "n_features": 157,
+      "test_core6_f1_mean": 0.9394,
+      "test_core6_f1_std": 0.0029,
+      "test_all9_f1_mean": 0.8141,
+      "test_pr_auc_mean": 0.9711
+    },
+    {
+      "split": "original",
+      "protocol": "catalogue",
+      "architecture": "gatv2",
+      "n_features": 157,
+      "test_core6_f1_mean": 0.9331,
+      "test_core6_f1_std": 0.0072,
+      "test_all9_f1_mean": 0.7653,
+      "test_pr_auc_mean": 0.9571
+    },
+    {
+      "split": "phylo_clade",
+      "protocol": "catalogue",
+      "architecture": "gated_hybrid",
+      "n_features": 157,
+      "test_core6_f1_mean": 0.8993,
+      "test_core6_f1_std": 0.0222,
+      "test_all9_f1_mean": 0.5996,
+      "test_pr_auc_mean": 0.9648
+    },
+    {
+      "split": "phylo_clade",
+      "protocol": "catalogue",
+      "architecture": "mlp_only",
+      "n_features": 157,
+      "test_core6_f1_mean": 0.899,
+      "test_core6_f1_std": 0.0104,
+      "test_all9_f1_mean": 0.7104,
+      "test_pr_auc_mean": 0.9771
+    },
+    {
+      "split": "phylo_clade",
+      "protocol": "catalogue",
+      "architecture": "random_forest",
+      "n_features": 157,
+      "test_core6_f1_mean": 0.8008,
+      "test_core6_f1_std": 0.0194,
+      "test_all9_f1_mean": 0.6079,
+      "test_pr_auc_mean": 0.8823
+    },
+    {
+      "split": "phylo_clade",
+      "protocol": "catalogue",
+      "architecture": "gcn_skip",
+      "n_features": 157,
+      "test_core6_f1_mean": 0.7625,
+      "test_core6_f1_std": 0.0013,
+      "test_all9_f1_mean": 0.5083,
+      "test_pr_auc_mean": 0.7339
+    },
+    {
+      "split": "original",
+      "protocol": "genomewide",
+      "architecture": "gcn_skip",
+      "n_features": 1500,
+      "test_core6_f1_mean": 0.7507,
+      "test_core6_f1_std": 0.0031,
+      "test_all9_f1_mean": 0.6733,
+      "test_pr_auc_mean": 0.8134
+    },
+    {
+      "split": "original",
+      "protocol": "genomewide",
+      "architecture": "gatv2",
+      "n_features": 1500,
+      "test_core6_f1_mean": 0.7472,
+      "test_core6_f1_std": 0.0038,
+      "test_all9_f1_mean": 0.5979,
+      "test_pr_auc_mean": 0.7451
+    },
+    {
+      "split": "phylo_clade",
+      "protocol": "catalogue",
+      "architecture": "gatv2",
+      "n_features": 157,
+      "test_core6_f1_mean": 0.7344,
+      "test_core6_f1_std": 0.0265,
+      "test_all9_f1_mean": 0.4896,
+      "test_pr_auc_mean": 0.7576
+    },
+    {
+      "split": "original",
+      "protocol": "genomewide",
+      "architecture": "gated_hybrid",
+      "n_features": 1500,
+      "test_core6_f1_mean": 0.7065,
+      "test_core6_f1_std": 0.0137,
+      "test_all9_f1_mean": 0.5968,
+      "test_pr_auc_mean": 0.7607
+    },
+    {
+      "split": "original",
+      "protocol": "genomewide",
+      "architecture": "mlp_only",
+      "n_features": 1500,
+      "test_core6_f1_mean": 0.6986,
+      "test_core6_f1_std": 0.0047,
+      "test_all9_f1_mean": 0.5857,
+      "test_pr_auc_mean": 0.7572
+    },
+    {
+      "split": "original",
+      "protocol": "genomewide",
+      "architecture": "random_forest",
+      "n_features": 1500,
+      "test_core6_f1_mean": 0.6766,
+      "test_core6_f1_std": 0.0024,
+      "test_all9_f1_mean": 0.5655,
+      "test_pr_auc_mean": 0.75
+    },
+    {
+      "split": "phylo_clade",
+      "protocol": "genomewide",
+      "architecture": "gcn_skip",
+      "n_features": 1500,
+      "test_core6_f1_mean": 0.5533,
+      "test_core6_f1_std": 0.0093,
+      "test_all9_f1_mean": 0.3688,
+      "test_pr_auc_mean": 0.4687
+    },
+    {
+      "split": "phylo_clade",
+      "protocol": "genomewide",
+      "architecture": "mlp_only",
+      "n_features": 1500,
+      "test_core6_f1_mean": 0.515,
+      "test_core6_f1_std": 0.039,
+      "test_all9_f1_mean": 0.3438,
+      "test_pr_auc_mean": 0.3906
+    },
+    {
+      "split": "phylo_clade",
+      "protocol": "genomewide",
+      "architecture": "gatv2",
+      "n_features": 1500,
+      "test_core6_f1_mean": 0.4722,
+      "test_core6_f1_std": 0.1267,
+      "test_all9_f1_mean": 0.3148,
+      "test_pr_auc_mean": 0.3557
+    },
+    {
+      "split": "phylo_clade",
+      "protocol": "genomewide",
+      "architecture": "gated_hybrid",
+      "n_features": 1500,
+      "test_core6_f1_mean": 0.4504,
+      "test_core6_f1_std": 0.0534,
+      "test_all9_f1_mean": 0.3003,
+      "test_pr_auc_mean": 0.3467
+    },
+    {
+      "split": "phylo_clade",
+      "protocol": "genomewide",
+      "architecture": "random_forest",
+      "n_features": 1500,
+      "test_core6_f1_mean": 0.361,
+      "test_core6_f1_std": 0.0216,
+      "test_all9_f1_mean": 0.2407,
+      "test_pr_auc_mean": 0.2269
+    }
+  ]
+}

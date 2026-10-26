@@ -181,36 +181,8 @@ class GatedHybridGNN(nn.Module):
         }
 
 
-class SkipGCN(nn.Module):
-    """MultiTaskGCN's architecture, re-exposed with the shared signature.
-
-    model.py's MultiTaskGCN is left untouched; this wrapper exists so the
-    benchmark can treat every architecture uniformly (including calling
-    .embed()) without editing working code.
-    """
-
-    def __init__(self, in_dim, hidden_dim, n_out, dropout=0.3,
-                 skip_connection=True, **_):
-        super().__init__()
-        self.inner = MultiTaskGCN(in_dim, hidden_dim, n_out, dropout=dropout,
-                                  skip_connection=skip_connection)
-
-    @property
-    def head(self):
-        return self.inner.head
-
-    def embed(self, x, edge_index, edge_weight):
-        m = self.inner
-        h = F.relu(m.conv1(x, edge_index, edge_weight))
-        h = F.dropout(h, p=m.dropout, training=self.training)
-        h = F.relu(m.conv2(h, edge_index, edge_weight))
-        h = F.dropout(h, p=m.dropout, training=self.training)
-        if m.skip_connection:
-            h = torch.cat([h, x], dim=1)
-        return h
-
-    def forward(self, x, edge_index, edge_weight):
-        return self.inner(x, edge_index, edge_weight)
+# MultiTaskGCN directly implements embed() and forward(), matching the shared signature.
+SkipGCN = MultiTaskGCN
 
 
 ARCHITECTURES = {

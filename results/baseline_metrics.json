@@ -18,7 +18,7 @@
   "threshold_for_f1": 0.5,
   "models": {
     "random_forest": {
-      "fit_seconds": 2.37,
+      "fit_seconds": 2.82,
       "default_threshold_0.5": {
         "val": {
           "macro_f1": 0.8646220949292063,
@@ -367,7 +367,7 @@
       }
     },
     "xgboost": {
-      "fit_seconds": 4.71,
+      "fit_seconds": 5.49,
       "default_threshold_0.5": {
         "val": {
           "macro_f1": 0.6541275168067634,
@@ -716,7 +716,7 @@
       }
     },
     "multi_task_mlp": {
-      "fit_seconds": 6.28,
+      "fit_seconds": 4.51,
       "default_threshold_0.5": {
         "val": {
           "macro_f1": 0.8605631510267693,

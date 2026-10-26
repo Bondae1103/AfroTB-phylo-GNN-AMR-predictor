@@ -12,7 +12,8 @@ input directory. Nothing can quietly replace a real result with a synthetic one.
 
 from pathlib import Path
 
-REAL_PROCESSED = Path("data/processed")
+REPO_ROOT = Path(__file__).resolve().parents[2]
+REAL_PROCESSED = REPO_ROOT / "data" / "processed"
 
 
 def is_real(processed_dir):

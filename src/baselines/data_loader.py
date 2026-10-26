@@ -12,7 +12,8 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-DEFAULT_PROCESSED_DIR = Path("data/processed")
+REPO_ROOT = Path(__file__).resolve().parents[2]
+DEFAULT_PROCESSED_DIR = REPO_ROOT / "data" / "processed"
 
 DRUG_COLUMNS = ["RIF", "INH", "EMB", "PZA", "STM", "LEV", "CAP", "ETH", "LZD"]
 VALID_SPLITS = {"train", "val", "test"}
