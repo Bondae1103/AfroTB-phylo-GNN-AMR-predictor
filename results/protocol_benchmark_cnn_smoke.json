@@ -1,0 +1,172 @@
+{
+  "processed_dir": "data/processed",
+  "n_isolates": 13753,
+  "drug_columns": [
+    "RIF",
+    "INH",
+    "EMB",
+    "PZA",
+    "STM",
+    "LEV",
+    "CAP",
+    "ETH",
+    "LZD"
+  ],
+  "seeds": [
+    0
+  ],
+  "split_reports": {
+    "original": {
+      "source": "splits.csv (fixed, unmodified)"
+    }
+  },
+  "protocol_info": {
+    "original|genomewide": {
+      "n_sites_total": 465257,
+      "n_sites_excluded_as_catalogue": 133,
+      "n_sites_passing_maf": 10055,
+      "n_sites_selected": 1500,
+      "min_minor_freq": 0.01,
+      "max_sites": 1500,
+      "strategy": "random",
+      "selection_seed": 0,
+      "selection_fitted_on": "train split only",
+      "catalogue_sites_excluded": true
+    }
+  },
+  "cells": {
+    "original|genomewide|cnn1d": {
+      "split": "original",
+      "protocol": "genomewide",
+      "architecture": "cnn1d",
+      "n_features": 1500,
+      "seconds": 425.9,
+      "aggregate": {
+        "default_0.5": {
+          "val_macro_f1_all9": {
+            "mean": 0.5734,
+            "std": 0.0,
+            "n_seeds": 1
+          },
+          "test_macro_f1_all9": {
+            "mean": 0.5748,
+            "std": 0.0,
+            "n_seeds": 1
+          },
+          "val_macro_f1_core6": {
+            "mean": 0.7119,
+            "std": 0.0,
+            "n_seeds": 1
+          },
+          "test_macro_f1_core6": {
+            "mean": 0.6955,
+            "std": 0.0,
+            "n_seeds": 1
+          },
+          "test_macro_roc_auc": {
+            "mean": 0.9354,
+            "std": 0.0,
+            "n_seeds": 1
+          },
+          "test_macro_pr_auc": {
+            "mean": 0.7207,
+            "std": 0.0,
+            "n_seeds": 1
+          }
+        },
+        "tuned": {
+          "val_macro_f1_all9": {
+            "mean": 0.6178,
+            "std": 0.0,
+            "n_seeds": 1
+          },
+          "test_macro_f1_all9": {
+            "mean": 0.5878,
+            "std": 0.0,
+            "n_seeds": 1
+          },
+          "val_macro_f1_core6": {
+            "mean": 0.7323,
+            "std": 0.0,
+            "n_seeds": 1
+          },
+          "test_macro_f1_core6": {
+            "mean": 0.7151,
+            "std": 0.0,
+            "n_seeds": 1
+          },
+          "test_macro_roc_auc": {
+            "mean": 0.9354,
+            "std": 0.0,
+            "n_seeds": 1
+          },
+          "test_macro_pr_auc": {
+            "mean": 0.7207,
+            "std": 0.0,
+            "n_seeds": 1
+          }
+        }
+      },
+      "per_seed": [
+        {
+          "default_0.5": {
+            "val_macro_f1_all9": 0.573375559659294,
+            "test_macro_f1_all9": 0.5748013660531334,
+            "val_macro_f1_core6": 0.7119151913407928,
+            "test_macro_f1_core6": 0.6955353824130334,
+            "test_macro_roc_auc": 0.93541396263196,
+            "test_macro_pr_auc": 0.720719660872974,
+            "test_per_drug_f1": {
+              "RIF": 0.7807196198234895,
+              "INH": 0.7510477787091366,
+              "EMB": 0.7647058823529411,
+              "PZA": 0.6501950585175552,
+              "STM": 0.5863570391872278,
+              "LEV": 0.6401869158878505,
+              "CAP": 1.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          },
+          "tuned": {
+            "val_macro_f1_all9": 0.6177660371141979,
+            "test_macro_f1_all9": 0.5878201247407926,
+            "val_macro_f1_core6": 0.7323248613471026,
+            "test_macro_f1_core6": 0.7150635204445224,
+            "test_macro_roc_auc": 0.93541396263196,
+            "test_macro_pr_auc": 0.720719660872974,
+            "test_per_drug_f1": {
+              "RIF": 0.7876543209876543,
+              "INH": 0.7559055118110236,
+              "EMB": 0.7633451957295374,
+              "PZA": 0.7145299145299145,
+              "STM": 0.5945945945945946,
+              "LEV": 0.6743515850144092,
+              "CAP": 1.0,
+              "ETH": 0.0,
+              "LZD": 0.0
+            }
+          }
+        }
+      ],
+      "run_info": [
+        {
+          "architecture": "cnn1d",
+          "best_epoch": 40
+        }
+      ]
+    }
+  },
+  "summary_table": [
+    {
+      "split": "original",
+      "protocol": "genomewide",
+      "architecture": "cnn1d",
+      "n_features": 1500,
+      "test_core6_f1_mean": 0.7151,
+      "test_core6_f1_std": 0.0,
+      "test_all9_f1_mean": 0.5878,
+      "test_pr_auc_mean": 0.7207
+    }
+  ]
+}
