@@ -107,6 +107,30 @@ def run_cell(
         proba = _fit_predict_tabular(arch, X[masks["train"]], y[masks["train"]], X, seed)
         return proba, {"architecture": arch}
 
+    if arch == "cnn1d":
+        # Deep-learning baseline with no graph: Conv1d over the position-ordered
+        # SNP columns (snp_matrix.npz columns are sorted by (pos, alt), and site
+        # selection keeps them sorted). Same minibatch trainer, capped train-only
+        # pos_weight and core-6 checkpoint selection as the other torch models;
+        # `lr` here is the GNN's full-batch rate, so the CNN uses its own.
+        from ..baselines.torch_cnn_model import TorchCNN
+        from ..baselines.train_torch_mlp import train_model
+        Xt = torch.tensor(X, dtype=torch.float32)
+        yt = torch.tensor(y, dtype=torch.float32)
+        mt = {k: torch.tensor(v, dtype=torch.bool) for k, v in masks.items()}
+        sel = [i for i, d in enumerate(drug_columns) if d in CORE6] or None
+        model, tinfo = train_model(
+            Xt[mt["train"]], yt[mt["train"]], Xt[mt["val"]], yt[mt["val"]],
+            lr=1e-3, max_epochs=max_epochs, patience=patience, seed=seed,
+            use_class_weight=True, pos_weight_cap=10.0, selection_drug_idx=sel,
+            model_factory=lambda d, n: TorchCNN(d, n_drugs=n, pool=4),  # pool 4 -> ~5x smaller head, faster on CPU
+            verbose=True,
+        )
+        model.eval()
+        with torch.no_grad():
+            proba = torch.sigmoid(model(Xt)).numpy()
+        return proba, {"architecture": arch, "best_epoch": tinfo["best_epoch"]}
+
     Xt = torch.tensor(X, dtype=torch.float32)
     yt = torch.tensor(y, dtype=torch.float32)
     mt = {k: torch.tensor(v, dtype=torch.bool) for k, v in masks.items()}

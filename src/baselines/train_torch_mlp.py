@@ -56,6 +56,8 @@ def train_model(
     use_class_weight=True,
     pos_weight_cap=20.0,
     verbose=False,
+    model_factory=None,
+    selection_drug_idx=None,
 ):
     """use_class_weight=False trains with plain unweighted BCEWithLogitsLoss.
     use_class_weight=True (default) uses per-drug pos_weight, clipped to
@@ -66,7 +68,10 @@ def train_model(
     set_seed(seed)
 
     n_drugs = y_train.shape[1]
-    model = TorchMLP(in_dim=X_train.shape[1], hidden_dims=hidden_dims, n_drugs=n_drugs, dropout=dropout)
+    if model_factory is not None:
+        model = model_factory(X_train.shape[1], n_drugs)
+    else:
+        model = TorchMLP(in_dim=X_train.shape[1], hidden_dims=hidden_dims, n_drugs=n_drugs, dropout=dropout)
     optimizer = torch.optim.Adam(model.parameters(), lr=lr, weight_decay=weight_decay)
 
     raw_pos_weight, effective_pos_weight = compute_pos_weight(y_train, cap=pos_weight_cap)
@@ -101,6 +106,9 @@ def train_model(
             val_logits = model(X_val)
             val_pred = (torch.sigmoid(val_logits) >= 0.5).int().numpy()
             val_true = y_val.int().numpy()
+            if selection_drug_idx is not None:
+                # same checkpoint criterion as src/experiments/trainer.py: drugs with real support only
+                val_true, val_pred = val_true[:, selection_drug_idx], val_pred[:, selection_drug_idx]
             val_f1 = f1_score(val_true, val_pred, average="macro", zero_division=0)
 
         history.append({"epoch": epoch, "train_loss": train_loss, "val_macro_f1": float(val_f1)})
